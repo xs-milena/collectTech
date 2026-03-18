@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIMULADOR FINANCEIRO</title>
+</head>
+<body>
+    <h1>SIMULADOR DE PREJUÍZO</h1>
+
+    <div>
+      <p>Quantos habitantes tem na sua cidade/município?</p>
+      <input type="number" id="ipt_habitantes">
+    </div>
+    <div>
+      <p>Quantos caminhões você possui na sua frota?</p>
+      <input type="number" id="ipt_caminhao">
+      <br>
+      <br>
+      <button onclick="exibirResultado()">Calcular prejuízo:</button>
+
+      <div id="div_mensagem"></div>
+
+  </div>
+</body>
+</html>
+<script>
+    function exibirResultado() {
+
+        let habitantes = Number(ipt_habitantes.value)
+        console.log("recebe habitantes")
+
+        let caminhao = Number(ipt_caminhao.value)
+        console.log("recebe caminhao")
+
+        div_mensagem.innerHTML = "";
+
+        // 120km (qtd media que o caminhão roda) / 2,5(quantos km o caminhão roda por litro) = 48 litros
+        //  * R$ 6,00 (valor medio do combustivel) = R$288,00  (diarios de combustivel)
+        // 288 * 7 (dias da semana) = 2016
+
+        let combustivel = (2016 * caminhao) * 0.20 // 20% de combustiveis desperdiçado por ma gestão das rotas
+        console.log(combustivel)
+
+        //LIXO NÃO COLETADO POR MÁ GESTÃO DE ROTA
+        let prejuizoinicial = ((((habitantes) * 0.20 ) / 10000) * 2016)
+
+        //PREJUÍZO DE MÁ GESTÃO + 15% DE GASTOS ADMINISTRATIVOS (EX: FUNCIONÁRIOS, DESGASTE DE PEÇAS, ETC.)
+        let prejuizofinal = prejuizoinicial + (prejuizoinicial * 0.15)
+
+        // COMBUSTÍVEL + MÁ GESTÃO + GASTOS ADMINISTRATIVOS
+        let prejuizototal = combustivel + prejuizofinal;
+
+        div_mensagem.innerHTML += 
+        (`<b> O prejuízo semanal refente ao <u style="color: blue">combustível</u> desperdiçado em áreas com menos demanda é de
+        <u style="color: blue">R$${combustivel.toFixed(2)}</u>.</b> <br>`)
+        
+        div_mensagem.innerHTML += (`<b> O prejuízo semanal referente ao <u style="color: green">lixo</u> não coletado decorrente 
+        da má gestão da rota é <u style="color: green">R$${prejuizofinal.toFixed(2)}</u>.</b> <br>`)
+
+        //PREJUÍZO MENSAL 
+        let prejuizomensal = prejuizofinal * 4;
+        console.log(prejuizomensal)
+
+        //PREJUÍZO ANUAL
+        let prejuizoanual = prejuizomensal * 12;
+        console.log(prejuizoanual)
+        div_mensagem.innerHTML += (`<b style='color: red'> O prejuízo anual referente ao lixo não coletado decorrente 
+        da má gestão da rota é R$${prejuizoanual.toFixed(2)}.</b> <br>`)
+    }
+</script>
