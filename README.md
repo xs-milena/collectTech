@@ -1,2 +1,9 @@
-# collectTech
-Sprint 2 - Projeto Coleta de Lixo
+# Collect Tech
+Gestão Inteligente de Resíduos Urbanos
+
+# Membros do projeto
+- ALAN CRIVELLARO HYPPOLITO
+- JÚLIA SAMPAIO MACÊDO
+- LUCAS NOGUEIRA BUONO DE ALBUQUERQUE
+- SOPHIE DE SOUZA FERRAZ
+- HABATA VITORIA DANIEL DE SOUSA
