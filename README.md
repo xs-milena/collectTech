@@ -9,5 +9,6 @@ Gestão Inteligente de Resíduos Urbanos
 - Alan Crivellaro Hyppolito
 - Júlia Sampaio Macêdo
 - Lucas Nogueira Buono de Albuquerque
+- Milena Maria de Amorim Silva
 - Sophie de Souza Ferraz
-- Habata Vitoria Daniel de Sousa
+- Thabata Vitoria Daniel de Sousa
