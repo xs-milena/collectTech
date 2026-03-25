@@ -1,0 +1,129 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#introducao {
+}
+
+.img-logo {
+    width: 100px;
+    height: 100px;
+}
+
+h1 {
+
+}
+
+.introducao-descricao {
+
+}
+
+.sobre-nos-titulo{
+
+}
+
+.img-planta {
+    width: 70px;
+}
+
+h2 {
+
+}
+
+.sobre-nos-descricao {
+}
+
+#objetivos {
+
+}
+
+#caixa1 {
+
+}
+
+#caixa2 {
+    
+}
+
+#caixa3 {
+    
+}
+
+#caixa4 {
+    
+}
+
+#caixa5 {
+    
+}
+
+#caixa6 {
+    
+}
+
+.objetivo {
+
+}
+
+.info {
+
+}
+
+.objetivo-titulo {
+
+}
+
+.objetivo-descricao {
+
+}
+
+#nossa-missao {
+
+}
+
+.nossa-missao-titulo {
+
+}
+
+.nossa-missao-descricao{
+
+}
+
+#projeto {
+    display: flex;
+    flex-direction: column;
+}
+
+.projeto-titulo {
+
+}
+
+.projeto-descricao {
+
+}
+
+#equipe {
+    display: flex;
+    flex-direction: column;
+}
+
+.pessoa {
+    display: flex;
+    flex-direction: row;
+}
+
+.img-perfil {
+
+    width: 70px;
+}
+
+.nome {
+
+}
