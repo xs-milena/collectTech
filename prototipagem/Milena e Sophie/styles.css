@@ -21,7 +21,24 @@ body {
     border-radius: 14px;
     background-color: #ffffff;
     margin-top: 50px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
 }
+
+.container3 {
+    width: 600px;
+    padding: 40px;
+    border: 1px solid #e0dbdb;
+    border-radius: 14px;
+    background-color: #ffffff;
+    margin-top: 50px;
+    align-items: center;
+    justify-content: center;
+    height: 390px;
+    margin-bottom: 20px;
+}
+
 .container2{
     display: flex;
     flex-direction: column;
@@ -33,7 +50,7 @@ body {
     align-items: center;
     justify-content: space-around;
     border: none;
-    background-color: rgb(228, 226, 226);
+    background-color: rgba(228, 226, 226, 0.394);
 }
 .caixinha2 {
     display: flex;
@@ -55,10 +72,36 @@ body {
 
 .sistema {
     font-size: 18px;
-    margin-bottom: 20px;
-     display: flex;
+    margin-bottom: 50px;
+    display: flex;
     align-self: center;
     font-weight: normal;
+}
+
+.gestao {
+    font-size: 15px;
+    display: flex;
+    align-self: center;
+    font-weight: normal;
+    color: rgb(255, 255, 255);
+    margin-top: 65px;
+    text-align: center;
+    justify-content: center;
+   padding-bottom: 5px;
+}
+
+.nome {
+    font-size: 18px;
+    display: flex;
+    align-self: center;
+    font-weight: normal;
+    color: rgba(255, 255, 255, 0.649);
+}
+
+.collecttech {
+    font-size: 35px;
+    font-weight: bold;
+    color: white;
 }
 
 .cadastro {
@@ -110,7 +153,6 @@ body {
 }
 
 input[type="text"], input[type="email"] {
-    width: 100%;
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid #ccc;
@@ -128,16 +170,44 @@ input[type="text"], input[type="email"] {
     margin: 10px 0px 10px 0px;
 }
 
+.botao-cadastro a {
+    font-size: 15px;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.botao-login {
+    background-color: #009366;
+    font-size: 15px;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 10px 0px 10px 0px;
+}
+
+.botao-login a {
+    font-size: 15px;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+}
 .voltar-login {
     background-color: #ffffff;
-    color: #161616;
-    font-size: 15px;
-    font-weight: 550;
     padding: 10px 20px 10px 20px;
     border: 1px solid #c9c9c9;
     border-radius: 8px;
-    cursor: pointer;
     margin-top: 9px;
+}
+
+.voltar-login a {
+    text-decoration: none;
+    font-size: 15px;
+    color: #161616;
+    font-weight: 550;
+    cursor: pointer;
 }
 .secao-login {
     border-top: 1px solid #e0e0e0;
@@ -188,6 +258,7 @@ label {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    width: 100%;
 }
 .botao-criarcadastro{
     background-color: #ffffff;
@@ -201,6 +272,7 @@ label {
     margin-top: 9px;
     display: flex;
     justify-content: center;
+    width: 100%;
 
 }
 .botao-criarcadastro a{
@@ -212,6 +284,11 @@ label {
     color: #009366;
     text-decoration: none;
     font-weight: bold;
+    margin-top: 120px;
+}
+
+.esquecisenha {
+    margin-top: 25px;
 }
 .botoes-e-esqueci{
     display: flex;
