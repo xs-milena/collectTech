@@ -5,36 +5,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
 
-    <div>
-        <img src="../img/folha.png" alt="">
-        <h2>Collect Tech</h2>
+    <div class="cabecalho">
+        <img src="../img/folha.png" alt="" class="icone">
+        <h1>Collect Tech</h1>
         <span>Gestão Inteligente de Resíduos Urbanos</span>
     </div>
 
-    <div>
-        <div>
+    <div class="container">
+        <div class="card">
             <form type="text" action="#" method="post" name="form">
-                <br><label>E-mail</label><br>
-                <input type="email" name="email" placeholder="seu@email.com" required>
-
-                <br><label>Senha</label><br>
-                <input type="senha" name="senha" minlength="6" placeholder="......" required>
-
-                <br><input type="submit" name="login" value="Entrar"><br>
-                <button><a href="cadastro.html"></a>Criar cadastro</button><br>
-                <a href="">Esqueci minha senha</a>
+                <div>
+                    <p>E-mail:</p>
+                    <input type="email" name="email" placeholder="seu@email.com" required class="campo-login">
+                </div>
+                <div>
+                    <p>Senha:</p>
+                    <input type="password" name="senha" minlength="6" placeholder="......" required class="campo-login">
+                </div>
+                <div>
+                    <input type="submit" name="login" value="Entrar" class="botao">
+                </div>
+                <div>
+                    <a href="../cadastro.html"><button class="botao2"><img src="../img/cadastro.png" alt=""
+                                class="img-botao">Criar cadastro</button></a>
+                </div>
+                <div>
+                    <a href="" class="link">Esqueci minha senha</a>
+                </div>
             </form>
         </div>
 
-    </div>
 
-    <div>
-        <span>São Paulo - SP · 2026</span>
-        <button>?</button>
+
+        <div class="extra">
+            <span>São Paulo - SP · 2026</span>
+        </div>
     </div>
 
 </body>

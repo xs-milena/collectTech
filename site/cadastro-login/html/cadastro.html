@@ -5,57 +5,82 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
 
-    <div>
-        <div>
-            <img src="../img/broto.png" alt="">
-            <h3>Criar cadastro</h3>
-            <span>Sistema Collect Tech - Smart City Solution</span>
-        </div>
 
-        <div>
+    <div class="cabecalho">
+        <img src="../img/broto.png" alt="" class="icone">
+        <h2>Criar cadastro</h2>
+        <span>Sistema Collect Tech - Smart City Solution</span>
+    </div>
+    <div class="container">
+        <div class="card">
             <form type="text" action="#" method="post" name="form">
-                <label>Nome completo *</label><br>
-                <input type="text" name="nome_completo" placeholder="Digite seu nome completo" required>
-
-                <br><label>E-mail *</label>
-                <input type="email" name="email" placeholder="seu@email.com" required>
-
-                <label>Telefone *</label>
-                <input type="telefone" name="telefone" maxlength="11" placeholder="(11)99999-9999" required>
-
-                <br><label>Cargo *</label><br>
-                <input type="text" name="cargo" placeholder="Ex: Gestor Ambiental, Coordenador" required>
-
-                <br><label>Senha *</label>
-                <input type="senha" name="senha" minlength="6" placeholder="Mínimo 6 caracteres" required
-                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
-                    title="A senha deve conter 6 ou mais caracters, pelo menos um número e uma letra maiúscula e outra minúscula">
-
-                <label>Confirmar senha *</label>
-                <input type="senha" name="confirmar_senha" minlength="6" placeholder="Mínimo 6 caracteres"
-                    required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
-                    title="A senha deve conter 6 ou mais caracters, pelo menos um número e uma letra maiúscula e outra minúscula">
-
-                <div>
-                    <h5>Informações importantes:</h5>
-                    <span>A senha deve ter no mínimo 6 caracteres</span><br>
-                    <span>Após o cadastro, você será redirecionado para a tela de login</span><br>
-                    <span>Todos os campos são obrigatórios</span>
+                <div class="cadastro-grande">
+                    <p>Nome completo <span class="obrigatorio">*</span></p>
+                    <input type="text" name="nome_completo" placeholder="Digite seu nome completo" required>
                 </div>
 
-                <input type="submit" name="cadastrar" value="Criar cadastro"><br>
-                <button><a href="login.html"></a>Voltar para o Login</button>
+                <div class="dois-cadastro">
+                    <div>
+                        <p>E-mail <span class="obrigatorio">*</span></p>
+                        <input type="email" name="email" placeholder="seu@email.com" required>
+                    </div>
+
+                    <div>
+                        <p>Telefone <span class="obrigatorio">*</span></p>
+                        <input type="telefone" name="telefone" maxlength="11" placeholder="(11)99999-9999" required>
+                    </div>
+                </div>
+
+                <div class="cadastro-grande">
+                    <p>Cargo <span class="obrigatorio">*</span></p>
+                    <input type="text" name="cargo" placeholder="Ex: Gestor Ambiental, Coordenador" required>
+                </div>
+
+                <div class="dois-cadastro">
+                    <div>
+                        <p>Senha <span class="obrigatorio">*</span></p>
+                        <input type="senha" name="senha" minlength="6" placeholder="Mínimo 6 caracteres" required
+                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+                            title="A senha deve conter 6 ou mais caracters, pelo menos um número e uma letra maiúscula e outra minúscula">
+                    </div>
+                    <div>
+                        <p>Confirmar senha <span class="obrigatorio">*</span></p>
+                        <input type="senha" name="confirmar_senha" minlength="6" placeholder="Mínimo 6 caracteres"
+                            required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+                            title="A senha deve conter 6 ou mais caracters, pelo menos um número e uma letra maiúscula e outra minúscula">
+
+                    </div>
+                </div>
+
+                <div class="infos">
+                    
+                    <h4>Informações importantes:</h4>
+                        <li>
+                            <span>A senha deve ter no mínimo 6 caracteres</span>
+                        </li>
+                        <li>
+                            <span>Após o cadastro, você será redirecionado para a tela de login</span>
+                        </li>
+                        <li>
+                            <span>Todos os campos são obrigatórios</span>
+                        </li>
+                    
+                </div>
+
+                <input type="submit" name="cadastrar" value="Criar cadastro" class="botao">
+                <button class="botao2"><a href="login.html"></a>Voltar para o Login</button>
             </form>
+
+
+            <div class="linha"></div>
+
+            <div>Já possui cadastro? <a href="./login.html" class="link">Faça login aqui</a></div>
         </div>
-
-        <div> <!--linha--> ____ </div>
-
-        <div>Já possui cadastro? <a href="login.html">Faça login aqui</a></div>
-
     </div>
 
 </body>
