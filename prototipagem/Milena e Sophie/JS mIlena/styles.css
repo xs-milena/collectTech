@@ -1,0 +1,300 @@
+body {
+    background-image: linear-gradient(to bottom, #009366, #007348)
+}
+.logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    width: 90px;
+    height: 90px;
+}
+.fonte-tudo {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.container {
+    width: 600px;
+    padding: 40px;
+    border: 1px solid #e0dbdb;
+    border-radius: 14px;
+    background-color: #ffffff;
+    margin-top: 50px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.container3 {
+    width: 600px;
+    padding: 40px;
+    border: 1px solid #e0dbdb;
+    border-radius: 14px;
+    background-color: #ffffff;
+    margin-top: 50px;
+    align-items: center;
+    justify-content: center;
+    height: 390px;
+    margin-bottom: 20px;
+}
+
+.container2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.caixinha {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    border: none;
+    background-color: rgba(228, 226, 226, 0.394);
+}
+.caixinha2 {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #c2dbff;
+    background-color: #f0f7ff;
+    border-radius: 10px;
+    margin-bottom: 8px;
+}
+  
+.criarcadastro {
+    display: flexbox;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.sistema {
+    font-size: 18px;
+    margin-bottom: 50px;
+    display: flex;
+    align-self: center;
+    font-weight: normal;
+}
+
+.gestao {
+    font-size: 15px;
+    display: flex;
+    align-self: center;
+    font-weight: normal;
+    color: rgb(255, 255, 255);
+    margin-top: 65px;
+    text-align: center;
+    justify-content: center;
+   padding-bottom: 5px;
+}
+
+.nome {
+    font-size: 18px;
+    display: flex;
+    align-self: center;
+    font-weight: normal;
+    color: rgba(255, 255, 255, 0.649);
+}
+
+.collecttech {
+    font-size: 35px;
+    font-weight: bold;
+    color: white;
+}
+
+.cadastro {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    font-weight: 600;
+    border: none;
+}
+.nomecompleto {
+    font-size: 14px;
+    margin-bottom: 5px; 
+}
+.email {
+    font-size: 14px;
+    margin-bottom: 5px; 
+}
+.telefone {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+.cargo {
+    font-size: 14px;
+    margin-bottom: 5px; 
+}
+.senha {
+    font-size: 14px;
+    margin-bottom: 5px; 
+}
+.senhaconfirmar {
+    font-size: 14px;
+    margin-bottom: 5px; 
+}
+.lista-info{
+    font-size: 13px;
+    color: #213ac5;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    font-weight: normal;
+    margin: 0px;
+    margin-bottom: 5px; 
+}
+.info-imp {
+    font-weight: bold;
+    font-size: 13px;
+    color:#213ac5;
+    margin: 5px 2px 3px 12px;
+}
+
+input[type="text"], input[type="email"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.botao-cadastro {
+    background-color: #009366;
+    font-size: 15px;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 10px 0px 10px 0px;
+}
+
+.botao-cadastro a {
+    font-size: 15px;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.botao-login {
+    background-color: #009366;
+    font-size: 15px;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 10px 0px 10px 0px;
+}
+
+.botao-login a {
+    font-size: 15px;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+}
+.voltar-login {
+    background-color: #ffffff;
+    padding: 10px 20px 10px 20px;
+    border: 1px solid #c9c9c9;
+    border-radius: 8px;
+    margin-top: 9px;
+}
+
+.voltar-login a {
+    text-decoration: none;
+    font-size: 15px;
+    color: #161616;
+    font-weight: 550;
+    cursor: pointer;
+}
+.secao-login {
+    border-top: 1px solid #e0e0e0;
+    margin-top: 20px;
+    padding-top: 20px;
+    text-align: center;
+}
+.secao-login a {
+    color: #009366;
+    text-decoration: none;
+    font-weight: bold;
+}
+.iconeverde {
+    color:#009366; 
+    font-size: 20px;
+    align-items: center;
+}
+.campo-grupo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+.linha-dupla {
+    display: flex;
+    gap: 50px; 
+    display: flex;
+    flex-wrap: wrap;
+    font-size: medium;
+}
+label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 8px;
+    font-weight: 600;   
+}
+.botao-login{
+    background-color: #009366;
+    font-size: 15px;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+.botao-criarcadastro{
+    background-color: #ffffff;
+    color: #161616;
+    font-size: 15px;
+    font-weight: 550;
+    border: 1px solid #009366;
+    border-radius: 8px;
+    padding: 10px 20px 10px 20px;
+    cursor: pointer;
+    margin-top: 9px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+}
+.botao-criarcadastro a{
+    color:#009366;
+    text-decoration: none;
+}
+
+.esquecisenha a{
+    color: #009366;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 120px;
+}
+
+.esquecisenha {
+    margin-top: 25px;
+}
+.botoes-e-esqueci{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;             
+  margin-top: 20px;      
+  width: 100%;
+}
