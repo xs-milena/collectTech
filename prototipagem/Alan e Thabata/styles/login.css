@@ -1,0 +1,144 @@
+* {
+    box-sizing: border-box; 
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #00875F;
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 1rem;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #ffffff;
+}
+
+#formulario {
+    background-color: #ffffff;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 655px; 
+    padding: 2.5rem;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    display: block;
+    max-width: 76px;
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 2rem; 
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.subtitulo {
+    font-size: 1rem;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+#campos {
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.bloco-input-unico {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+}
+
+#campos p {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #202024;
+    margin-left: 0.2rem;
+}
+
+.input {
+    width: 100%;
+    padding: 1rem;
+    background-color: #F0F2F5;
+    border: 1px solid #E6E6E6;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    color: #202024;
+}
+
+#botoes {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.button {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    transition: background 0.2s;
+}
+
+.login {
+    background-color: #12A454;
+    color: #ffffff;
+}
+
+.login:hover {
+    background-color: #10914B;
+}
+
+.cadastro {
+    display: flex;
+    flex-direction: row;
+    background-color: transparent;
+    color: #12A454;
+    border: 1px solid #E6E6E6;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.cadastro:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.icone-texto {
+    display: flex;
+    flex-direction: row;
+}
+
+.icon {
+    width: 1.2rem;
+    height: auto;
+    display: block;
+    margin-right: 0.3rem;
+}
+
+.link-esqueci {
+    text-align: center;
+    color: #12A454;
+    font-size: 0.85rem;
+    cursor: pointer;
+    margin-top: 0.5rem;
+}
+
+.rodape {
+    margin-top: 2rem;
+    font-size: 0.8rem;
+}
