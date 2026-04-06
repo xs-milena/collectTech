@@ -41,6 +41,7 @@ function entrar(){
         validacao = false
     }
     if (validacao == true){
+        link_entrar.href = './index.html'
         alert('Seja bem vindo(a)!')
     } else {
         alert('Algo deu errado, confira os campos e tente novamente')
