@@ -59,13 +59,11 @@ function validação_senha() {
 function email() {
     //email
     let email = ipt_email.value;
-    let indice_ponto_com = email.indexOf(".com")
-    let indice_arroba = email.indexOf("@")
     let fim = email.endsWith(".com") || email.endsWith('.com.br')
     let inicio = !email.startsWith("@") || !email.startsWith(".com")
     let vezes_arroba = email.indexOf("@") == email.lastIndexOf("@")
     let vezes_ponto_com = email.indexOf(".com") == email.lastIndexOf(".com")
-    if (indice_ponto_com && indice_arroba && fim && inicio && vezes_arroba && vezes_ponto_com) {
+    if (fim && inicio && vezes_arroba && vezes_ponto_com) {
         validacao = true
     } else {
         validacao = false
@@ -80,21 +78,28 @@ function cadastrar() {
         alert("Cadastro não pode ser concluido, reveja as informações.")
     }
 }
+let indice_numeros = new RegExp('[0-9]')
 function cep() {
-    for (let i = 0; i < array.length; i++) {
-        if () {
-
-        } else {
-
+    let cep = ipt_cep.value
+        for (let i = 0; i < cep.length; i++) {
+            if (cep.length == 8 && indice_numeros.test(cep[i]) == true) {
+                validacao = true
+            } else {
+            .innerHTML = 'Número de CEP Inválido'
+                validacao = false
+                break
+            }
         }
-    }
 }
 function cpf() {
-    for (let i = 0; i < array.length; i++) {
-        if () {
-
+    let cpf = ipt_cpf.value
+    for (let i = 0; i < cpf.length; i++) {
+        if (cpf.length == 11 && indice_numeros.test(cpf[i])) {
+            validacao = true
         } else {
-
+            .innerHTML = 'Número de CPF Inválido'
+            validacao = false
+            break
         }
     }
 }

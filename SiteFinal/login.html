@@ -20,18 +20,18 @@
 
       <div class="bloco-input-unico">
         <p>E-mail</p>
-        <input id="ipt_email" class="input" type="email" placeholder="Seu@email.com">
+        <input id="ipt_email" class="input" type="email" placeholder="Seu@email.com" oninput="email()">
       </div>
 
       <div class="bloco-input-unico">
         <p>Senha</p>
-        <input id="ipt_senha" class="input" type="password" placeholder="Mínimo 6 caracteres">
+        <input id="ipt_senha" class="input" type="password" placeholder="Mínimo 6 caracteres" oninput="senha()">
       </div>
 
     </div>
 
     <div id="botoes">
-      <button class="button login" onclick="entrar()"><a href="index.html">Entrar</a></button>
+      <button class="button login" onclick="entrar()"><a id="link_entrar">Entrar</a></button>
       <div class="icone-texto">
         <a href="cadastro.html" class="button cadastro"> <img class="icon" src="./img/user2.png" /> Criar Cadastro</a>
       </div>
