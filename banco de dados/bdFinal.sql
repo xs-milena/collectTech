@@ -14,6 +14,8 @@ create table empresa (
     atualizado_em datetime default current_timestamp()
 );
 
+alter table empresa add column codigo_ativacao varchar(50);
+
 -- Cadastro/login funcionário
 create table usuario (
     id_usuario int primary key auto_increment not null,
@@ -30,6 +32,8 @@ create table usuario (
       constraint check_cargo check (cargo in ('gestor ambiental', 'coordenador', 'motorista')),
     foreign key (fk_empresa) references empresa(id_empresa)
 );
+
+alter table empresa add col
 
 insert into usuario (nome, cpf, telefone, email, senha, cargo, situacao_usuario) values
 ('Alan Crivellaro Hyppolito', '11111111111', '11911111111', 'alan@gmail.com', '293i2e', 'coordenador', true),
@@ -105,7 +109,7 @@ create table leitura_sensor (
     nivel_cheia decimal(3,2) not null,
     fk_sensor int not null,
     colocado_em datetime default current_timestamp(),
-      foreign key (fk_sensor) references sensor(id_sensor)
+    foreign key (fk_sensor) references sensor(id_sensor)
 );
 
 insert into leitura_sensor (nivel_cheia, fkSensor) values

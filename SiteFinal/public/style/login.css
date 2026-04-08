@@ -149,3 +149,17 @@ h1 {
     margin-top: 2rem;
     font-size: 0.8rem;
 }
+
+.loading-div {
+  width: 50px;
+  display: none;
+}
+
+.loading-div img {
+  height: 50px;
+  width: 50px;
+}
+
+#div_erros_login {
+  display: none
+}

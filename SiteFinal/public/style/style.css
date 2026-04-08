@@ -57,6 +57,10 @@ html, body {
     align-items: center;
 }
 
+.navbar ul{
+    color: white ;
+}
+
 .navbar li {
     margin-left: 2.2rem;
     display: flex;
