@@ -4,8 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="./JS/login.js"></script>
+  
   <title>Login</title>
+
+  <script src="./JS/login.js"></script>
+  <script src="./JS/sessao.js"></script>
 
   <link rel="stylesheet" href="style/login.css" />
   <link rel="icon" href="./img/folha.png">
@@ -19,13 +22,19 @@
   <h1>Collect Tech</h1>
   <p class="subtitulo">Gestão Inteligente de Resíduos Urbanos</p>
 
+  <div class="alerta_erro">
+            <div class="card_erro" id="cardErro">
+                <span id="mensagem_erro"></span>
+            </div>
+  </div>
+
   <div id="formulario">
 
   <div id="campos">
 
   <div class="bloco-input-unico">
         <p>Código de ativação:</p>
-        <input id="ipt_codigo" class="input" type="text" placeholder="Insira aqui seu código" oninput="codigo()">
+        <input id="codigo_input" class="input" type="text" placeholder="Insira aqui seu código">
       </div>
 
       <div class="bloco-input-unico">
@@ -41,7 +50,7 @@
     </div>
 
     <div id="botoes">
-      <button class="button login" onclick="entrar()">Entrar</button>
+      <button type="button" onclick="entrar()">Entrar</button>
       <div class="icone-texto">
         <a href="cadastro.html" class="button cadastro"> <img class="icon" src="./img/user2.png" /> Criar Cadastro</a>
       </div>

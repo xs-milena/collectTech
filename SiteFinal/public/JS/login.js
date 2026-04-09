@@ -25,11 +25,11 @@ function email() {
 function senha() {
     // Validação senha
     let senha = ipt_senha.value
-    if (senha = '') {
+    if (senha == '') {
         
         validacao = false
     }
-    if (senha.lenght >= 0){
+    if (senha.lenght > 0){
         senha_preenchida = true
     }
 }
@@ -38,25 +38,24 @@ function senha() {
  function entrar() {
 
     // Simulação de entrada com dados válidos
-    // if (ipt_email.value == 'admin@collectTech.com' && ipt_senha.value == 'urubu100'){
-    //     validacao = true
-    // }
-    // else {
-    //     validacao = false
-    // }
-    // if (validacao == true){
-    //     link_entrar.href = './index.html'
-    //     alert('Seja bem vindo(a)!')
-    // } else {
-    //     alert('Algo deu errado, confira os campos e tente novamente')
-    // }
+    if (ipt_email.value == 'admin@collectTech.com' && ipt_senha.value == 'urubu100'){
+        validacao = true
+    }
+    else {
+        validacao = false
+    }
+    if (validacao == true){
+        link_entrar.href = './index.html'
+        alert('Seja bem vindo(a)!')
+    } else {
+        alert('Algo deu errado, confira os campos e tente novamente')
+    }
 
         aguardar();
 
         var emailVar = ipt_email.value;
         var senhaVar = ipt_senha.value;
-        var codigoVar = ipt_codigo.value;
-        var idEmpresaVincular
+        var codigoVar = codigo_input.value;
 
         if (emailVar == "" || senhaVar == "" || codigoVar == "") {
             cardErro.style.display = "block"

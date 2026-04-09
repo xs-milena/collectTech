@@ -152,8 +152,10 @@ h1 {
 
 .loading-div {
   width: 50px;
+  margin: auto;
   display: none;
 }
+
 
 .loading-div img {
   height: 50px;
@@ -162,4 +164,26 @@ h1 {
 
 #div_erros_login {
   display: none
+}
+
+.alerta_erro{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.card_erro {
+  display: none;
+  background-color: #fff;
+  color: black;
+  width: 230px;
+  position: fixed;
+  border-radius: 4px;
+  border: #ED145B 3px solid;
+  padding: 10px;
+  margin-right: 10%;
+}
+
+.card_erro #mensagem_erro{
+  font-weight: 500;
+  font-size: 20px;
 }
