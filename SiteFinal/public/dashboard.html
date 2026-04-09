@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style/dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <div class="logoSide">
+            <img src="./img/broto.png">
+            <h1>Collect Tech</h1>
+            <p>Smart City Solution</p>
+        </div>
+
+        <ul class="menu">
+            <li class="ativo">Geral</li>
+            <li>Lixeiras</li>
+            <li>Rotas</li>
+        </ul>
+    </div>
+    <div class="graficos">
+        <div>
+            <div class="container">
+                <div class="box_lixeiras total">
+                    <div>
+                        <p> Total de lixeiras:</p>
+                        <h3>20</h3>
+                        <h6>no sistema</h6>
+                    </div>
+                    <div class="icone_box">
+                        <img src="./img/lixeira.png">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <canvas id="graf_barras_bairros" class="graf_barras"></canvas>
+            </div>
+        </div>
+
+        <div class="container roscas">
+            <div>
+                <canvas id="graf_bela_vista" class="graf_rosca"></canvas>
+            </div>
+            <div>
+                <canvas id="graf_se" class="graf_rosca"></canvas>
+            </div>
+            <div>
+                <canvas id="graf_liberdade" class="graf_rosca"></canvas>
+            </div>
+            <div>
+                <canvas id="graf_cambuci" class="graf_rosca"></canvas>
+            </div>
+        </div>
+</body>
+
+</html>
+<script>
+    const barras_bairros = document.getElementById('graf_barras_bairros');
+
+    new Chart(barras_bairros, {
+        type: 'bar',
+        data: {
+            labels: ['Média das lixeiras do bairro'],
+            datasets: [{
+                label: 'Bela Vista',
+                data: [12],
+            },
+            {
+                label: 'Sé',
+                data: [76],
+            },
+            {
+                label: 'Liberdade',
+                data: [65],
+            },
+            {
+                label: 'Cambuci',
+                data: [32],
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    suggestedMax: 100
+                }
+            }
+        }
+    });
+
+    const graf_belaVista = document.getElementById('graf_bela_vista');
+
+    new Chart(graf_belaVista, {
+        type: 'doughnut',
+        data: {
+            labels: ['Cheias', 'Meio Cheias', 'Vazias'],
+            datasets: [{
+                data: [3, 1, 1],
+                borderWidth: 1
+            }]
+        }
+    });
+
+    const graf_se = document.getElementById('graf_se');
+
+    new Chart(graf_se, {
+        type: 'doughnut',
+        data: {
+            labels: ['Cheias', 'Meio Cheias', 'Vazias'],
+            datasets: [{
+                data: [1, 2, 2],
+                borderWidth: 1
+            }]
+        }
+    });
+
+    const graf_liberdade = document.getElementById('graf_liberdade');
+
+    new Chart(graf_liberdade, {
+        type: 'doughnut',
+        data: {
+            labels: ['Cheias', 'Meio Cheias', 'Vazias'],
+            datasets: [{
+                data: [3, 2, 0],
+                borderWidth: 1
+            }]
+        }
+    });
+
+    const graf_cambuci = document.getElementById('graf_cambuci');
+
+    new Chart(graf_cambuci, {
+        type: 'doughnut',
+        data: {
+            labels: ['Cheias', 'Meio Cheias', 'Vazias'],
+            datasets: [{
+                data: [1, 3, 1],
+                borderWidth: 1
+            }]
+        }
+    });
+
+</script>

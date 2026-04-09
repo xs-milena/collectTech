@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 230px;
+    height: 100vh;
+    background: #0f7a4f;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 20px;
+}
+
+.logoSide {
+    margin-bottom: 30px;
+}
+
+.logoSide img {
+    width: 40px;
+    margin-bottom: 10px;
+}
+
+.logoSide h2 {
+    font-size: 18px;
+}
+
+.logoSide p {
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+.menu {
+    list-style: none;
+}
+
+.menu li {
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.menu li:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.menu .ativo {
+    background: #fff;
+    color: #0f7a4f;
+}
+
+/* GRAFICOS */
+.graficos{
+    display: flex;
+    margin-left: 240px;
+    justify-content: space-around;
+}
+.container{
+    background-color: rgb(233, 233, 233);
+    border-radius: 10px;
+    border-color: black;
+}
+.roscas{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.graf_rosca{
+    width: 200px;
+    height: 200px;
+}
+.graf_barras{
+    width: 650px;
+    height: 500px;
+    margin: 20px;
+}
+
+/* CAIXAS PARA KPIs*/
+.box_lixeiras{
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    height: fit-content;
+    width: fit-content;
+}
