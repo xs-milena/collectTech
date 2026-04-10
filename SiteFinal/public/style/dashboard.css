@@ -4,6 +4,9 @@
     box-sizing: border-box;
     font-family: Arial, sans-serif;
 }
+body{
+    background-color: whitesmoke;
+}
 
 /* SIDEBAR */
 .sidebar {
@@ -66,6 +69,11 @@
     background-color: rgb(233, 233, 233);
     border-radius: 10px;
     border-color: black;
+    padding: 15px;
+    margin: 20px;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 6px grey;
 }
 .roscas{
     display: flex;
@@ -73,20 +81,96 @@
     justify-content: space-evenly;
 }
 .graf_rosca{
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    height: 100px;
 }
 .graf_barras{
-    width: 650px;
-    height: 500px;
+    width: 750px;
+    height: 600px;
     margin: 20px;
+}
+
+.botao_graf{
+    border-color: lightgray;
+    border-radius: 20px;
+    background-color: rgb(233, 233, 233);
+    margin: 2px;
+    padding: 5px;
 }
 
 /* CAIXAS PARA KPIs*/
 .box_lixeiras{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     padding: 20px;
     height: fit-content;
+    width: 300px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 20px;
+    background-blend-mode: screen;
+    padding: 15px;
+    margin: 5px;
+    h3{
+        font-size: xx-large;
+    }
+}
+
+.icone_box{
+    width: 20px;
+    height: 20px;
+}
+
+.container_icone{
     width: fit-content;
+    height: fit-content;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.kpi{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+/* KPI TOTAL LIXEIRAS */
+.icone_total{
+    background-color: #0f7a4f;
+}
+
+
+.total{
+    background-color: rgba(237, 253, 244);
+    border-color: rgba(164, 244, 207);
+    color: rgba(0, 79, 59);
+}
+
+/* KPI NIVEL BAIXO */
+.vazia{
+    background-color: rgba(238, 253, 244);
+    border-color: rgba(185, 248, 207);
+    color: rgba(13, 84, 43);
+}
+.icone_vazia{
+    background-color: rgba(0, 166, 62);
+}
+
+/* KPI NIVEL MEDIO */
+.medio{
+    background-color: rgba(255, 252, 233);
+    border-color: rgba(254, 230, 133);
+    color: rgba(123, 51, 6);
+}
+.icone_medio{
+    background-color: rgba(225, 113, 0);
+}
+
+/* KPI NIVEL ALTO */
+.cheia{
+    background-color: rgba(255, 242, 242);
+    border-color: rgba(255, 201, 201);
+    color: rgba(130, 24, 26);
+}
+.icone_cheia{
+    background-color: rgba(231, 0, 11);
 }

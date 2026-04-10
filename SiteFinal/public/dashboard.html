@@ -27,14 +27,48 @@
     <div class="graficos">
         <div>
             <div class="container">
-                <div class="box_lixeiras total">
-                    <div>
-                        <p> Total de lixeiras:</p>
-                        <h3>20</h3>
-                        <h6>no sistema</h6>
+                <div class="kpi">
+                    <div class="box_lixeiras total">
+                        <div>
+                            <p> Total de lixeiras:</p>
+                            <h3>20</h3>
+                            <h6>no sistema</h6>
+                        </div>
+                        <div class="container_icone icone_total">
+                            <img src="./img/lixeira.png" class="icone_box">
+                        </div>
                     </div>
-                    <div class="icone_box">
-                        <img src="./img/lixeira.png">
+                    <div class="box_lixeiras vazia">
+                        <div>
+                            <p> Nivel Baixo:</p>
+                            <h3>4</h3>
+                            <h6>0-50% cheias</h6>
+                        </div>
+                        <div class="container_icone icone_vazia">
+                            <img src="./img/sorrindo.png" class="icone_box">
+                        </div>
+                    </div>
+                </div>
+                <div class="kpi">
+                    <div class="box_lixeiras medio">
+                        <div>
+                            <p> Nivel Médio:</p>
+                            <h3>8</h3>
+                            <h6>50-80% cheias</h6>
+                        </div>
+                        <div class="container_icone icone_medio">
+                            <img src="./img/feliz.png" class="icone_box">
+                        </div>
+                    </div>
+                    <div class="box_lixeiras cheia">
+                        <div>
+                            <p> Nivel Alto:</p>
+                            <h3>8</h3>
+                            <h6>80%+ cheias</h6>
+                        </div>
+                        <div class="container_icone icone_cheia">
+                            <img src="./img/triste.png" class="icone_box">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -44,23 +78,29 @@
         </div>
 
         <div class="container roscas">
-            <div>
+            <button class="botao_graf" onclick="belaVista()">
+                <span>Bela Vista</span>
                 <canvas id="graf_bela_vista" class="graf_rosca"></canvas>
-            </div>
-            <div>
+            </button>
+            <button class="botao_graf" onclick="se()">
+                <span>Sé</span>
                 <canvas id="graf_se" class="graf_rosca"></canvas>
-            </div>
-            <div>
+            </button>
+            <button class="botao_graf" onclick="liberdade()">
+                <span>Liberdade</span>
                 <canvas id="graf_liberdade" class="graf_rosca"></canvas>
-            </div>
-            <div>
+            </button>
+            <button class="botao_graf" onclick="cambuci()">
+                <span>Cambuci</span>
                 <canvas id="graf_cambuci" class="graf_rosca"></canvas>
-            </div>
-        </div>
+            </button>
+            </button>
 </body>
 
 </html>
 <script>
+    Chart.defaults.backgroundColor = '#12A454'
+
     const barras_bairros = document.getElementById('graf_barras_bairros');
 
     new Chart(barras_bairros, {
@@ -90,7 +130,7 @@
                     beginAtZero: true,
                     suggestedMax: 100
                 }
-            }
+            },
         }
     });
 
@@ -99,11 +139,18 @@
     new Chart(graf_belaVista, {
         type: 'doughnut',
         data: {
-            labels: ['Cheias', 'Meio Cheias', 'Vazias'],
+            labels: ['Nivel Alto', 'Nivel Medio', 'Nivel Alto'],
             datasets: [{
                 data: [3, 1, 1],
                 borderWidth: 1
             }]
+        },
+        options: {
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
         }
     });
 
@@ -112,11 +159,18 @@
     new Chart(graf_se, {
         type: 'doughnut',
         data: {
-            labels: ['Cheias', 'Meio Cheias', 'Vazias'],
+            labels: ['Nivel Alto', 'Nivel Medio', 'Nivel Alto'],
             datasets: [{
                 data: [1, 2, 2],
                 borderWidth: 1
             }]
+        },
+        options: {
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
         }
     });
 
@@ -125,11 +179,18 @@
     new Chart(graf_liberdade, {
         type: 'doughnut',
         data: {
-            labels: ['Cheias', 'Meio Cheias', 'Vazias'],
+            labels: ['Nivel Alto', 'Nivel Medio', 'Nivel Alto'],
             datasets: [{
                 data: [3, 2, 0],
                 borderWidth: 1
             }]
+        },
+        options: {
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
         }
     });
 
@@ -138,12 +199,27 @@
     new Chart(graf_cambuci, {
         type: 'doughnut',
         data: {
-            labels: ['Cheias', 'Meio Cheias', 'Vazias'],
+            labels: ['Nivel Alto', 'Nivel Medio', 'Nivel Alto'],
             datasets: [{
                 data: [1, 3, 1],
                 borderWidth: 1
             }]
+        },
+        options: {
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
         }
     });
 
+
+    function belaVista() {
+        barras_bairros.data.labels.pop()
+        barras_bairros.data.datasets.forEach((dataset) => {dataset.data.pop()})
+        barras_bairros.data.labels.push('Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab', 'Dom')
+        barras_bairros.data.datasets.forEach((dataset) => {dataset.data.push(12)})
+        barras_bairros.update()
+    }
 </script>
