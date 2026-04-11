@@ -192,3 +192,9 @@ body{
 .icone_cheia{
     background-color: rgba(231, 0, 11);
 }
+/* CAIXA DE SELECIONAR O DIA */
+.caixa_dia{
+    border-radius: 20px;
+    border-color: #12A454;
+    padding: 10px;
+}

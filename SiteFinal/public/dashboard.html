@@ -78,6 +78,7 @@
                 </div>
             </div>
             <div class="container">
+                <div id="div_select_dia"></div>
                 <canvas id="graf_barras_bairros" class="graf_barras"></canvas>
             </div>
         </div>
@@ -104,6 +105,8 @@
 </html>
 <script>
     Chart.defaults.backgroundColor = ['#12A454', '#009775', '#48c962']
+
+    let bairro = ''
 
     const barras_bairros = document.getElementById('graf_barras_bairros');
     let grafico = new Chart(barras_bairros, {
@@ -217,33 +220,61 @@
         }
     });
 
-
+    /* Função*/
     function belaVista() {
         grafico.destroy()
+        let dado = 0
+        let vetor1 = []
+        let vetor2 = []
+        let vetor3 = []
+        let vetor4 = []
+        let vetor5 = []
+        bairro = 'Bela vista'
+        div_select_dia.innerHTML = `<select name="dia" id="slct_dia_semana" class="caixa_dia" oninput="mostraGraf()">
+                                        <option value="seg">Seg.</option>
+                                        <option value="ter">Ter.</option>
+                                        <option value="qua">Qua.</option>
+                                        <option value="qui">Qui.</option>
+                                        <option value="sex">Sex.</option>
+                                        <option value="sab">Sab.</option>
+                                        <option value="dom">Dom.</option>
+                                </select>`
+
+            for (let i = 8; i > 0; i--) {
+                dado = (Math.random() * 100).toFixed(0)
+                vetor1.push(dado)
+                dado = (Math.random() * 100).toFixed(0)
+                vetor2.push(dado)
+                dado = (Math.random() * 100).toFixed(0)
+                vetor3.push(dado)
+                dado = (Math.random() * 100).toFixed(0)
+                vetor4.push(dado)
+                dado = (Math.random() * 100).toFixed(0)
+                vetor5.push(dado)
+            }
         grafico = new Chart(barras_bairros, {
             type: 'bar',
-            title: 'Bela Vista',
             data: {
                 labels: ['00h', '03h', '06h', '09h', '12h', '15h', '18h', '21h'],
                 datasets: [{
                     label: 'Ecoponto 1',
-                    data: [22, 24, 32, 34, 42, 67, 12, 14],
+                    data: vetor1,
                 },
                 {
                     label: 'Ecoponto 2',
-                    data: [28, 39, 49, 58, 64, 80, 5, 10],
+                    data: vetor2,
                 },
                 {
                     label: 'Ecoponto 3',
-                    data: [34, 35, 46, 67, 81, 12, 24, 26],
+                    data: vetor3,
                 },
                 {
                     label: 'Ecoponto 4',
-                    data: [64, 64, 78, 83, 18, 19, 22, 28],
+                    data: vetor4,
                 },
                 {
                     label: 'Ecoponto 5',
-                    data: [35, 38, 42, 51, 63, 76, 79, 5],
+                    data: vetor5,
                 }
                 ]
             },
@@ -251,7 +282,8 @@
                 plugins: {
                     title: {
                         display: true,
-                        text: 'Bela Vista'
+                        text: bairro,
+                        maxSize: '100px'
                     }
                 },
                 scales: {
@@ -266,16 +298,69 @@
 
     function se() {
         grafico.destroy()
+        let dado = 0
+        let vetor1 = []
+        let vetor2 = []
+        let vetor3 = []
+        let vetor4 = []
+        let vetor5 = []
+        bairro = 'Sé'
+        div_select_dia.innerHTML = `<select name="dia" id="slct_dia_semana" class="caixa_dia" oninput="mostraGraf()">
+                                        <option value="seg">Seg.</option>
+                                        <option value="ter">Ter.</option>
+                                        <option value="qua">Qua.</option>
+                                        <option value="qui">Qui.</option>
+                                        <option value="sex">Sex.</option>
+                                        <option value="sab">Sab.</option>
+                                        <option value="dom">Dom.</option>
+                                </select>`
+
+            for (let i = 8; i > 0; i--) {
+                dado = (Math.random() * 100).toFixed(0)
+                vetor1.push(dado)
+                dado = (Math.random() * 100).toFixed(0)
+                vetor2.push(dado)
+                dado = (Math.random() * 100).toFixed(0)
+                vetor3.push(dado)
+                dado = (Math.random() * 100).toFixed(0)
+                vetor4.push(dado)
+                dado = (Math.random() * 100).toFixed(0)
+                vetor5.push(dado)
+            }
         grafico = new Chart(barras_bairros, {
             type: 'bar',
             data: {
-                labels: ['Ecoponto 1', 'Ecoponto 2', 'Ecoponto 3', 'Ecoponto 4', 'Ecoponto 5'],
+                labels: ['00h', '03h', '06h', '09h', '12h', '15h', '18h', '21h'],
                 datasets: [{
-                    label: 'Sé',
-                    data: [20, 58, 39, 82, 63],
-                }]
+                    label: 'Ecoponto 1',
+                    data: vetor1,
+                },
+                {
+                    label: 'Ecoponto 2',
+                    data: vetor2,
+                },
+                {
+                    label: 'Ecoponto 3',
+                    data: vetor3,
+                },
+                {
+                    label: 'Ecoponto 4',
+                    data: vetor4,
+                },
+                {
+                    label: 'Ecoponto 5',
+                    data: vetor5,
+                }
+                ]
             },
             options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: bairro,
+                        maxSize: '100px'
+                    }
+                },
                 scales: {
                     y: {
                         beginAtZero: true,
@@ -288,16 +373,69 @@
 
     function liberdade() {
         grafico.destroy()
+        let dado = 0
+        let vetor1 = []
+        let vetor2 = []
+        let vetor3 = []
+        let vetor4 = []
+        let vetor5 = []
+        bairro = 'Liberdade'
+        div_select_dia.innerHTML = `<select name="dia" id="slct_dia_semana" class="caixa_dia" oninput="mostraGraf()">
+                                        <option value="seg">Seg.</option>
+                                        <option value="ter">Ter.</option>
+                                        <option value="qua">Qua.</option>
+                                        <option value="qui">Qui.</option>
+                                        <option value="sex">Sex.</option>
+                                        <option value="sab">Sab.</option>
+                                        <option value="dom">Dom.</option>
+                                </select>`
+
+            for (let i = 8; i > 0; i--) {
+                dado = (Math.random() * 100).toFixed(0)
+                vetor1.push(dado)
+                dado = (Math.random() * 100).toFixed(0)
+                vetor2.push(dado)
+                dado = (Math.random() * 100).toFixed(0)
+                vetor3.push(dado)
+                dado = (Math.random() * 100).toFixed(0)
+                vetor4.push(dado)
+                dado = (Math.random() * 100).toFixed(0)
+                vetor5.push(dado)
+            }
         grafico = new Chart(barras_bairros, {
             type: 'bar',
             data: {
-                labels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab', 'Dom'],
+                labels: ['00h', '03h', '06h', '09h', '12h', '15h', '18h', '21h'],
                 datasets: [{
-                    label: 'Bela Vista',
-                    data: [20, 22, 21, 29, 31, 40, 31],
-                }]
+                    label: 'Ecoponto 1',
+                    data: vetor1,
+                },
+                {
+                    label: 'Ecoponto 2',
+                    data: vetor2,
+                },
+                {
+                    label: 'Ecoponto 3',
+                    data: vetor3,
+                },
+                {
+                    label: 'Ecoponto 4',
+                    data: vetor4,
+                },
+                {
+                    label: 'Ecoponto 5',
+                    data: vetor5,
+                }
+                ]
             },
             options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: bairro,
+                        maxSize: '100px'
+                    }
+                },
                 scales: {
                     y: {
                         beginAtZero: true,
@@ -310,18 +448,136 @@
 
     function cambuci() {
         grafico.destroy()
+        let dado = 0
+        let vetor1 = []
+        let vetor2 = []
+        let vetor3 = []
+        let vetor4 = []
+        let vetor5 = []
+        bairro = 'Cambuci'
+        div_select_dia.innerHTML = `<select name="dia" id="slct_dia_semana" class="caixa_dia" oninput="mostraGraf()">
+                                        <option value="seg">Seg.</option>
+                                        <option value="ter">Ter.</option>
+                                        <option value="qua">Qua.</option>
+                                        <option value="qui">Qui.</option>
+                                        <option value="sex">Sex.</option>
+                                        <option value="sab">Sab.</option>
+                                        <option value="dom">Dom.</option>
+                                </select>`
+
+            for (let i = 8; i > 0; i--) {
+                dado = (Math.random() * 100).toFixed(0)
+                vetor1.push(dado)
+                dado = (Math.random() * 100).toFixed(0)
+                vetor2.push(dado)
+                dado = (Math.random() * 100).toFixed(0)
+                vetor3.push(dado)
+                dado = (Math.random() * 100).toFixed(0)
+                vetor4.push(dado)
+                dado = (Math.random() * 100).toFixed(0)
+                vetor5.push(dado)
+            }
         grafico = new Chart(barras_bairros, {
             type: 'bar',
             data: {
-                labels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab', 'Dom'],
+                labels: ['00h', '03h', '06h', '09h', '12h', '15h', '18h', '21h'],
                 datasets: [{
-                    label: 'Cambuci',
-                    data: [20, 22, 21, 29, 31, 40, 31],
-                }]
+                    label: 'Ecoponto 1',
+                    data: vetor1,
+                },
+                {
+                    label: 'Ecoponto 2',
+                    data: vetor2,
+                },
+                {
+                    label: 'Ecoponto 3',
+                    data: vetor3,
+                },
+                {
+                    label: 'Ecoponto 4',
+                    data: vetor4,
+                },
+                {
+                    label: 'Ecoponto 5',
+                    data: vetor5,
+                }
+                ]
             },
             options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: bairro,
+                        maxSize: '100px'
+                    }
+                },
                 scales: {
                     y: {
+                        beginAtZero: true,
+                        suggestedMax: 100
+                    }
+                },
+            }
+        });
+    }
+    function mostraGraf(){
+        grafico.destroy()
+        let dado = 0
+        let vetor1 = []
+        let vetor2 = []
+        let vetor3 = []
+        let vetor4 = []
+        let vetor5 = []
+
+            for (let i = 8; i > 0; i--) {
+                dado = (Math.random() * 100).toFixed(0)
+                vetor1.push(dado)
+                dado = (Math.random() * 100).toFixed(0)
+                vetor2.push(dado)
+                dado = (Math.random() * 100).toFixed(0)
+                vetor3.push(dado)
+                dado = (Math.random() * 100).toFixed(0)
+                vetor4.push(dado)
+                dado = (Math.random() * 100).toFixed(0)
+                vetor5.push(dado)
+            }
+        grafico = new Chart(barras_bairros, {
+            type: 'bar',
+            data: {
+                labels: ['00h', '03h', '06h', '09h', '12h', '15h', '18h', '21h'],
+                datasets: [{
+                    label: 'Ecoponto 1',
+                    data: vetor1,
+                },
+                {
+                    label: 'Ecoponto 2',
+                    data: vetor2,
+                },
+                {
+                    label: 'Ecoponto 3',
+                    data: vetor3,
+                },
+                {
+                    label: 'Ecoponto 4',
+                    data: vetor4,
+                },
+                {
+                    label: 'Ecoponto 5',
+                    data: vetor5,
+                }
+                ]
+            },
+            options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: bairro,
+                        maxSize: '100px'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
                         suggestedMax: 100
                     }
                 },
