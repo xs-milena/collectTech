@@ -12,17 +12,22 @@
 <body>
 
     <div class="sidebar">
-        <div class="logoSide">
-            <img src="./img/broto.png">
-            <h1>Collect Tech</h1>
-            <p>Smart City Solution</p>
+        <div>
+            <div class="logoSide">
+                <img src="./img/broto.png">
+                <h1>Collect Tech</h1>
+                <p>Smart City Solution</p>
+                <div class="linha"></div>
+            </div>
+            <ul class="menu">
+                <li class="ativo">Geral</li>
+                <li>Lixeiras</li>
+                <li>Rotas</li>
+            </ul>
         </div>
-
-        <ul class="menu">
-            <li class="ativo">Geral</li>
-            <li>Lixeiras</li>
-            <li>Rotas</li>
-        </ul>
+        <div>
+            <span class="link"><a href="./index.html">Sair</a></span>
+        </div>
     </div>
     <div class="graficos">
         <div>
@@ -78,7 +83,7 @@
         </div>
 
         <div class="container roscas">
-            <button class="botao_graf" onclick="belaVista()">
+            <button class="botao_graf" onclick="belaVista()" id="botao">
                 <span>Bela Vista</span>
                 <canvas id="graf_bela_vista" class="graf_rosca"></canvas>
             </button>
@@ -94,16 +99,14 @@
                 <span>Cambuci</span>
                 <canvas id="graf_cambuci" class="graf_rosca"></canvas>
             </button>
-            </button>
 </body>
 
 </html>
 <script>
-    Chart.defaults.backgroundColor = '#12A454'
+    Chart.defaults.backgroundColor = ['#12A454', '#009775', '#48c962']
 
     const barras_bairros = document.getElementById('graf_barras_bairros');
-
-    new Chart(barras_bairros, {
+    let grafico = new Chart(barras_bairros, {
         type: 'bar',
         data: {
             labels: ['Média das lixeiras do bairro'],
@@ -122,7 +125,7 @@
             {
                 label: 'Cambuci',
                 data: [32],
-            }]
+            },]
         },
         options: {
             scales: {
@@ -139,7 +142,7 @@
     new Chart(graf_belaVista, {
         type: 'doughnut',
         data: {
-            labels: ['Nivel Alto', 'Nivel Medio', 'Nivel Alto'],
+            labels: ['Nivel Alto', 'Nivel Medio', 'Nivel Baixo'],
             datasets: [{
                 data: [3, 1, 1],
                 borderWidth: 1
@@ -159,7 +162,7 @@
     new Chart(graf_se, {
         type: 'doughnut',
         data: {
-            labels: ['Nivel Alto', 'Nivel Medio', 'Nivel Alto'],
+            labels: ['Nivel Alto', 'Nivel Medio', 'Nivel Baixo'],
             datasets: [{
                 data: [1, 2, 2],
                 borderWidth: 1
@@ -179,7 +182,7 @@
     new Chart(graf_liberdade, {
         type: 'doughnut',
         data: {
-            labels: ['Nivel Alto', 'Nivel Medio', 'Nivel Alto'],
+            labels: ['Nivel Alto', 'Nivel Medio', 'Nivel Baixo'],
             datasets: [{
                 data: [3, 2, 0],
                 borderWidth: 1
@@ -199,7 +202,7 @@
     new Chart(graf_cambuci, {
         type: 'doughnut',
         data: {
-            labels: ['Nivel Alto', 'Nivel Medio', 'Nivel Alto'],
+            labels: ['Nivel Alto', 'Nivel Medio', 'Nivel Baixo'],
             datasets: [{
                 data: [1, 3, 1],
                 borderWidth: 1
@@ -216,10 +219,113 @@
 
 
     function belaVista() {
-        barras_bairros.data.labels.pop()
-        barras_bairros.data.datasets.forEach((dataset) => {dataset.data.pop()})
-        barras_bairros.data.labels.push('Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab', 'Dom')
-        barras_bairros.data.datasets.forEach((dataset) => {dataset.data.push(12)})
-        barras_bairros.update()
+        grafico.destroy()
+        grafico = new Chart(barras_bairros, {
+            type: 'bar',
+            title: 'Bela Vista',
+            data: {
+                labels: ['00h', '03h', '06h', '09h', '12h', '15h', '18h', '21h'],
+                datasets: [{
+                    label: 'Ecoponto 1',
+                    data: [22, 24, 32, 34, 42, 67, 12, 14],
+                },
+                {
+                    label: 'Ecoponto 2',
+                    data: [28, 39, 49, 58, 64, 80, 5, 10],
+                },
+                {
+                    label: 'Ecoponto 3',
+                    data: [34, 35, 46, 67, 81, 12, 24, 26],
+                },
+                {
+                    label: 'Ecoponto 4',
+                    data: [64, 64, 78, 83, 18, 19, 22, 28],
+                },
+                {
+                    label: 'Ecoponto 5',
+                    data: [35, 38, 42, 51, 63, 76, 79, 5],
+                }
+                ]
+            },
+            options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Bela Vista'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        suggestedMax: 100
+                    }
+                },
+            }
+        });
+    }
+
+    function se() {
+        grafico.destroy()
+        grafico = new Chart(barras_bairros, {
+            type: 'bar',
+            data: {
+                labels: ['Ecoponto 1', 'Ecoponto 2', 'Ecoponto 3', 'Ecoponto 4', 'Ecoponto 5'],
+                datasets: [{
+                    label: 'Sé',
+                    data: [20, 58, 39, 82, 63],
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        suggestedMax: 100
+                    }
+                },
+            }
+        });
+    }
+
+    function liberdade() {
+        grafico.destroy()
+        grafico = new Chart(barras_bairros, {
+            type: 'bar',
+            data: {
+                labels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab', 'Dom'],
+                datasets: [{
+                    label: 'Bela Vista',
+                    data: [20, 22, 21, 29, 31, 40, 31],
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        suggestedMax: 100
+                    }
+                },
+            }
+        });
+    }
+
+    function cambuci() {
+        grafico.destroy()
+        grafico = new Chart(barras_bairros, {
+            type: 'bar',
+            data: {
+                labels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab', 'Dom'],
+                datasets: [{
+                    label: 'Cambuci',
+                    data: [20, 22, 21, 29, 31, 40, 31],
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        suggestedMax: 100
+                    }
+                },
+            }
+        });
     }
 </script>
