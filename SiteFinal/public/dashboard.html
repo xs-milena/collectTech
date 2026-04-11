@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Dashboard - Geral</title>
     <link rel="stylesheet" href="style/dashboard.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -22,7 +22,9 @@
             <ul class="menu">
                 <li class="ativo">Geral</li>
                 <li>Lixeiras</li>
-                <li>Rotas</li>
+                <a href="./rotas.html">
+                    <li>Rotas</li>
+                </a>
             </ul>
         </div>
         <div>
@@ -108,7 +110,7 @@
 
     let bairro = ''
 
-    const barras_bairros = document.getElementById('graf_barras_bairros');
+    const barras_bairros = document.getElementById('graf_barras_bairros')
     let grafico = new Chart(barras_bairros, {
         type: 'bar',
         data: {
@@ -138,7 +140,7 @@
                 }
             },
         }
-    });
+    })
 
     const graf_belaVista = document.getElementById('graf_bela_vista');
 
@@ -158,7 +160,7 @@
                 }
             }
         }
-    });
+    })
 
     const graf_se = document.getElementById('graf_se');
 
@@ -178,7 +180,7 @@
                 }
             }
         }
-    });
+    })
 
     const graf_liberdade = document.getElementById('graf_liberdade');
 
@@ -198,7 +200,7 @@
                 }
             }
         }
-    });
+    })
 
     const graf_cambuci = document.getElementById('graf_cambuci');
 
@@ -218,7 +220,7 @@
                 }
             }
         }
-    });
+    })
 
     /* Função*/
     function belaVista() {
@@ -240,18 +242,18 @@
                                         <option value="dom">Dom.</option>
                                 </select>`
 
-            for (let i = 8; i > 0; i--) {
-                dado = (Math.random() * 100).toFixed(0)
-                vetor1.push(dado)
-                dado = (Math.random() * 100).toFixed(0)
-                vetor2.push(dado)
-                dado = (Math.random() * 100).toFixed(0)
-                vetor3.push(dado)
-                dado = (Math.random() * 100).toFixed(0)
-                vetor4.push(dado)
-                dado = (Math.random() * 100).toFixed(0)
-                vetor5.push(dado)
-            }
+        for (let i = 8; i > 0; i--) {
+            dado = (Math.random() * 100).toFixed(0)
+            vetor1.push(dado)
+            dado = (Math.random() * 100).toFixed(0)
+            vetor2.push(dado)
+            dado = (Math.random() * 100).toFixed(0)
+            vetor3.push(dado)
+            dado = (Math.random() * 100).toFixed(0)
+            vetor4.push(dado)
+            dado = (Math.random() * 100).toFixed(0)
+            vetor5.push(dado)
+        }
         grafico = new Chart(barras_bairros, {
             type: 'bar',
             data: {
@@ -293,7 +295,7 @@
                     }
                 },
             }
-        });
+        })
     }
 
     function se() {
@@ -315,18 +317,18 @@
                                         <option value="dom">Dom.</option>
                                 </select>`
 
-            for (let i = 8; i > 0; i--) {
-                dado = (Math.random() * 100).toFixed(0)
-                vetor1.push(dado)
-                dado = (Math.random() * 100).toFixed(0)
-                vetor2.push(dado)
-                dado = (Math.random() * 100).toFixed(0)
-                vetor3.push(dado)
-                dado = (Math.random() * 100).toFixed(0)
-                vetor4.push(dado)
-                dado = (Math.random() * 100).toFixed(0)
-                vetor5.push(dado)
-            }
+        for (let i = 8; i > 0; i--) {
+            dado = (Math.random() * 100).toFixed(0)
+            vetor1.push(dado)
+            dado = (Math.random() * 100).toFixed(0)
+            vetor2.push(dado)
+            dado = (Math.random() * 100).toFixed(0)
+            vetor3.push(dado)
+            dado = (Math.random() * 100).toFixed(0)
+            vetor4.push(dado)
+            dado = (Math.random() * 100).toFixed(0)
+            vetor5.push(dado)
+        }
         grafico = new Chart(barras_bairros, {
             type: 'bar',
             data: {
@@ -368,7 +370,7 @@
                     }
                 },
             }
-        });
+        })
     }
 
     function liberdade() {
@@ -390,18 +392,18 @@
                                         <option value="dom">Dom.</option>
                                 </select>`
 
-            for (let i = 8; i > 0; i--) {
-                dado = (Math.random() * 100).toFixed(0)
-                vetor1.push(dado)
-                dado = (Math.random() * 100).toFixed(0)
-                vetor2.push(dado)
-                dado = (Math.random() * 100).toFixed(0)
-                vetor3.push(dado)
-                dado = (Math.random() * 100).toFixed(0)
-                vetor4.push(dado)
-                dado = (Math.random() * 100).toFixed(0)
-                vetor5.push(dado)
-            }
+        for (let i = 8; i > 0; i--) {
+            dado = (Math.random() * 100).toFixed(0)
+            vetor1.push(dado)
+            dado = (Math.random() * 100).toFixed(0)
+            vetor2.push(dado)
+            dado = (Math.random() * 100).toFixed(0)
+            vetor3.push(dado)
+            dado = (Math.random() * 100).toFixed(0)
+            vetor4.push(dado)
+            dado = (Math.random() * 100).toFixed(0)
+            vetor5.push(dado)
+        }
         grafico = new Chart(barras_bairros, {
             type: 'bar',
             data: {
@@ -443,7 +445,7 @@
                     }
                 },
             }
-        });
+        })
     }
 
     function cambuci() {
@@ -465,18 +467,18 @@
                                         <option value="dom">Dom.</option>
                                 </select>`
 
-            for (let i = 8; i > 0; i--) {
-                dado = (Math.random() * 100).toFixed(0)
-                vetor1.push(dado)
-                dado = (Math.random() * 100).toFixed(0)
-                vetor2.push(dado)
-                dado = (Math.random() * 100).toFixed(0)
-                vetor3.push(dado)
-                dado = (Math.random() * 100).toFixed(0)
-                vetor4.push(dado)
-                dado = (Math.random() * 100).toFixed(0)
-                vetor5.push(dado)
-            }
+        for (let i = 8; i > 0; i--) {
+            dado = (Math.random() * 100).toFixed(0)
+            vetor1.push(dado)
+            dado = (Math.random() * 100).toFixed(0)
+            vetor2.push(dado)
+            dado = (Math.random() * 100).toFixed(0)
+            vetor3.push(dado)
+            dado = (Math.random() * 100).toFixed(0)
+            vetor4.push(dado)
+            dado = (Math.random() * 100).toFixed(0)
+            vetor5.push(dado)
+        }
         grafico = new Chart(barras_bairros, {
             type: 'bar',
             data: {
@@ -518,9 +520,9 @@
                     }
                 },
             }
-        });
+        })
     }
-    function mostraGraf(){
+    function mostraGraf() {
         grafico.destroy()
         let dado = 0
         let vetor1 = []
@@ -529,18 +531,18 @@
         let vetor4 = []
         let vetor5 = []
 
-            for (let i = 8; i > 0; i--) {
-                dado = (Math.random() * 100).toFixed(0)
-                vetor1.push(dado)
-                dado = (Math.random() * 100).toFixed(0)
-                vetor2.push(dado)
-                dado = (Math.random() * 100).toFixed(0)
-                vetor3.push(dado)
-                dado = (Math.random() * 100).toFixed(0)
-                vetor4.push(dado)
-                dado = (Math.random() * 100).toFixed(0)
-                vetor5.push(dado)
-            }
+        for (let i = 8; i > 0; i--) {
+            dado = (Math.random() * 100).toFixed(0)
+            vetor1.push(dado)
+            dado = (Math.random() * 100).toFixed(0)
+            vetor2.push(dado)
+            dado = (Math.random() * 100).toFixed(0)
+            vetor3.push(dado)
+            dado = (Math.random() * 100).toFixed(0)
+            vetor4.push(dado)
+            dado = (Math.random() * 100).toFixed(0)
+            vetor5.push(dado)
+        }
         grafico = new Chart(barras_bairros, {
             type: 'bar',
             data: {
@@ -582,6 +584,6 @@
                     }
                 },
             }
-        });
+        })
     }
 </script>
