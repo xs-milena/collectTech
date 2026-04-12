@@ -222,3 +222,35 @@ body{
     border-color: #12A454;
     border-radius: 20px;
 }
+.graf_linhas{
+    width: 800px;
+    height: 650px;
+    margin: 20px;
+}
+
+/* barra de preenchimento */
+.progresso-container {
+  width: 150px;           
+  height: 12px;          
+  background-color: rgba(0, 0, 0, 0.1); 
+  border-radius: 10px;    
+  display: flex;          
+  align-items: center;   
+  position: relative; /* ponto de referencia */
+}
+.progresso-barra-critico {
+  height: 100%;           
+  background-color: #ff5252; 
+  border-radius: 10px; 
+ 
+}
+.progresso-barra-medio{
+  height: 100%;           
+  background-color: #eca445; 
+  border-radius: 10px; 
+}
+.progresso-texto {
+  margin-left: 10px;      
+  font-size: 12px;
+  font-weight: bold;
+}
