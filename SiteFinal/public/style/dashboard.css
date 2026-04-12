@@ -118,6 +118,11 @@ body{
     margin: 2px;
     padding: 5px;
 }
+.graf_linhas{
+    width: 800px;
+    height: 650px;
+    margin: 20px;
+}
 
 /* CAIXAS PARA KPIs*/
 .box_lixeiras{
@@ -195,6 +200,7 @@ body{
 .icone_cheia{
     background-color: rgba(231, 0, 11);
 }
+<<<<<<< HEAD
 /* CAIXA DE SELECIONAR O DIA */
 .caixa_dia{
     border-radius: 20px;
@@ -228,6 +234,8 @@ body{
     margin: 20px;
 }
 
+=======
+>>>>>>> 03b1e45801f8db3554f153e3e50467db9ee4bfbd
 /* barra de preenchimento */
 .progresso-container {
   width: 150px;           
@@ -248,6 +256,10 @@ body{
   height: 100%;           
   background-color: #eca445; 
   border-radius: 10px; 
+<<<<<<< HEAD
+=======
+ 
+>>>>>>> 03b1e45801f8db3554f153e3e50467db9ee4bfbd
 }
 .progresso-texto {
   margin-left: 10px;      
