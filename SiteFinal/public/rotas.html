@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Rotas</title>
+    <link rel="stylesheet" href="style/dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="sidebar">
+        <div>
+            <div class="logoSide">
+                <img src="./img/broto.png">
+                <h1>Collect Tech</h1>
+                <p>Smart City Solution</p>
+                <div class="linha"></div>
+            </div>
+            <ul class="menu">
+                <a href="./dashboard.html">
+                    <li>Geral</li>
+                </a>
+                <li>Lixeiras</li>
+                <li class="ativo">Rotas</li>
+            </ul>
+        </div>
+        <div>
+            <span class="link"><a href="./index.html">Sair</a></span>
+        </div>
+    </div>
+    <div class="graficos">
+        <div>
+            <div class="container">
+                <h3>Mapa de Calor:</h3>
+                <div>
+                    <canvas id="mapa_calor" class="calor"></canvas>
+                </div>
+            </div>
+            <div class="container">
+                <h3>Rota mais efetiva:</h3>
+                <canvas class="rota"></canvas>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    Chart.defaults.backgroundColor = ['#12A454', '#009775', '#48c962']
+
+    const grafico_calor = document.getElementById('mapa_calor')
+    new Chart(grafico_calor, {
+        type: 'bubble',
+        data: {
+            datasets: [{
+                label: 'Nivel Alto',
+                data: [
+                    { x: 10, y: 85, r: 18 },
+                    { x: 100, y: 18, r: 27 },
+
+                ],
+                backgroundColor: 'rgba(255, 0, 0, 0.5)'
+            },
+            {
+                label: 'Nivel Médio',
+                data: [
+                    { x: 47, y: 100, r: 30 },
+                    { x: 5, y: 73, r: 12 },
+                    { x: 45, y: 40, r: 26 },
+                    {x: 75, y: 18, r: 20}
+                ],
+                backgroundColor: 'rgba(253, 215, 64, 0.5)'
+            },
+            {
+                label: 'Nivel Baixo',
+                data: [
+                    { x: 42, y: 30, r: 15 },
+                    { x: 80, y: 20, r: 11 },
+                    { x: 0, y: 90, r: 12 }
+                ],
+                backgroundColor: 'rgba(18, 164, 84, 0.5)'
+            }]
+        },
+        options: {
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                y: {
+                    grid: {
+                        display: false
+                    },
+                    display: false,
+                    beginAtZero: true,
+                    suggestedMax: 100
+                },
+                x: {
+                    grid: {
+                        display: false
+                    },
+                    display: false,
+                    beginAtZero: true,
+                    suggestedMax: 100
+                }
+            },
+        }
+    })
+</script>
