@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style/dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="sidebar">
+        <div>
+            <div class="logoSide">
+                <img src="./img/broto.png">
+                <h1>Collect Tech</h1>
+                <p>Smart City Solution</p>
+                <div class="linha"></div>
+            </div>
+            <ul class="menu">
+                <li>Geral</li>
+                <li class="ativo">Lixeiras</li>
+                <li>Rotas</li>
+            </ul>
+        </div>
+        <div>
+            <span class="link"><a href="./index.html">Sair</a></span>
+        </div>
+    </div>
+    <div class="graficos">
+    <div id="container">
+    <canvas id="graf_lixeiras_total" class="graf_linhas"></canvas>
+    </div>
+</div>
+<div class="graficos">
+<div class="container">
+<div class="kpi">
+    <div class="box_lixeiras cheia">
+    <div>
+    <p>Bela Vista</p>
+    <h3>ID: 6</h3>
+    <div class="progresso-container">
+    <div class="progresso-barra-critico" style="width: 89%;"></div>
+    <span class="progresso-texto">89%</span>
+    </div>
+    </div>
+    <div class="container_icone icone_cheia">
+    <img src="./img/lixeira.png" class="icone_box">
+    </div>
+    </div> 
+    <div class="box_lixeiras medio">
+    <div>
+    <p>Sé</p>
+    <h3>ID: 11</h3>
+    <div class="progresso-container">
+    <div class="progresso-barra-medio" style="width: 72%;"></div>
+    <span class="progresso-texto">72%</span>
+    </div>
+    </div>
+    <div class="container_icone icone_medio">
+    <img src="./img/lixeira.png" class="icone_box">
+    </div>
+    </div>
+    <div class="box_lixeiras medio">
+    <div>
+    <p>Sé</p>
+    <h3>ID: 13</h3>
+    <div class="progresso-container">
+    <div class="progresso-barra-medio" style="width: 67%;"></div>
+    <span class="progresso-texto">67%</span>
+    </div>
+    </div>
+    <div class="container_icone icone_medio">
+    <img src="./img/lixeira.png" class="icone_box">
+</div>
+</div>
+                                  
+</div>
+
+</div>
+</div>                 
+
+
+</body>
+</html>
+<script>
+let numeroLixeira = [];
+
+for (let i = 1; i <= 20; i++) {
+    numeroLixeira.push("Lixeira " + i); 
+}
+
+Chart.defaults.backgroundColor = ['#12A454', '#009775', '#48c962']
+
+    const linha_lixeiras = document.getElementById('graf_lixeiras_total');
+    let grafico = new Chart(linha_lixeiras, {
+        type: 'line',
+        data: {
+        labels: numeroLixeira,
+        datasets: [{
+            label: 'Nível de Carga',
+            data: [8, 18, 60, 32, 28, 89, 52, 12, 40, 20, 72, 45, 67, 5, 18, 48, 10, 15, 12, 60],
+            borderColor: '#00b894', 
+            backgroundColor: '#00b894',
+            borderWidth: 3, //espessura da linha
+            tension: 0.4, //efeito curvo, se for 0 a linha fica reta
+            pointRadius: 4, //tamanho da bolinha
+            pointBackgroundColor: '#00b894'
+        }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                 
+
+                },
+                x: {
+                grid: { display: false }, 
+            },
+        }
+    } });
+</script>
