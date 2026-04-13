@@ -27,6 +27,9 @@
                 <a href="./rotas.html">
                     <li>Rotas</li>
                 </a>
+                <a href="./cadastro.html">
+                    <li>Cadastrar Usuários</li>
+                </a>
             </ul>
         </div>
         <div>
@@ -40,7 +43,7 @@
                     <div class="box_lixeiras total">
                         <div>
                             <p> Total de lixeiras:</p>
-                            <h3>20</h3>
+                            <h3 id="lixo_total">20</h3>
                             <h6>no sistema</h6>
                         </div>
                         <div class="container_icone icone_total">
@@ -50,7 +53,7 @@
                     <div class="box_lixeiras vazia">
                         <div>
                             <p> Nivel Baixo:</p>
-                            <h3>4</h3>
+                            <h3 id="lixo_baixo">4</h3>
                             <h6>0-50% cheias</h6>
                         </div>
                         <div class="container_icone icone_vazia">
@@ -62,7 +65,7 @@
                     <div class="box_lixeiras medio">
                         <div>
                             <p> Nivel Médio:</p>
-                            <h3>8</h3>
+                            <h3 id="lixo_medio">8</h3>
                             <h6>50-80% cheias</h6>
                         </div>
                         <div class="container_icone icone_medio">
@@ -72,7 +75,7 @@
                     <div class="box_lixeiras cheia">
                         <div>
                             <p> Nivel Alto:</p>
-                            <h3>8</h3>
+                            <h3 id="lixo_alto">8</h3>
                             <h6>80%+ cheias</h6>
                         </div>
                         <div class="container_icone icone_cheia">
@@ -227,6 +230,10 @@
     /* Função*/
     function belaVista() {
         grafico.destroy()
+        lixo_total.innerHTML = '5'
+        lixo_baixo.innerHTML = '1'
+        lixo_medio.innerHTML = '1'
+        lixo_alto.innerHTML = '3'
         let dado = 0
         let vetor1 = []
         let vetor2 = []
@@ -302,6 +309,10 @@
 
     function se() {
         grafico.destroy()
+        lixo_total.innerHTML = '5'
+        lixo_baixo.innerHTML = '2'
+        lixo_medio.innerHTML = '2'
+        lixo_alto.innerHTML = '1'
         let dado = 0
         let vetor1 = []
         let vetor2 = []
@@ -377,6 +388,10 @@
 
     function liberdade() {
         grafico.destroy()
+        lixo_total.innerHTML = '5'
+        lixo_baixo.innerHTML = '0'
+        lixo_medio.innerHTML = '2'
+        lixo_alto.innerHTML = '3'
         let dado = 0
         let vetor1 = []
         let vetor2 = []
@@ -452,6 +467,10 @@
 
     function cambuci() {
         grafico.destroy()
+        lixo_total.innerHTML = '5'
+        lixo_baixo.innerHTML = '1'
+        lixo_medio.innerHTML = '3'
+        lixo_alto.innerHTML = '1'
         let dado = 0
         let vetor1 = []
         let vetor2 = []
