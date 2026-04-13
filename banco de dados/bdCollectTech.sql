@@ -28,9 +28,10 @@ placa VARCHAR(7)
 
 CREATE TABLE IF NOT EXISTS sensor(
 id_sensor INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-funcionando TINYINT(2) NOT NULL, -- 0 Ativo, 1 Inativo 
-local_instalado VARCHAR(255) NOT NULL,
-data_instalado DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP 
+funcionando TINYINT(2) NOT NULL, -- 0 Ativo, 1 Inativo
+dados int, 
+data_instalado DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+tempo_evento datetime, 
 );
 
 INSERT INTO usuario (id_usuario, nome, email, senha, tel, cargo) 
