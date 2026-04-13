@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style/cadastro.css" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" />
+  <title>Cadastro</title>
+</head>
+
+<body>
+
+  <div id="formulario">
+    <img class="logo" src="./img/broto.png" alt="Logo" />
+    <h1>Criar Cadastro</h1>
+    <p class="subtitulo">Sistema Collect Tech - Smart City Solution</p>
+
+    <div id="campos">
+
+      <div class="bloco-input-unico">
+        <div class="icone-texto">
+          <span class="icon material-symbols-outlined iconeverde">person</span>
+          <p> Nome Completo *</p>
+        </div>
+        <input id="ipt_nome" class="input" type="text" placeholder="Digite o seu nome completo" oninput="nome()">
+      </div>
+
+      <div class="container-lado-a-lado">
+
+        <div class="bloco-input-unico">
+          <div class="icone-texto">
+            <span class="icon material-symbols-outlined iconeverde">mail</span>
+            <p>E-mail *</p>
+          </div>
+          <input id="ipt_email" class="input" type="email" placeholder="Seu@email.com" oninput="email()">
+        </div>
+
+        <div class="bloco-input-unico">
+          <div class="icone-texto">
+            <span class="icon material-symbols-outlined iconeverde">phone</span>
+            <p>Telefone *</p>
+          </div>
+          <input id="ipt_telefone" class="input" type="tel" placeholder="(11) 99999-9999" oninput="telefone()">
+        </div>
+
+      </div>
+
+      <div class="bloco-input-unico">
+        <div class="icone-texto">
+          <span class="icon material-symbols-outlined iconeverde">work</span>
+          <p>Cargo *</p>
+        </div>
+        <input id="ipt_cargo" class="input" type="text" placeholder="Ex: Gestor Ambiental, Analista...">
+      </div>
+
+      <div class="container-lado-a-lado">
+        <div class="bloco-input-unico">
+          <div class="icone-texto">
+            <span class="icon material-symbols-outlined iconeverde">lock</span>
+            <p>Senha *</p>
+          </div>
+          <input id="ipt_senha" class="input" type="password" placeholder="Mínimo 6 caracteres" oninput="senha()">
+        </div>
+
+        <div class="bloco-input-unico">
+          <div class="icone-texto">
+            <span class="icon material-symbols-outlined iconeverde">lock</span>
+            <p>Confirmar Senha *</p>
+          </div>
+          <input id="ipt_confirmarSenha" class="input" type="password" placeholder="Digite a senha novamente"
+            oninput="validação_senha()">
+        </div>
+      </div>
+
+    </div>
+
+    <div id="div_informacao">
+      <p>Informações importantes:</p>
+      <ul class="info-lista">
+        <li>A senha deve ter no mínimo 6 caracteres</li>
+        <li>Você será redirecionado para o login após o cadastro</li>
+        <li>Todos os campos são obrigatórios</li>
+      </ul>
+    </div>
+
+    <div id="botoes">
+      <button class="button cadastro" onclick="cadastrar()"><span
+          class="icon_white material-symbols-outlined">Person</span>Criar Cadastro</button>
+      <button class="button voltar"><a href="login.html">← Voltar para o Login</a></button>
+    </div>
+
+    <p class="linkLogin">Já possui cadastro? <a class="linkVerde" href="login.html">Faça login aqui</a></p>
+
+  </div>
+</body>
+
+</html>
+<script>
+  let validacao = false
+  function nome() {
+    //nome
+
+    let nome = ipt_nome.value;
+    let indice_nome = new RegExp("[0-9], [}{,.^?~=+-_/*-+.|]");
+    if (indice_nome.test(nome)) {
+      validacao = false
+    } else { validacao = true }
+  }
+  function telefone() {
+    //telefone
+
+    let telefone = ipt_telefone.value;
+    let indice_telefone = new RegExp("[A-z],[}{,.^?~=+-_/*-+.|]");
+    if (telefone.length != 12 || indice_telefone.test(telefone)) {
+      validacao = false
+    } else { validacao = true }
+  }
+  let senha_correta = false
+  function senha() {
+    //senha
+    let senha = ipt_senha.value;
+    let indice_senha = new RegExp("[}{,.^?~=+-_/*-+.|],");
+    if (senha.length >= 6 && indice_senha.test(senha) == false) {
+      validacao = true
+      senha_correta = true
+    } else { validacao = false }
+  }
+
+  function validação_senha() {
+    //validação senha
+    let senha = ipt_senha.value;
+    let confirmar_senha = ipt_confirmarSenha.value;
+    if (senha_correta == true && senha == confirmar_senha) {
+      validacao = true
+    } else { validacao = false }
+  }
+  function email() {
+    //email
+    let email = ipt_email.value;
+    let indice_ponto_com = email.indexOf(".com")
+    let indice_arroba = email.indexOf("@")
+    let fim = email.endsWith(".com") || email.endsWith('.com.br')
+    let inicio = !email.startsWith("@") || !email.startsWith(".com")
+    let vezes_arroba = email.indexOf("@") == email.lastIndexOf("@")
+    let vezes_ponto_com = email.indexOf(".com") == email.lastIndexOf(".com")
+    if (indice_ponto_com && indice_arroba && fim && inicio && vezes_arroba && vezes_ponto_com) {
+      validacao = true
+    } else { validacao = false }
+  }
+  function cadastrar() {
+    //validação
+    if (validacao == true) {
+      alert("Cadastro concluido com sucesso.")
+    } else {
+      alert("Cadastro não pode ser concluido, reveja as informações.")
+    }
+  }
+</script>
