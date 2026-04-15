@@ -7,6 +7,7 @@
     <title>Dashboard - Lixeiras</title>
     <link rel="stylesheet" href="style/dashboard.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
 <body>
@@ -33,7 +34,8 @@
                 </a>
             </ul>
         </div>
-        <div>
+       <div id="sair">
+            <span class="material-icons">logout</span>
             <span class="link"><a href="./index.html">Sair</a></span>
         </div>
     </div>
@@ -88,7 +90,7 @@
 
 
     <div class="graficos">
-        <div class="container">
+        <div class="container2">
             <canvas id="graf_lixeiras_total" class="graf_linhas"></canvas>
         </div>
     </div>
@@ -116,12 +118,12 @@
             datasets: [{
                 label: 'Nível de Carga',
                 data: [8, 18, 60, 32, 28, 89, 52, 12, 40, 20, 72, 45, 67, 5, 18, 48, 10, 15, 12, 60],
-                borderColor: '#00b894',
-                backgroundColor: '#00b894',
+                borderColor: '#38a169',
+                backgroundColor: '#38a169',
                 borderWidth: 3, //espessura da linha
                 tension: 0.4, //efeito curvo, se for 0 a linha fica reta
                 pointRadius: 4, //tamanho da bolinha
-                pointBackgroundColor: '#00b894'
+                pointBackgroundColor: '#38a169'
             }]
         },
         options: {

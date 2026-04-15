@@ -96,6 +96,16 @@ body{
     justify-content: center;
     box-shadow: 0px 0px 6px grey;
 }
+.container2{
+    background-color: rgb(233, 233, 233);
+    border-radius: 10px;
+    border-color: black;
+    padding: 60px;
+    margin: 20px;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 6px grey;
+}
 .roscas{
     display: flex;
     flex-direction: column;
@@ -259,4 +269,15 @@ body{
   margin-left: 10px;      
   font-size: 12px;
   font-weight: bold;
+}
+
+#sair {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#sair a {
+    margin-left: 5px;
 }
