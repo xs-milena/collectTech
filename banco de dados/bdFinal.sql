@@ -150,4 +150,4 @@ UPDATE leitura_sensor SET nivel_cheia = 0.0 WHERE fk_sensor = 4;
 
 UPDATE leitura_sensor SET cadastrado_em = NOW() WHERE id_leitura = 50;
 
-DELETE FROM leitura_sensor WHERE colocado_em < '2023-01-01'
+DELETE FROM leitura_sensor WHERE cadastrado_em < '2023-01-01';
