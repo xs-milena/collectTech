@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="style/style.css">
     <script src="../SiteFinal/script/index.js"></script>
     <script src="./JS/index.js"></script>
+    <link rel="icon" href="./img/folha.png">
 
 
 </head>
@@ -18,26 +19,14 @@
     <div class="header">
         <div class="container">
             <h1 class="titulo">Collect Tech</h1>
-            
-            <div class="hamburger-icon">☰</div>
 
             <ul class="navbar">
                 <li class="agora"><a href="index.html">INÍCIO</a></li>
-                <li><a href="#">SOBRE NÓS</a></li>
-                <li><a href="#">NOSSA MISSÃO</a></li>
-                <li><a href="#">PROJETO</a></li>
-                <li><a href="#">EQUIPE</a></li>
+                <li><a href="#sobre-div">SOBRE NÓS</a></li>
+                <li><a href="#calculadora">CALCULADORA</a></li>
+                <li><a href="#missao">NOSSA MISSÃO</a></li>
+                <li><a href="#projeto">PROJETO</a></li>
                 <li>|</li>
-                <li><a href="login.html">LOGIN</a></li>
-            </ul>
-
-            <ul class="navbar-celular">
-                <div class="fechar">✕</div> 
-                <li class="agora"><a href="index.html">INÍCIO</a></li>
-                <li><a href="#">SOBRE NÓS</a></li>
-                <li><a href="#">NOSSA MISSÃO</a></li>
-                <li><a href="#">PROJETO</a></li>
-                <li><a href="#">EQUIPE</a></li>
                 <li><a href="login.html">LOGIN</a></li>
             </ul>
         </div>
@@ -49,7 +38,7 @@
         <span>Solução Tecnológica para Cidades Inteligentes</span>
     </div>
 
-    <div class="sobre-div">
+    <div id="sobre-div">
         <div class="sobre">
             <div class="container">
                 <img src="img/v1.png" alt="">
@@ -152,22 +141,82 @@
         </div>
     </div>
 
-    <div class="missao">
+
+    <div id="calculadora">
+        <h1>Simulador de prejuízo financeiro</h1>
+        <span class="calculadora-span">Calcule a economia potencial com o sistema Collect Tech</span>
+
+        <div class="div_informacao">
+            <div class="div_informacao-imagem">
+                <img src="img/v12.png" alt="">
+            </div>
+            <div class="informacao">
+                <p>Como funciona o simulador?</p>
+                <span>Insira o número de habitantes da região e a quantidade de caminhões disponíveis. O sistema
+                    calculará
+                    automaticamente a economia com rotas otimizadas.</span>
+                <p>Combustível utilizado: Diesel - Valor fixo: R$ 6,00/litro</p>
+            </div>
+        </div>
+
+        <div class="container-simulacao">
+            <h3>Dados da simulação</h3>
+            <div class="simulacao">
+                <div class="habitantes">
+                    <div class="habitantes-container">
+                        <div class="habitantes-imagem">
+                            <img src="img/v8.png" alt="">
+                        </div>
+                        <div class="habitantes-h4">
+                            <h4>Número de habitantes</h4>
+                        </div>
+                    </div>
+                    <div class="habitantes-texto">
+                        <input type="number" id="ipt_habitantes">
+                        <span>População da região atendida</span>
+                    </div>
+                </div>
+                <div class="caminhoes">
+                    <div><img src="img/v9.png" alt=""></div>
+                    <h4>Quantidade de caminhões</h4>
+                    <input type="number" id="ipt_caminhao">
+                    <span>Frota disponível para coleta</span>
+                </div>
+            </div>
+            <div class="container-combustivel">
+                <div class="container-imagem">
+                    <img src="img/v10.png" alt="">
+                </div>
+                <div>
+                    <p>Combustível utilizado</p>
+                    <h4>Diesel - R$ 6,00/litro</h4>
+                    <span>Valor fixo para cálculo</span>
+                </div>
+            </div>
+        </div>
+
+        <button onclick="exibirResultado()"><img src="img/v11.png" alt="">Calcular economia</button>
+    </div>
+
+
+    <div id="missao">
         <div class="container">
             <h2>Nossa Missão</h2>
             <p>Transformar a gestão de resíduos urbanos através da tecnologia, contribuindo para cidades mais
                 sustentáveis,
-                eficientes e inteligentes. Acreditamos que a inovação tecnológica é fundamental para construir um futuro
+                eficientes e inteligentes. Acreditamos que a inovação tecnológica é fundamental para construir um
+                futuro
                 mais verde e econômico para todos.</p>
         </div>
     </div>
 
 
-    <div class="projeto">
+    <div id="projeto">
         <div class="container">
             <div class="texto">
                 <h2>Sobre o Projeto</h2>
-                <p>Este projeto foi desenvolvido em <span>2026</span> por um grupo de estudantes dedicados a criar soluções
+                <p>Este projeto foi desenvolvido em <span>2026</span> por um grupo de estudantes dedicados a criar
+                    soluções
                     tecnológicas para
                     problemas urbanos reais.</p>
             </div>
