@@ -94,6 +94,13 @@ body{
     display: flex;
 }
 
+.graficos1{
+    display: flex;
+    margin-left: 390px;
+    margin-top: 30px;
+}
+
+
 .container{
     border-radius: 15px;
     border-color: black;
@@ -138,16 +145,10 @@ body{
     border-color: black;
     align-items: center;
     justify-content: center;
+    margin-left: 290px;
+    margin-top: 30px;
 }
 
-.container4{
-    border-radius: 10px;
-    border-color: black;
-    padding: 20px;
-    margin: 15px;
-    align-items: center;
-    justify-content: center;
-}
 .roscas{
     display: flex;
     flex-direction: column;
@@ -200,14 +201,17 @@ body{
     padding: 20px;
     height: fit-content;
     width: 260px;
-    border-width: 2px;
-    border-style: solid;
     border-radius: 15px;
     background-blend-mode: screen;
     padding: 25px;
     margin: 10px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     h3{
         font-size: xx-large;
+        margin-bottom: 5px;
+    }
+    h5 {
+        margin-bottom: 5px;
     }
 }
 .icone_box{
@@ -215,12 +219,21 @@ body{
     height: 20px;
 }
 
+
 .container_icone{
     width: fit-content;
     height: fit-content;
-    border-radius: 10px;
-    padding: 10px;
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 5px;
+
+    p {
+        font-size: 12px;
+    }
 }
+
+
+
 
 .kpi{
     display: flex;
@@ -329,6 +342,7 @@ body{
   margin-left: 10px;      
   font-size: 12px;
   font-weight: bold;
+  padding-right: 10px;
 }
 
 #sair {
