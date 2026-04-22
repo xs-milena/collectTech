@@ -1,6 +1,7 @@
 -- criação do banco de dados
 CREATE DATABASE collect_tech;
 USE collect_tech;
+
 -- Cadastro empresa
 CREATE TABLE empresa (
 id_empresa INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
@@ -11,7 +12,6 @@ cadastrado_em DATETIME DEFAULT CURRENT_TIMESTAMP(),
 atualizado_em DATETIME DEFAULT CURRENT_TIMESTAMP(),
 codigo_ativacao CHAR(5) UNIQUE NOT NULL
 );
-
 
 INSERT INTO empresa (cnpj, telefone, email, codigo_ativacao) VALUES
 ('11111111000101', '11911111111', 'corp1@tech.com', 'AB123'),
@@ -115,7 +115,7 @@ INSERT INTO sensor (situacao_sensor, fk_lixeira) VALUES
 -- leitura do sensor
 CREATE TABLE leitura_sensor (
 id_leitura INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-nivel_cheia DECIMAL(3,2) NOT NULL,
+nivel_cheia INT NOT NULL,
 fk_sensor INT NOT NULL,
 cadastrado_em DATETIME DEFAULT CURRENT_TIMESTAMP(),
 FOREIGN KEY (fk_sensor) REFERENCES sensor(id_sensor)
