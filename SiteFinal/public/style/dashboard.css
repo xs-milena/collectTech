@@ -111,6 +111,20 @@ body{
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.123), 0 10px 10px 20px rgba(0, 0, 0, 0.04);
     background-color: white;
 }
+
+.container4{
+    border-radius: 15px;
+    padding: 20px;
+    margin: 15px;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.123), 0 10px 10px 20px rgba(0, 0, 0, 0.04);
+    background-color: rgba(0, 166, 62);
+    text-align: center;
+    color: white;
+    margin-bottom: 50px;
+}
+
 .container2{
     border-radius: 10px;
     border-color: black;
@@ -288,6 +302,9 @@ body{
     border-radius: 20px;
     border-color: #12A454;
     padding: 10px;
+    background-color: #12A454;
+    color: white;
+    font-weight: 600;
 }
 
 .calor{
@@ -335,6 +352,13 @@ body{
 .progresso-barra-medio{
   height: 100%;           
   background-color: #eca445; 
+  border-radius: 10px; 
+ 
+}
+
+.progresso-barra-vazia{
+  height: 100%;           
+  background-color: #81C784; 
   border-radius: 10px; 
  
 }
