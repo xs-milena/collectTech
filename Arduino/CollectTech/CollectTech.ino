@@ -17,7 +17,14 @@ void setup() {
 void loop (){
   // // IMPRIME A MENSAGEM
   // Serial.print("Distancia: ");
-  Serial.println(sensor.distance());
+  float distance = sensor.distance();
+  float conta = (100 - (distance*100)/112);
+  if(conta < 0){
+    conta = 100;
+  }
+
+
+  Serial.println(conta);
   // Serial.println(";");
 
   // DEFINE O INTERVALO
