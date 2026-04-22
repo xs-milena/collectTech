@@ -4,9 +4,9 @@ USE collect_tech;
 
 -- Cadastro empresa
 CREATE TABLE empresa (
-      id_empresa INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-      cnpj VARCHAR(14) NOT NULL UNIQUE,
-      telefone CHAR(11),
+    id_empresa INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    cnpj VARCHAR(14) NOT NULL UNIQUE,
+    telefone CHAR(11),
     email VARCHAR(100) NOT NULL UNIQUE, -- EMAIL único
     senha VARCHAR(100) NOT NULL,
     situacao_usuario BOOLEAN NOT NULL DEFAULT FALSE, -- ativo ou inativo
