@@ -39,10 +39,12 @@
         //  * R$ 6,00 (valor medio do combustivel) = R$288,00  (diarios de combustivel)
         // 288 * 7 (dias da semana) = 2016
 
-        let combustivel = (2016 * caminhao) * 0.20 // 20% de combustiveis desperdiçado por ma gestão das rotas
+        let combustivel = (2016 * caminhao) * 0.20 // 20% de combustiveis desperdiçado por ma gestão de monitoramento
         console.log(combustivel)
 
-        //LIXO NÃO COLETADO POR MÁ GESTÃO DE ROTA
+        //LIXO NÃO COLETADO POR MÁ GESTÃO DE ROTA - ((((habitantes) * 0.20 ) / 10000) 20% dos habitantes n tem o lixo coletado
+
+        
         let prejuizoinicial = ((((habitantes) * 0.20 ) / 10000) * 2016)
 
         //PREJUÍZO DE MÁ GESTÃO + 15% DE GASTOS ADMINISTRATIVOS (EX: FUNCIONÁRIOS, DESGASTE DE PEÇAS, ETC.)
@@ -58,8 +60,8 @@
         div_mensagem.innerHTML += (`<b> O prejuízo semanal referente ao <u style="color: green">lixo</u> não coletado decorrente 
         da má gestão da rota é <u style="color: green">R$${prejuizofinal.toFixed(2)}</u>.</b> <br>`)
 
-        //PREJUÍZO MENSAL 
-        let prejuizomensal = prejuizofinal * 4;
+        //PREJUÍZO MENSAL - 4 semanas = 1 mês
+        let prejuizomensal = prejuizofinal * 4; 
         console.log(prejuizomensal)
 
         //PREJUÍZO ANUAL
