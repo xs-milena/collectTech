@@ -176,26 +176,38 @@
                         <span>População da região atendida</span>
                     </div>
                 </div>
-                <div class="caminhoes">
-                    <div><img src="img/v9.png" alt=""></div>
-                    <h4>Quantidade de caminhões</h4>
-                    <input type="number" id="ipt_caminhao">
-                    <span>Frota disponível para coleta</span>
+
+                <div class="habitantes">
+                    <div class="habitantes-container">
+                        <div class="habitantes-imagem">
+                            <img src="img/v9.png" alt="">
+                        </div>
+                        <div class="habitantes-h4">
+                            <h4>Quantidade de caminhões</h4>
+                        </div>
+                    </div>
+                    <div class="habitantes-texto">
+                        <input type="number" id="ipt_caminhao">
+                        <span>Frota disponível para coleta</span>
+                    </div>
                 </div>
+
             </div>
             <div class="container-combustivel">
                 <div class="container-imagem">
                     <img src="img/v10.png" alt="">
                 </div>
-                <div>
+                <div class="container-texto">
                     <p>Combustível utilizado</p>
-                    <h4>Diesel - R$ 6,00/litro</h4>
+                    <h3>Diesel - R$ 6,00/litro</h3>
                     <span>Valor fixo para cálculo</span>
                 </div>
             </div>
-        </div>
 
-        <button onclick="exibirResultado()"><img src="img/v11.png" alt="">Calcular economia</button>
+            <button onclick="exibirResultado()"><img src="img/v11.png" alt="">Calcular economia</button>
+
+            <div id="div_mensagem"></div>
+        </div>
     </div>
 
 
@@ -252,3 +264,49 @@
 </body>
 
 </html>
+
+<script>
+    function exibirResultado() {
+
+        let habitantes = Number(ipt_habitantes.value)
+        console.log("recebe habitantes")
+
+        let caminhao = Number(ipt_caminhao.value)
+        console.log("recebe caminhao")
+
+        div_mensagem.innerHTML = "";
+
+        // 120km (qtd media que o caminhão roda) / 2,5(quantos km o caminhão roda por litro) = 48 litros
+        //  * R$ 6,00 (valor medio do combustivel) = R$288,00  (diarios de combustivel)
+        // 288 * 7 (dias da semana) = 2016
+
+        let combustivel = (2016 * caminhao) * 0.20 // 20% de combustiveis desperdiçado por ma gestão das rotas
+        console.log(combustivel)
+
+        //LIXO NÃO COLETADO POR MÁ GESTÃO DE ROTA
+        let prejuizoinicial = ((((habitantes) * 0.20 ) / 10000) * 2016)
+
+        //PREJUÍZO DE MÁ GESTÃO + 15% DE GASTOS ADMINISTRATIVOS (EX: FUNCIONÁRIOS, DESGASTE DE PEÇAS, ETC.)
+        let prejuizofinal = prejuizoinicial + (prejuizoinicial * 0.15)
+
+        // COMBUSTÍVEL + MÁ GESTÃO + GASTOS ADMINISTRATIVOS
+        let prejuizototal = combustivel + prejuizofinal;
+
+        div_mensagem.innerHTML += 
+        (`<b> O prejuízo semanal refente ao <u style="color: blue">combustível</u> desperdiçado em áreas com menos demanda é de
+        <u style="color: blue">R$${combustivel.toFixed(2)}</u>.</b> <br>`)
+        
+        div_mensagem.innerHTML += (`<b> O prejuízo semanal referente ao <u style="color: green">lixo</u> não coletado decorrente 
+        da má gestão da rota é <u style="color: green">R$${prejuizofinal.toFixed(2)}</u>.</b> <br>`)
+
+        //PREJUÍZO MENSAL 
+        let prejuizomensal = prejuizofinal * 4;
+        console.log(prejuizomensal)
+
+        //PREJUÍZO ANUAL
+        let prejuizoanual = prejuizomensal * 12;
+        console.log(prejuizoanual)
+        div_mensagem.innerHTML += (`<b style='color: red'> O prejuízo anual referente ao lixo não coletado decorrente 
+        da má gestão da rota é R$${prejuizoanual.toFixed(2)}.</b> <br>`)
+    }
+</script>

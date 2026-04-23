@@ -263,6 +263,7 @@ html, body {
 
 /* =================================================== CALCULADORA =================================================== */
 #calculadora {
+    margin-top: 2%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -271,6 +272,7 @@ html, body {
 .calculadora-span{
     color: #808080;
     font-size: 17px;
+    margin-bottom: 1%;
 }
 
 .div_informacao {
@@ -327,7 +329,7 @@ html, body {
 }
 
 .habitantes {
-    width: 45%;
+    width: 50%;
 }
 
 .habitantes-container {
@@ -353,45 +355,83 @@ html, body {
     flex-direction: column;
 }
 
+.habitantes-texto input {
+    width: 90%;
+    background-color: #80808025;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+}
+
 .habitantes-texto span {
     color: #808080;
     font-size: 15px;
 }
 
-.caminhoes {
-    width: 45%;
-    display: flex;
-    flex-direction: column;
-}
-
-.caminhoes img {
-    width: 20px;
-}
-
 .container-combustivel {
     display: flex;
+    align-items: center;
     background-color: #f1fff7;
-    width: 800px;
+    border: 1px solid #0aae4334;
+    border-radius: 12px;
+    width: 95%;
+    margin-top: 2%;
+    margin-bottom: 2%;
 }
 
 .container-imagem {
-    background-color: #2ea24b;
-    width: 20px;
-    height: 20px;
+    background-color: #299042;
+    margin-left: 1%;
+    margin-right: 1%;
+    border-radius: 10px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .container-combustivel img {
-    width: 20px;
+    width: 25px;
+}
+
+.container-combustivel p {
+    color: #1d6548;
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: -11px;
+}
+
+.container-combustivel h3 {
+    color: #1d6548;
+    display: flex;
+}
+
+.container-combustivel span {
+    color: #1d6548;
+    margin-top: -11px;
+    font-size: 13px;
+    display: flex;
 }
 
 #calculadora button {
     background-color: #2a946a;
+    border: none;
+    border-radius: 5px;
     color: #ffffff;
-    width: 800px;
+    width: 95%;
+    margin-bottom: 2%;
+    padding: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #calculadora button img {
     width: 20px;
+    margin-right: 8px;
 }
 
 /* =================================================== MISSÃO =================================================== */
