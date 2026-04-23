@@ -18,7 +18,7 @@ void loop (){
   // // IMPRIME A MENSAGEM
   // Serial.print("Distancia: ");
   float distance = sensor.distance();
-  float conta = (100 - (distance*100)/112);
+  float conta = (100 - (distance*100)/112); 
   if(conta < 0){
     conta = 100;
   }
@@ -30,3 +30,8 @@ void loop (){
   // DEFINE O INTERVALO
   delay(1000);
 }
+
+// 1 - o sensor mede a distância
+// 2 - transforma essa distância em %
+// 3 - divide por 112 (altura do pupto)
+// 4 - o 100 é 100% da capacidade da lixeira
