@@ -1,20 +1,40 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style/cadastro.css" />
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" />
-  <script src="./JS/cadastro.js"></script>
-  <title>Cadastro</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar usuário</title>
+    <link rel="stylesheet" href="style/dashboard.css">
+    <!-- <link rel="stylesheet" href="style/cadastro.css"> -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
 <body>
-
-  <div id="formulario">
-    <img class="logo" src="./img/broto.png" alt="Logo" />
+    <div class="sidebar">
+        <div>
+            <div class="logoSide">
+                <img src="./img/broto.png">
+                <h1>Collect Tech</h1>
+                <p>Smart City Solution</p>
+                <div class="linha"></div>
+            </div>
+           <ul class="menu">
+    <a href="./dashboard.html"><li>Geral</li></a>
+    <a href="./dashboard-pg2.html"><li>Lixeiras</li></a>
+    <a href="./rotas.html"><li>Rotas</li></a>
+    <a href="./cadastroo.html"><li class="ativo">Cadastrar Usuário</li></a>
+</ul>
+        </div>
+       <div id="sair">
+    <span class="material-icons">logout</span>
+    <span class="link"><a href="./index.html">Sair</a></span>
+</div>
+    </div>
+  <div>
+  <div id="formulario" class="container">
+    <!-- <img class="logo" src="./img/broto.png" alt="Logo" /> -->
     <h1>Criar Cadastro</h1>
     <p class="subtitulo">Sistema Collect Tech - Smart City Solution</p>
 
@@ -97,12 +117,11 @@
     <div id="botoes">
       <button class="button cadastro" onclick="cadastrar()"><span
           class="icon_white material-symbols-outlined">Person</span>Criar Cadastro</button>
-      <button class="button voltar"><a href="login.html">← Voltar para o Login</a></button>
+      <!-- <button class="button voltar"><a href="login.html">← Voltar para o Login</a></button>
     </div>
 
-    <p class="linkLogin">Já possui cadastro? <a class="linkVerde" href="login.html">Faça login aqui</a></p>
+    <p class="linkLogin">Já possui cadastro? <a class="linkVerde" href="login.html">Faça login aqui</a></p> -->
 
   </div>
-
-</body>
-</html>
+  </div>
+</script>
