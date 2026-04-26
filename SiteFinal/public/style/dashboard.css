@@ -121,12 +121,13 @@ body{
 }
 
 .container4{
-    border-radius: 15px;
+    border-radius: 16px;
     padding: 20px;
     margin: 15px;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.123), 0 10px 10px 20px rgba(0, 0, 0, 0.04);
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     background-color: rgb(247, 247, 247);
     text-align: center;
     color: #318752;
@@ -319,25 +320,26 @@ body{
 .calor{
     width: 750px;
     height: 600px;
-    margin: 20px;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.123), 0 10px 10px 20px rgba(0, 0, 0, 0.04);
-    color: #12A454;
+    border-radius: 16px;
+    padding: 20px;
+    margin: 15px;
+    border: 2px solid #e5e7eb;
+    background-color: rgb(247, 247, 247);
+    text-align: center;
+    color: #318752;
     background: url('../img/mapa_centro.png') no-repeat center center/cover;
-    /* border-style: solid;
-    border-width: 1px;
-    /* border-color: #12A454; 
-    border-radius: 20px; */
 }
 .rota{
     width: 750px;
     height: 375px;
-    margin: 20px;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.123), 0 10px 10px 20px rgba(0, 0, 0, 0.04);
+    border-radius: 16px;
+    padding: 20px;
+    margin: 15px;
+    border: 2px solid #e5e7eb;
+    background-color: rgb(247, 247, 247);
+    text-align: center;
+    color: #318752;
     background: url('../img/rota_ficticia.png') no-repeat center center/cover;
-    /* border-style: solid;
-    border-width: 1px;
-    /* border-color: #12A454; 
-    border-radius: 20px; */
 }
 .graf_linhas{
     width: 950px;
