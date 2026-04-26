@@ -278,31 +278,38 @@ html, body {
 .div_informacao {
     display: flex;
     width: 90%;
-    background-color: #EAF2FF;
-    border: 1px solid #B4D3FF;
+    background-color: #ffffe2;
+    border: 1px solid #ffb4b4;
     border-radius: 12px;
-    padding: 1.25rem;
+    padding-top: 0.5%;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
     margin-bottom: 2rem;
 }
 
 .informacao-button {
-    background-color: #EAF2FF;
+    background-color: #fffb0000;
     border: none;
-    color: #0B4A9E;
+    color: #cc0000;
     font-weight: 700;
     font-size: 0.9rem;
     margin-bottom: 0.75rem;
 }
 
-.div_informacao span {
-    color: #1a0b9e;
+#informacao_span {
+    color: #4f0000;
     font-size: 0.85rem;
     display: flex;
-    align-items: flex-start;
+    flex-direction: column;
+
+    span {
+        margin-bottom: 0.5%;
+    }
 }
 
 .div_informacao-imagem {
-    margin-top: 15px;
+    margin-bottom: 6px;
+    margin-right: -9px;
 }
 
 .div_informacao-imagem img{
@@ -434,6 +441,42 @@ html, body {
 .container-simulacao button img {
     width: 20px;
     margin-right: 8px;
+}
+
+#div_mensagem {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#mensagem_combustivel {
+    background-color: #f9fafb;
+    width: 30%;
+    border-radius: 12px;
+    border: 1px solid #c8c8c8d6;
+    padding-left: 9px;
+    padding-bottom: 0.8%;
+    margin-bottom: 1.5%;
+}
+
+#mensagem_lixo {
+    background-color: #f9fafb;
+    width: 30%;
+    border-radius: 12px;
+    border: 1px solid #c8c8c8d6;
+    padding-left: 9px;
+    padding-bottom: 0.8%;
+    margin-bottom: 1.5%;
+}
+
+#mensagem_anual {
+    background-color: #f9fafb;
+    width: 30%;
+    border-radius: 12px;
+    border: 1px solid #c8c8c8d6;
+    padding-left: 9px;
+    padding-bottom: 0.8%;
+    margin-bottom: 1.5%;
 }
 
 /* =================================================== MISSÃO =================================================== */
