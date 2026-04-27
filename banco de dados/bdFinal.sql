@@ -5,7 +5,7 @@ USE collect_tech;
 -- Cadastro empresa
 CREATE TABLE empresa (
 id_empresa INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-cnpj VARCHAR(14) NOT NULL UNIQUE,
+cnpj CHAR(14) NOT NULL UNIQUE,
 telefone CHAR(11),
 email VARCHAR(100) NOT NULL UNIQUE, -- EMAIL único
 cadastrado_em DATETIME DEFAULT CURRENT_TIMESTAMP(),
@@ -29,7 +29,7 @@ INSERT INTO empresa (cnpj, telefone, email, codigo_ativacao) VALUES
 CREATE TABLE funcionario (
 id_funcionario INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 nome VARCHAR(50) NOT NULL,
-cpf VARCHAR(11) NOT NULL UNIQUE, -- CPF único
+cpf CHAR(11) NOT NULL UNIQUE, -- CPF único
 telefone CHAR(11),
 email VARCHAR(100) NOT NULL UNIQUE, -- EMAIL único
 senha VARCHAR(100) NOT NULL,
