@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
+/* ==============================================GERAL================================================ */
 
 * {
     margin: 0;
@@ -8,17 +9,17 @@
     font-family: 'Montserrat';
 }
 
-body{
+body {
     background-color: rgb(247, 247, 247)
 }
 
-/* SIDEBAR */
+/* ==============================================SIDEBAR================================================ */
 .sidebar {
     width: 250px;
     height: 100vh;
     background: linear-gradient(180deg, #318752, #0aae43);
     color: #fff;
-    position: fixed; 
+    position: fixed;
     top: 0;
     left: 0;
     padding: 20px;
@@ -28,19 +29,20 @@ body{
     flex-direction: column;
     align-items: center;
     box-shadow: rgba(100, 100, 111, 0.486) 0px 7px 29px 0px;
-    a{
+
+    a {
         color: white;
         text-decoration: none;
     }
 }
 
-.link{
-    a{
+.link {
+    a {
         color: white;
     }
 }
 
-.linha{
+.linha {
     border-style: solid;
     border-width: 0.5px 0px 0px 0px;
     border-color: #37b07a;
@@ -89,27 +91,118 @@ body{
     color: #0f7a4f;
 }
 
-/* GRAFICOS */
-.graficos{
+/* ==============================================GRAFICOS================================================ */
+
+/* ===========================================KPIS NO GERAL============================================== */
+
+.graficos {
     display: flex;
+    flex-direction: column;
 }
 
-.graficos1{
+.grafico-e-kpi {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-left: 310px;
+    margin-right: 60px;
+}
+
+.container2 {
+    border-radius: 10px;
+    border-color: black;
+    align-items: center;
+    justify-content: center;
+    margin-top: 12px;
+}
+
+.kpi {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.graficos1 {
     display: flex;
     justify-items: center;
     margin-left: 320px;
     margin-right: 100px;
     margin-top: 30px;
 }
-.graficos-rota{
+
+.graficos-rota {
     display: flex;
     justify-items: center;
     margin-left: 390px;
     margin-top: 30px;
 }
 
+.box_lixeiras {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    height: fit-content;
+    width: 410px;
+    border-radius: 15px;
+    background-blend-mode: screen;
+    padding: 25px;
+    margin: 10px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 
-.container{
+    h3 {
+        font-size: xx-large;
+    }
+}
+
+/* ===========================================KPIS ESPECIFICAS============================================== */
+/* KPI TOTAL LIXEIRAS */
+.icone_total {
+    background-color: #6370fd;
+    box-shadow: 0 20px 30px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+
+.total {
+    background-color: #525ffd;
+    color: white;
+}
+
+/* KPI NIVEL ALTO */
+.cheia {
+    background-color: rgba(231, 0, 11);
+    color: white;
+}
+
+.icone_cheia {
+    background-color: rgb(255, 36, 47);
+    border-color: rgba(231, 0, 11);
+    box-shadow: 0 20px 30px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* KPI NIVEL MEDIO */
+.medio {
+    background-color: rgba(225, 113, 0);
+    color: white;
+}
+
+.icone_medio {
+    background-color: rgb(240, 122, 4);
+    box-shadow: 0 20px 30px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* KPI NIVEL BAIXO */
+.vazia {
+    background-color: rgba(0, 166, 62);
+    color: white;
+}
+
+.icone_vazia {
+    box-shadow: 0 20px 30px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    background-color: rgb(0, 182, 67);
+}
+
+/* =========================================GRAFICO DE BARRAS========================================== */
+.container {
     border-radius: 15px;
     border-color: black;
     padding: 20px;
@@ -120,41 +213,6 @@ body{
     background-color: white;
 }
 
-.container4{
-    border-radius: 16px;
-    padding: 20px;
-    margin: 15px;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #e0e0e0;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    background-color: rgb(247, 247, 247);
-    text-align: center;
-    color: #318752;
-    margin-bottom: 50px;
-}
-
-.container2{
-    border-radius: 10px;
-    border-color: black;
-    align-items: center;
-    justify-content: center;
-    margin-top: 12px;
-}
-
-.container5{
-    border-radius: 10px;
-    border-color: black;
-    align-items: center;
-    margin-top: 15px;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-     padding-left: 20px;
-     padding-right: 20px;
-     margin-bottom: 15px;
-     background: linear-gradient(#0aae43,#318752);
-     color: white;
-}
-
 /* .container{
     border-radius: 10px;
     border-color: black;
@@ -163,7 +221,82 @@ body{
     margin-top: 12px;
 } */
 
-.container3{
+/* .graf_barras{
+    width: 750px;
+    height: 600px;
+    margin: 20px;
+}   */
+
+
+/* =========================================GRAFICO DE ROSCA========================================== */
+
+.container5 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 900px;
+    height: auto;
+    border-radius: 10px;
+    border-color: black;
+    margin-top: 15px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    margin-left:230px;
+    align-self: center;
+    padding: 20px;
+    margin-bottom: 15px;
+    background: linear-gradient(#0aae43, #318752);
+    color: white;
+}
+
+#roscas {
+    display: flex;
+    /* flex-direction: row; */
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap; 
+    /* margin-right: 200px; */
+}
+
+.container5 h3 {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+
+.botao_graf {
+    width: 150px;
+    /* gap: 30px; */
+    border: 0px solid gray;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    border-radius: 20px;
+    padding: 15px;
+    background-color: #fff;
+}
+
+.graf_rosca {
+    width: 100px;
+    height: 100px;
+}
+
+
+
+
+/* =========================================OUTRAS PAGINAS========================================== */
+.container4 {
+    border-radius: 16px;
+    padding: 20px;
+    margin: 15px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    background-color: rgb(247, 247, 247);
+    text-align: center;
+    color: #318752;
+    margin-bottom: 50px;
+}
+
+.container3 {
     border-radius: 15px;
     border-color: black;
     align-items: center;
@@ -173,53 +306,16 @@ body{
     margin-top: 30px;
 }
 
-.roscas{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-}
-.graf_rosca{
-    width: 100px;
-    height: 100px;
-}
-.graf_barras{
-    width: 750px;
-    height: 600px;
-    margin: 20px;
-}
-
-.botao_graf{
-    border: 0px solid gray;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    border-radius: 20px;
-    padding: 15px;
-    background-color: #fff;
-}
-
-.graf_linhas{
+.graf_linhas {
     width: 800px;
     height: 650px;
     margin: 20px;
 }
 
 /* CAIXAS PARA KPIs*/
-.box_lixeiras{
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    height: fit-content;
-    width: 410px;
-    border-radius: 15px;
-    background-blend-mode: screen;
-    padding: 25px;
-    margin: 10px;
-   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    h3{
-        font-size: xx-large;
-    }
-}
 
-.box_lixeiras1{
+
+.box_lixeiras1 {
     display: flex;
     justify-content: space-between;
     padding: 20px;
@@ -230,21 +326,24 @@ body{
     padding: 25px;
     margin: 10px;
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    h3{
+
+    h3 {
         font-size: xx-large;
         margin-bottom: 5px;
     }
+
     h5 {
         margin-bottom: 5px;
     }
 }
-.icone_box{
+
+.icone_box {
     width: 20px;
     height: 20px;
 }
 
 
-.container_icone{
+.container_icone {
     width: fit-content;
     height: fit-content;
     border-radius: 5px;
@@ -257,58 +356,8 @@ body{
 }
 
 
-
-
-.kpi{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-/* KPI TOTAL LIXEIRAS */
-.icone_total{
-    background-color: #6370fd;
-    box-shadow: 0 20px 30px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-}
-
-
-.total{
-    background-color: #525ffd;
-    color: white;
-}
-
-/* KPI NIVEL BAIXO */
-.vazia{
-    background-color: rgba(0, 166, 62);
-    color: white;
-}
-.icone_vazia{
-    box-shadow: 0 20px 30px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    background-color: rgb(0, 182, 67);
-}
-
-/* KPI NIVEL MEDIO */
-.medio{
-     background-color: rgba(225, 113, 0);
-    color: white;
-}
-.icone_medio{
-    background-color: rgb(240, 122, 4);
-    box-shadow: 0 20px 30px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-}
-
-/* KPI NIVEL ALTO */
-.cheia{
-    background-color: rgba(231, 0, 11);
-    color: white;
-}
-
-.icone_cheia{
-    background-color: rgb(255, 36, 47);
-    border-color: rgba(231, 0, 11);
-    box-shadow: 0 20px 30px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-}
 /* CAIXA DE SELECIONAR O DIA */
-.caixa_dia{
+.caixa_dia {
     border-radius: 20px;
     border-color: #12A454;
     padding: 10px;
@@ -317,7 +366,7 @@ body{
     font-weight: 600;
 }
 
-.calor{
+.calor {
     width: 750px;
     height: 600px;
     border-radius: 16px;
@@ -329,7 +378,8 @@ body{
     color: #318752;
     background: url('../img/mapa_centro.png') no-repeat center center/cover;
 }
-.rota{
+
+.rota {
     width: 750px;
     height: 375px;
     border-radius: 16px;
@@ -341,7 +391,8 @@ body{
     color: #318752;
     background: url('../img/rota_ficticia.png') no-repeat center center/cover;
 }
-.graf_linhas{
+
+.graf_linhas {
     width: 950px;
     height: 750px;
     margin: 20px;
@@ -349,38 +400,42 @@ body{
 
 /* barra de preenchimento */
 .progresso-container {
-  width: 150px;           
-  height: 12px;          
-  background-color: rgba(0, 0, 0, 0.1); 
-  border-radius: 10px;    
-  display: flex;          
-  align-items: center;   
-  position: relative; /* ponto de referencia */
-}
-.progresso-barra-critico {
-  height: 100%;           
-  background-color: #ff5252; 
-  border-radius: 10px; 
- 
-}
-.progresso-barra-medio{
-  height: 100%;           
-  background-color: #eca445; 
-  border-radius: 10px; 
- 
+    width: 150px;
+    height: 12px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    /* ponto de referencia */
 }
 
-.progresso-barra-vazia{
-  height: 100%;           
-  background-color: #81C784; 
-  border-radius: 10px; 
- 
+.progresso-barra-critico {
+    height: 100%;
+    background-color: #ff5252;
+    border-radius: 10px;
+
 }
+
+.progresso-barra-medio {
+    height: 100%;
+    background-color: #eca445;
+    border-radius: 10px;
+
+}
+
+.progresso-barra-vazia {
+    height: 100%;
+    background-color: #81C784;
+    border-radius: 10px;
+
+}
+
 .progresso-texto {
-  margin-left: 10px;      
-  font-size: 12px;
-  font-weight: bold;
-  padding-right: 10px;
+    margin-left: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    padding-right: 10px;
 }
 
 #sair {
@@ -394,32 +449,27 @@ body{
     margin-left: 5px;
 }
 
-
-.grafico-e-kpi {
-    display: flex;
-    flex-direction: column;
-    margin-left: 310px;
-    margin-right: 60px;
-}
 /* CADASTRO */
 #formulario {
     background-color: #ffffff;
     border-radius: 12px;
-    margin-left: 450px; 
+    margin-left: 450px;
     padding: 40px;
     /* width: 100%; */
     max-width: 655px;
     /* padding: 35px; */
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
 }
+
 h1 {
-    font-size: 1.75rem; 
+    font-size: 1.75rem;
     font-weight: 800;
     margin-bottom: 8px;
     margin-top: 0;
     text-align: center;
     /* color: #202024; */
 }
+
 .subtitulo {
     font-size: 16px;
     color: #505053;
@@ -427,40 +477,47 @@ h1 {
     text-align: center;
     margin-bottom: 32px;
 }
+
 #campos {
     width: 100%;
     margin-bottom: 32px;
 }
+
 .bloco-input-unico {
     display: flex;
     flex-direction: column;
     gap: 8px;
     margin-bottom: 18px;
 }
+
 .icone-texto {
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 8px;
 }
+
 .icon {
     width: 19px;
     height: auto;
     display: block;
     color: #10914B;
 }
+
 .icon_white {
     width: 1.2rem;
     height: auto;
     display: block;
     color: #ffffff;
 }
+
 #campos p {
     font-size: 16px;
     font-weight: 550;
     color: #202024;
     margin: 0;
 }
+
 .input {
     width: 100%;
     padding: 16px;
@@ -471,9 +528,11 @@ h1 {
     font-family: inherit;
     color: #202024;
 }
+
 .input::placeholder {
     color: #7C7C8A;
 }
+
 .container-lado-a-lado {
     display: flex;
     flex-direction: row;
@@ -482,11 +541,13 @@ h1 {
     width: 100%;
     margin-bottom: 19px;
 }
-.container-lado-a-lado > .bloco-input-unico {
+
+.container-lado-a-lado>.bloco-input-unico {
     flex: 1;
     width: 100%;
     margin-bottom: 0;
 }
+
 #div_informacao {
     background-color: #EAF2FF;
     border: 1px solid #B4D3FF;
@@ -494,29 +555,34 @@ h1 {
     padding: 19px;
     margin-bottom: 32px;
 }
+
 #div_informacao p {
     color: #0B4A9E;
     font-weight: 700;
     font-size: 14px;
     margin-bottom: 13px;
 }
+
 ul.info-lista {
     list-style: none;
     padding: 0;
     margin: 0;
 }
+
 #div_informacao li {
     color: #1a0b9e;
     font-size: 13px;
     display: flex;
     align-items: flex-start;
 }
+
 #botoes {
     display: flex;
     flex-direction: column;
     gap: 16px;
     margin-bottom: 24px;
 }
+
 .button {
     width: 100%;
     padding: 16px;
@@ -531,11 +597,13 @@ ul.info-lista {
     gap: 12px;
     transition: background 0.2s ease-in-out;
 }
+
 a {
     text-decoration: none;
     color: #202024;
     font-weight: 650;
 }
+
 .cadastro {
     background-color: #12A454;
     color: #ffffff;
@@ -545,6 +613,7 @@ a {
 .cadastro:hover {
     background-color: #10914B;
 }
+
 @media (max-width: 480px) {
     #formulario {
         padding: 24px;
@@ -556,6 +625,6 @@ a {
     }
 }
 
-.errado{
+.errado {
     color: red
 }
