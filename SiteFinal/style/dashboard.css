@@ -628,3 +628,34 @@ a {
 .errado {
     color: red
 }
+
+.pesquisa{
+    height: 50px;
+    width: 500px;
+    padding-left: 10px;
+    border-radius: 12px;
+}
+
+.botao-pesquisa{
+    height: 50px;
+    padding: 0px 40px 0px 40px;
+    border-radius: 12px;
+    background-color: #12A454;
+    margin-left: 20px;
+    transition: background 0.2s ease-in-out;
+    border: none;
+}
+.botao-pesquisa:hover{
+    transition: background 0.2s ease-in-out;
+    background-color: #10914b;
+    cursor: pointer;
+}
+
+.lupa-pesquisa{
+    height: 35px;
+}
+
+.container-pesquisa{
+    display: flex;
+    align-items: center;
+}

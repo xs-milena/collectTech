@@ -1,4 +1,3 @@
-let validacao_cpf = false;
 let validacao_nome = false
 let validacao_email = false
 let validacao_telefone = false
@@ -7,28 +6,11 @@ let validacao_senha = false
 let validacao_final = false;
 let senha_correta = false;
 let codigo_ativacao = "";
-let cpf = "";
 let nome = "";
 let userEmail = "";
 let telefone = "";
 let cargo = "";
 let userSenha = "";
-
-function validarCpf() {
-    cpf = ipt_cpf.value
-    let indice_numeros = new RegExp('[0-9]')
-
-    for (let i = 0; i < cpf.length; i++) {
-        if (cpf.length == 11 && indice_numeros.test(cpf[i])) {
-            validacao_cpf = true
-            div_cpf.innerHTML = "";
-        } else {
-            div_cpf.innerHTML = 'Número de CPF Inválido!'
-            validacao_cpf = false
-            break
-        }
-    }
-}
 
 function validarNome() {
     //nome
