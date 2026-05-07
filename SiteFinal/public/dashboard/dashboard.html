@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Geral</title>
-    <link rel="stylesheet" href="style/dashboard.css">
+    <link rel="stylesheet" href="../style/dashboard.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="icon" href="./img/folha.png">
@@ -16,7 +16,7 @@
     <div class="sidebar">
         <div>
             <div class="logoSide">
-                <img src="./img/broto.png">
+                <img src="../assets/img/broto.png">
                 <h1>Collect Tech</h1>
                 <p>Smart City Solution</p>
                 <div class="linha"></div>
@@ -52,7 +52,7 @@
                             <h6>no sistema</h6>
                         </div>
                         <div class="container_icone icone_total">
-                            <img src="./img/lixeira.png" class="icone_box">
+                            <img src="../assets/img/lixeira.png" class="icone_box">
                         </div>
                     </div>
                     <div class="box_lixeiras cheia">
@@ -62,7 +62,7 @@
                             <h6>80%+ cheias</h6>
                         </div>
                         <div class="container_icone icone_cheia">
-                            <img src="./img/triste.png" class="icone_box">
+                            <img src="../assets/img/triste.png" class="icone_box">
                         </div>
                     </div>
                 </div>
@@ -75,7 +75,7 @@
                             <h6>50-80% cheias</h6>
                         </div>
                         <div class="container_icone icone_medio">
-                            <img src="./img/feliz.png" class="icone_box">
+                            <img src="../assets/img/feliz.png" class="icone_box">
                         </div>
                     </div>
 
@@ -86,38 +86,104 @@
                             <h6>0-50% cheias</h6>
                         </div>
                         <div class="container_icone icone_vazia">
-                            <img src="./img/sorrindo.png" class="icone_box">
+                            <img src="../assets/img/sorrindo.png" class="icone_box">
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- <div class="container">
-                <div id="div_select_dia"></div>
-                <canvas id="graf_barras_bairros" class="graf_barras"></canvas>
-            </div> -->
         </div>
 
-        <div class="container5">
+    </div>
+
+    <div class="container5">
+        <div id="topo">
+            <img src="../assets/img/seta-para-baixo.png" class="seta">
             <h3>Bairros</h3>
-            <div id="roscas">
-                <button class="botao_graf" onclick="belaVista()" id="botao">
-                    <span>Bela Vista</span>
-                    <canvas id="graf_bela_vista" class="graf_rosca"></canvas>
-                </button>
-                <button class="botao_graf" onclick="se()">
-                    <span>Sé</span>
-                    <canvas id="graf_se" class="graf_rosca"></canvas>
-                </button>
-                <button class="botao_graf" onclick="liberdade()">
-                    <span>Liberdade</span>
-                    <canvas id="graf_liberdade" class="graf_rosca"></canvas>
-                </button>
-                <button class="botao_graf" onclick="cambuci()">
-                    <span>Cambuci</span>
-                    <canvas id="graf_cambuci" class="graf_rosca"></canvas>
-                </button>
-            </div>
+        <div class="barra-pesquisa">
+            <input type="text">
+            <img src="../assets/img/pesquisa.png" alt="">
         </div>
+        </div>
+        <div id="roscas">
+            <button class="botao_graf" onclick="belaVista()" id="botao">
+                <span>Bela Vista</span>
+                <canvas id="graf_bela_vista" class="graf_rosca"></canvas>
+            </button>
+            <button class="botao_graf" onclick="se()">
+                <span>Sé</span>
+                <canvas id="graf_se" class="graf_rosca"></canvas>
+            </button>
+            <button class="botao_graf" onclick="liberdade()">
+                <span>Liberdade</span>
+                <canvas id="graf_liberdade" class="graf_rosca"></canvas>
+            </button>
+            <button class="botao_graf" onclick="cambuci()">
+                <span>Cambuci</span>
+                <canvas id="graf_cambuci" class="graf_rosca"></canvas>
+            </button>
+        </div>
+    </div>
+
+    <h2>Tabelas</h2>
+
+    <table class="tabela_ecopontos">
+        <tr>
+            <th>Ecoponto</th>
+            <th>Código</th>
+            <th>Nivel</th>
+            <th>Hora da captura do dado</th>
+            <th>Data da captura do dado</th>
+        </tr>
+        <tr>
+            <td>Ecoponto 1</td>
+            <td>1</td>
+            <td>40%</td>
+            <td>12:56</td>
+            <td>06/05/2026</td>
+        </tr>
+        <tr>
+            <td>Ecoponto 2</td>
+            <td>2</td>
+            <td>60%</td>
+            <td>20:56</td>
+            <td>01/05/2026</td>
+        </tr>
+        <tr>
+            <td>Ecoponto 3</td>
+            <td>3</td>
+            <td>85%</td>
+            <td>09:15</td>
+            <td>07/05/2026</td>
+        </tr>
+        <tr>
+            <td>Ecoponto 4</td>
+            <td>4</td>
+            <td>15%</td>
+            <td>14:30</td>
+            <td>07/05/2026</td>
+        </tr>
+        <tr>
+            <td>Ecoponto 5</td>
+            <td>5</td>
+            <td>92%</td>
+            <td>08:00</td>
+            <td>07/05/2026</td>
+        </tr>
+        <tr>
+            <td>Ecoponto 6</td>
+            <td>6</td>
+            <td>30%</td>
+            <td>11:20</td>
+            <td>06/05/2026</td>
+        </tr>
+        <tr>
+            <td>Ecoponto 7</td>
+            <td>7</td>
+            <td>55%</td>
+            <td>17:45</td>
+            <td>05/05/2026</td>
+        </tr>
+    </table>
 </body>
 
 </html>
@@ -248,7 +314,7 @@
 
     /* Função*/
     function belaVista() {
-        grafico.destroy()
+        // grafico.destroy()
         lixo_total.innerHTML = '5'
         lixo_baixo.innerHTML = '1'
         lixo_medio.innerHTML = '1'
@@ -260,15 +326,15 @@
         let vetor4 = []
         let vetor5 = []
         bairro = 'Bela vista'
-        div_select_dia.innerHTML = `<select name="dia" id="slct_dia_semana" class="caixa_dia" oninput="mostraGraf()">
-                                        <option value="seg">Seg.</option>
-                                        <option value="ter">Ter.</option>
-                                        <option value="qua">Qua.</option>
-                                        <option value="qui">Qui.</option>
-                                        <option value="sex">Sex.</option>
-                                        <option value="sab">Sab.</option>
-                                        <option value="dom">Dom.</option>
-                                </select>`
+        // div_select_dia.innerHTML = `<select name="dia" id="slct_dia_semana" class="caixa_dia" oninput="mostraGraf()">
+        //                                 <option value="seg">Seg.</option>
+        //                                 <option value="ter">Ter.</option>
+        //                                 <option value="qua">Qua.</option>
+        //                                 <option value="qui">Qui.</option>
+        //                                 <option value="sex">Sex.</option>
+        //                                 <option value="sab">Sab.</option>
+        //                                 <option value="dom">Dom.</option>
+        //                         </select>`
 
         for (let i = 8; i > 0; i--) {
             dado = (Math.random() * 100).toFixed(0)
@@ -335,7 +401,7 @@
     }
 
     function se() {
-        grafico.destroy()
+        // grafico.destroy()
         lixo_total.innerHTML = '5'
         lixo_baixo.innerHTML = '2'
         lixo_medio.innerHTML = '2'
@@ -347,15 +413,15 @@
         let vetor4 = []
         let vetor5 = []
         bairro = 'Sé'
-        div_select_dia.innerHTML = `<select name="dia" id="slct_dia_semana" class="caixa_dia" oninput="mostraGraf()">
-                                        <option value="seg">Seg.</option>
-                                        <option value="ter">Ter.</option>
-                                        <option value="qua">Qua.</option>
-                                        <option value="qui">Qui.</option>
-                                        <option value="sex">Sex.</option>
-                                        <option value="sab">Sab.</option>
-                                        <option value="dom">Dom.</option>
-                                </select>`
+        // div_select_dia.innerHTML = `<select name="dia" id="slct_dia_semana" class="caixa_dia" oninput="mostraGraf()">
+        //                                 <option value="seg">Seg.</option>
+        //                                 <option value="ter">Ter.</option>
+        //                                 <option value="qua">Qua.</option>
+        //                                 <option value="qui">Qui.</option>
+        //                                 <option value="sex">Sex.</option>
+        //                                 <option value="sab">Sab.</option>
+        //                                 <option value="dom">Dom.</option>
+        //                         </select>`
 
         for (let i = 8; i > 0; i--) {
             dado = (Math.random() * 100).toFixed(0)
@@ -422,7 +488,7 @@
     }
 
     function liberdade() {
-        grafico.destroy()
+        // grafico.destroy()
         lixo_total.innerHTML = '5'
         lixo_baixo.innerHTML = '0'
         lixo_medio.innerHTML = '2'
@@ -434,15 +500,15 @@
         let vetor4 = []
         let vetor5 = []
         bairro = 'Liberdade'
-        div_select_dia.innerHTML = `<select name="dia" id="slct_dia_semana" class="caixa_dia" oninput="mostraGraf()">
-                                        <option value="seg">Seg.</option>
-                                        <option value="ter">Ter.</option>
-                                        <option value="qua">Qua.</option>
-                                        <option value="qui">Qui.</option>
-                                        <option value="sex">Sex.</option>
-                                        <option value="sab">Sab.</option>
-                                        <option value="dom">Dom.</option>
-                                </select>`
+        // div_select_dia.innerHTML = `<select name="dia" id="slct_dia_semana" class="caixa_dia" oninput="mostraGraf()">
+        //                                 <option value="seg">Seg.</option>
+        //                                 <option value="ter">Ter.</option>
+        //                                 <option value="qua">Qua.</option>
+        //                                 <option value="qui">Qui.</option>
+        //                                 <option value="sex">Sex.</option>
+        //                                 <option value="sab">Sab.</option>
+        //                                 <option value="dom">Dom.</option>
+        //                         </select>`
 
         for (let i = 8; i > 0; i--) {
             dado = (Math.random() * 100).toFixed(0)
@@ -509,7 +575,7 @@
     }
 
     function cambuci() {
-        grafico.destroy()
+        // grafico.destroy()
         lixo_total.innerHTML = '5'
         lixo_baixo.innerHTML = '1'
         lixo_medio.innerHTML = '3'
@@ -521,15 +587,15 @@
         let vetor4 = []
         let vetor5 = []
         bairro = 'Cambuci'
-        div_select_dia.innerHTML = `<select name="dia" id="slct_dia_semana" class="caixa_dia" oninput="mostraGraf()">
-                                        <option value="seg">Seg.</option>
-                                        <option value="ter">Ter.</option>
-                                        <option value="qua">Qua.</option>
-                                        <option value="qui">Qui.</option>
-                                        <option value="sex">Sex.</option>
-                                        <option value="sab">Sab.</option>
-                                        <option value="dom">Dom.</option>
-                                </select>`
+        // div_select_dia.innerHTML = `<select name="dia" id="slct_dia_semana" class="caixa_dia" oninput="mostraGraf()">
+        //                                 <option value="seg">Seg.</option>
+        //                                 <option value="ter">Ter.</option>
+        //                                 <option value="qua">Qua.</option>
+        //                                 <option value="qui">Qui.</option>
+        //                                 <option value="sex">Sex.</option>
+        //                                 <option value="sab">Sab.</option>
+        //                                 <option value="dom">Dom.</option>
+        //                         </select>`
 
         for (let i = 8; i > 0; i--) {
             dado = (Math.random() * 100).toFixed(0)

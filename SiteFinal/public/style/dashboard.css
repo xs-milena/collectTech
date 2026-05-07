@@ -202,31 +202,37 @@ body {
 }
 
 /* =========================================GRAFICO DE BARRAS========================================== */
-.container {
-    border-radius: 15px;
-    border-color: black;
-    padding: 20px;
-    margin: 15px;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.123), 0 10px 10px 20px rgba(0, 0, 0, 0.04);
-    background-color: white;
+.tabela_ecopontos {
+    margin-bottom: 70px;
 }
 
-/* .container{
-    border-radius: 10px;
-    border-color: black;
-    align-items: center;
-    justify-content: center;
-    margin-top: 12px;
-} */
+table,
+th,
+td {
+    width: 950px;
+    margin-left: 330px;
+    border: 1px;
+    border-collapse: collapse;
+    padding: 12px 2px;
+}
 
-/* .graf_barras{
-    width: 750px;
-    height: 600px;
-    margin: 20px;
-}   */
+td {
+    text-align: center;
+}
 
+th {
+    background-color: #10914B;
+    color: white;
+}
+
+tr {
+    border: 1px solid #10914B;
+    height: 50px;
+}
+
+tr:hover {
+    background-color: #e0e0e9;
+}
 
 /* =========================================GRAFICO DE ROSCA========================================== */
 
@@ -240,7 +246,7 @@ body {
     border-color: black;
     margin-top: 15px;
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    margin-left:230px;
+    margin-left: 350px;
     align-self: center;
     padding: 20px;
     margin-bottom: 15px;
@@ -248,19 +254,64 @@ body {
     color: white;
 }
 
+.container5 h3 {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+    margin-right: 50px;
+}
+
+#topo {
+    display: flex;
+    flex-direction: row;
+    margin-left: 20px;
+}
+
+.seta{
+     width: 22px;
+    height: 22px;
+    margin-right: 300px;
+}
+
+.barra-pesquisa {
+    margin-left: 60px;
+    align-items: end;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.barra-pesquisa input {
+    padding-right: 30px;
+    padding-left: 10px;
+    width: 230px;
+    height: 27px;
+    border-radius: 5px;
+    background-color: white;
+    border-color: transparent;
+}
+
+.barra-pesquisa input {
+     outline: none;
+}
+
+.barra-pesquisa img {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 22px;
+    height: 22px;
+}
+
 #roscas {
     display: flex;
     /* flex-direction: row; */
     justify-content: center;
     gap: 40px;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
     /* margin-right: 200px; */
-}
-
-.container5 h3 {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 30px;
 }
 
 .botao_graf {
@@ -271,6 +322,11 @@ body {
     border-radius: 20px;
     padding: 15px;
     background-color: #fff;
+    transition: transform 0.3s ease-in-out;
+}
+
+.botao_graf:hover {
+    transform: scale(1.1);
 }
 
 .graf_rosca {
@@ -629,14 +685,14 @@ a {
     color: red
 }
 
-.pesquisa{
+.pesquisa {
     height: 50px;
     width: 500px;
     padding-left: 10px;
     border-radius: 12px;
 }
 
-.botao-pesquisa{
+.botao-pesquisa {
     height: 50px;
     padding: 0px 40px 0px 40px;
     border-radius: 12px;
@@ -645,17 +701,18 @@ a {
     transition: background 0.2s ease-in-out;
     border: none;
 }
-.botao-pesquisa:hover{
+
+.botao-pesquisa:hover {
     transition: background 0.2s ease-in-out;
     background-color: #10914b;
     cursor: pointer;
 }
 
-.lupa-pesquisa{
+.lupa-pesquisa {
     height: 35px;
 }
 
-.container-pesquisa{
+.container-pesquisa {
     display: flex;
     align-items: center;
 }
