@@ -11,14 +11,14 @@
   <script src="./JS/sessao.js"></script>
 
   <link rel="stylesheet" href="style/login.css" />
-  <link rel="icon" href="./img/folha.png">
+  <link rel="icon" href="./assets/img/folha.png">
 
 </head>
 
 <body>
 
   
-  <img class="logo" src="./img/folha.png" alt="Logo" />
+  <img class="logo" src="./assets/img/folha.png" alt="Logo" />
   <h1>Collect Tech</h1>
   <p class="subtitulo">Gestão Inteligente de Resíduos Urbanos</p>
 
@@ -29,7 +29,11 @@
   </div>
 
   <div id="formulario">
-
+<div class="alerta_erro">
+            <div class="card_erro" id="cardErro">
+                <span id="mensagem_erro"></span>
+        </div>
+        </div>
   <div id="campos">
 
   <div class="bloco-input-unico">
@@ -77,10 +81,12 @@
     function entrar() {
         aguardar();
 
+        var codigoVar = ipt_codigo.value;
+        var idEmpresaVincular
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
 
-        if (emailVar == "" || senhaVar == "") {
+        if (codigoVar == "" || emailVar == "" || senhaVar == "") {
             cardErro.style.display = "block"
             mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
             finalizarAguardar();
@@ -90,8 +96,21 @@
             setInterval(sumirMensagem, 5000)
         }
 
+        console.log("FORM CÓDIGO: ", codigoVar);
         console.log("FORM LOGIN: ", emailVar);
         console.log("FORM SENHA: ", senhaVar);
+
+        for (let i = 0; i < listaEmpresasCadastradas.length; i++) {
+      if (listaEmpresasCadastradas[i].codigo_ativacao == codigoVar) {
+        idEmpresaVincular = listaEmpresasCadastradas[i].id_empresa
+        console.log("Código de ativação válido.");
+        break;
+      } else {
+        cardErro.style.display = "block";
+        mensagem_erro.innerHTML = "(Mensagem de erro para código inválido)";
+        finalizarAguardar();
+      }
+    }
 
         fetch("/usuarios/autenticar", {
             method: "POST",
@@ -99,6 +118,7 @@
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
+                idEmpresaVincularServer: idEmpresaVincular,
                 emailServer: emailVar,
                 senhaServer: senhaVar
             })
@@ -113,11 +133,11 @@
                     console.log(JSON.stringify(json));
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id;
-                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+                    sessionStorage.ID_USUARIO = json.id_funcionario;
+                    sessionStorage.ECOPONTOS = JSON.stringify(json.ecopontos)
 
                     setTimeout(function () {
-                        window.location = "./dashboard/cards.html";
+                        window.location = "./dashboard/dashboard.html";
                     }, 1000); // apenas para exibir o loading
 
                 });
@@ -138,6 +158,27 @@
 
         return false;
     }
+
+
+  // Listando empresas cadastradas 
+  function listar() {
+    fetch("/empresas/listar", {
+      method: "GET",
+    })
+      .then(function (resposta) {
+        resposta.json().then((empresas) => {
+          empresas.forEach((empresa) => {
+            listaEmpresasCadastradas.push(empresa);
+
+            console.log("listaEmpresasCadastradas")
+            console.log(listaEmpresasCadastradas[0].codigo_ativacao)
+          });
+        });
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+  }
 
     function sumirMensagem() {
         cardErro.style.display = "none"
