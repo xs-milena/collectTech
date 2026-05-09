@@ -1,9 +1,9 @@
-var aquarioModel = require("../models/aquarioModel");
+var ecopontosModel = require("../models/ecopontosModel");
 
-function buscarAquariosPorEmpresa(req, res) {
+function buscarEcopontosPorEmpresa(req, res) {
   var idUsuario = req.params.idUsuario;
 
-  aquarioModel.buscarAquariosPorEmpresa(idUsuario).then((resultado) => {
+  ecopontosModel.buscarEcopontosPorEmpresa(idUsuario).then((resultado) => {
     if (resultado.length > 0) {
       res.status(200).json(resultado);
     } else {
@@ -18,17 +18,14 @@ function buscarAquariosPorEmpresa(req, res) {
 
 
 function cadastrar(req, res) {
-  var descricao = req.body.descricao;
   var idUsuario = req.body.idUsuario;
 
-  if (descricao == undefined) {
-    res.status(400).send("descricao está undefined!");
-  } else if (idUsuario == undefined) {
+  if (idUsuario == undefined) {
     res.status(400).send("idUsuario está undefined!");
   } else {
 
 
-    aquarioModel.cadastrar(descricao, idUsuario)
+    aquarioModel.cadastrar(idUsuario)
       .then((resultado) => {
         res.status(201).json(resultado);
       }
@@ -44,6 +41,6 @@ function cadastrar(req, res) {
 }
 
 module.exports = {
-  buscarAquariosPorEmpresa,
+  buscarEcopontosPorEmpresa,
   cadastrar
 }

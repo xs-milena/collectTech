@@ -1,12 +1,12 @@
 var usuarioModel = require("../models/usuarioModel");
-var ecopontoModel = require("../models/ecopontoModel");
+var ecopontosModel = require("../models/ecopontosModel");
 
 function autenticar(req, res) {
-    var fkEmpresa = req.body.idEmpresaVincularServer;
+    var codigo_ativacao = req.body.codigo_ativacaoServer;
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
 
-    if (fkEmpresa == undefined) {
+    if (codigo_ativacao == undefined) {
         res.status(400).send("Sua empresa a vincular está undefined!");
     } else if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
@@ -18,7 +18,7 @@ function autenticar(req, res) {
         
         {
 
-        usuarioModel.autenticar(fkEmpresa, email, senha)
+        usuarioModel.autenticar(codigo_ativacao, email, senha)
             .then(
                 function (resultadoAutenticar) {
                     console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
@@ -27,7 +27,7 @@ function autenticar(req, res) {
                     if (resultadoAutenticar.length == 1) {
                         console.log(resultadoAutenticar);
 
-                        ecopontoModel.buscarEcopontosPorEmpresa(resultadoAutenticar[0].empresaId)
+                        ecopontosModel.buscarEcopontosPorEmpresa(resultadoAutenticar[0].id_empresa)
                             .then((resultadoEcopontos) => {
                                 if (resultadoEcopontos.length > 0) {
                                     res.json({

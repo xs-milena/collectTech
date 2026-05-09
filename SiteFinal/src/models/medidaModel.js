@@ -1,29 +1,32 @@
 var database = require("../database/config");
 
-function buscarUltimasMedidas(idAquario, limite_linhas) {
+function buscarUltimasMedidas(id_ecoponto, limite_linhas) {
 
     var instrucaoSql = `SELECT 
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,
-                        momento,
-                        DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico
-                    FROM medida
-                    WHERE fk_aquario = ${idAquario}
-                    ORDER BY id DESC LIMIT ${limite_linhas}`;
+        l.nivel_preenchimento as preenchimento, 
+        l.cadastrado_em, DATE_FORMAT(l.cadastrado_em,'%H:%i:%s') as captura_as
+	    FROM leitura_sensor as l
+        join sensor on l.fk_sensor = id_sensor
+        join lixeira on fk_lixeira = id_lixeira
+        join ecoponto on fk_ecoponto = id_ecoponto
+	    WHERE fk_ecoponto = ${id_ecoponto}
+	    ORDER BY id_ecoponto DESC LIMIT ${limite_linhas}`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
-function buscarMedidasEmTempoReal(idAquario) {
+function buscarMedidasEmTempoReal(id_ecoponto) {
 
     var instrucaoSql = `SELECT 
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,
-                        DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico, 
-                        fk_aquario 
-                        FROM medida WHERE fk_aquario = ${idAquario} 
-                    ORDER BY id DESC LIMIT 1`;
+        l.nivel_preenchimento as preenchimento, 
+        l.cadastrado_em, DATE_FORMAT(l.cadastrado_em,'%H:%i:%s') as captura_as
+	    FROM leitura_sensor as l
+        join sensor on l.fk_sensor = id_sensor
+        join lixeira on fk_lixeira = id_lixeira
+        join ecoponto on fk_ecoponto = id_ecoponto
+	    WHERE fk_ecoponto = ${id_ecoponto}
+	    ORDER BY id_ecoponto DESC LIMIT 1`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
