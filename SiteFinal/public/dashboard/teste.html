@@ -87,7 +87,7 @@
         var ecopontos = JSON.parse(sessionStorage.ECOPONTOS);
         ecopontos.forEach(item => {
             document.getElementById("btnAquario").innerHTML += `
-            <button class="btn-chart" onclick="exibirAquario(${item.id_ecoponto})" id="btnAquario${item.id_ecoponto}">${item.nome_ecoponto}</button>
+            <button class="btn-chart" onclick="exibirEcopontos(${item.id_ecoponto})" id="btnAquario${item.id_ecoponto}">${item.nome_ecoponto}</button>
             `
 
             document.getElementById("graficos").innerHTML += `
@@ -118,7 +118,7 @@
         tituloEcopontos.innerHTML = "Últimas medidas de Temperatura e Umidade do <span style='color: #e6005a'>" + nome_ecoponto + "</span>"
     }
 
-    function exibirAquario(id_ecoponto) {
+    function exibirEcopontos(id_ecoponto) {
         let todosOsGraficos = JSON.parse(sessionStorage.ECOPONTOS);
 
         for (i = 0; i < todosOsGraficos.length; i++) {
@@ -284,6 +284,8 @@
 
                         dados.datasets[0].data.shift();  // apagar o primeiro de umidade
                         dados.datasets[0].data.push(novoRegistro[0].nivel_preenchimento); // incluir uma nova medida de umidade
+
+                        
 
                         myChart.update();
                     }
