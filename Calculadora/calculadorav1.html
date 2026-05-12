@@ -1,28 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIMULADOR FINANCEIRO</title>
 </head>
+
 <body>
     <h1>SIMULADOR DE PREJUÍZO</h1>
 
     <div>
-      <p>Quantos habitantes tem na sua cidade/município?</p>
-      <input type="number" id="ipt_habitantes">
+        <p>Quantos habitantes tem na sua cidade/município?</p>
+        <input type="number" id="ipt_habitantes">
     </div>
     <div>
-      <p>Quantos caminhões você possui na sua frota?</p>
-      <input type="number" id="ipt_caminhao">
-      <br>
-      <br>
-      <button onclick="exibirResultado()">Calcular prejuízo:</button>
+        <p>Quantos caminhões você possui na sua frota?</p>
+        <input type="number" id="ipt_caminhao">
+        <br>
+        <br>
+        <button onclick="exibirResultado()">Calcular prejuízo:</button>
 
-      <div id="div_mensagem"></div>
+        <div id="div_mensagem"></div>
 
-  </div>
+    </div>
 </body>
+
 </html>
 <script>
     function exibirResultado() {
@@ -39,35 +42,45 @@
         //  * R$ 6,00 (valor medio do combustivel) = R$288,00  (diarios de combustivel)
         // 288 * 7 (dias da semana) = 2016
 
-        let combustivel = (2016 * caminhao) * 0.20 // 20% de combustiveis desperdiçado por ma gestão de monitoramento
+        let combustivelTotal = (2016 * caminhao)
         console.log(combustivel)
+
+        let combustivelDisperdicado = combustivelTotal * 0.20 // 20% de combustiveis desperdiçado por ma gestão de monitoramento
 
         //LIXO NÃO COLETADO POR MÁ GESTÃO DE ROTA - ((((habitantes) * 0.20 ) / 10000) 20% dos habitantes n tem o lixo coletado
 
-        
-        let prejuizoinicial = ((((habitantes) * 0.20 ) / 10000) * 2016)
+        let lixoTotal = habitantes/ 10000
 
-        //PREJUÍZO DE MÁ GESTÃO + 15% DE GASTOS ADMINISTRATIVOS (EX: FUNCIONÁRIOS, DESGASTE DE PEÇAS, ETC.)
-        let prejuizofinal = prejuizoinicial + (prejuizoinicial * 0.15)
+        let lixoNaoColetado = lixoTotal * 0.20
+
+        let prejuizoInicial = lixoNaoColetado * 2016
+
+        //PREJUÍZO DE MÁ GESTÃO + 15% DE GASTOS ADMINISTRATIVOS (EX: FUNCIONÁRIOS, DESGASTE DE PEÇAS, ETC.) alem de reajuste para coleta do lixo não coletado.
+        let prejuizoFinal = (prejuizoInicial * 1.15) + (lixoNaoColetado / 10000) * 2016
 
         // COMBUSTÍVEL + MÁ GESTÃO + GASTOS ADMINISTRATIVOS
-        let prejuizototal = combustivel + prejuizofinal;
+        let prejuizoTotal = combustivelTotal + prejuizoFinal;
 
-        div_mensagem.innerHTML += 
-        (`<b> O prejuízo semanal refente ao <u style="color: blue">combustível</u> desperdiçado em áreas com menos demanda é de
-        <u style="color: blue">R$${combustivel.toFixed(2)}</u>.</b> <br>`)
-        
-        div_mensagem.innerHTML += (`<b> O prejuízo semanal referente ao <u style="color: green">lixo</u> não coletado decorrente 
-        da má gestão da rota é <u style="color: green">R$${prejuizofinal.toFixed(2)}</u>.</b> <br>`)
+        div_mensagem.innerHTML +=
+            `<b> A quantidade de lixo produzida semanalmente é de ${lixoTotal}Kg e ${lixoNaoColetado}Kg não coletado.`
+
+        div_mensagem.innerHTML +=
+            (`<b> O prejuízo semanal refente ao <u style="color: blue">combustível</u> gasto na coleta é de:
+        <u style="color: blue">R$${combustivelTotal.toFixed(2)}</u>.</b> <br>`)
+
+        div_mensagem.innerHTML +=
+            (`<b> Deste prejuízo semanal refente ao <u style="color: blue">combustível</u> gasto <u style="color: blue">R$${combustivelDisperdicado.toFixed(2)}</u>.</b> representam os gastos desnecessários.
+         <br>`)
+
+        div_mensagem.innerHTML += (`<b> O prejuízo semanal referente ao <u style="color: green">lixo</u> não coletado decorrente da má gestão da rota é <u style="color: green">R$${prejuizoFinal.toFixed(2)}</u>.</b> <br>`)
 
         //PREJUÍZO MENSAL - 4 semanas = 1 mês
-        let prejuizomensal = prejuizofinal * 4; 
+        let prejuizoMensal = prejuizoFinal * 4;
         console.log(prejuizomensal)
 
         //PREJUÍZO ANUAL
-        let prejuizoanual = prejuizomensal * 12;
+        let prejuizoAnual = prejuizoMensal * 12;
         console.log(prejuizoanual)
-        div_mensagem.innerHTML += (`<b style='color: red'> O prejuízo anual referente ao lixo não coletado decorrente 
-        da má gestão da rota é R$${prejuizoanual.toFixed(2)}.</b> <br>`)
+        div_mensagem.innerHTML += (`<b style='color: red'> O prejuízo anual referente ao lixo não coletado decorrente a má gestão da rota é R$${prejuizoAnual.toFixed(2)}.</b> <br>`)
     }
 </script>
