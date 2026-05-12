@@ -189,6 +189,7 @@ AS
 
 select * from captura_ultimos_dados_sensor;
 
+
 CREATE VIEW captura_nivel_sensor
 AS
 SELECT 
