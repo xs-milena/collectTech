@@ -137,3 +137,27 @@ cadastrado_em DATETIME DEFAULT CURRENT_TIMESTAMP(),
 FOREIGN KEY (fk_sensor) REFERENCES sensor(id_sensor)
 );
 
+-- VIEWS 
+CREATE VIEW captura_ultimos_dados_sensor
+AS
+  SELECT id_sensor,
+        l.nivel_preenchimento,
+        l.cadastrado_em, DATE_FORMAT(l.cadastrado_em,'%H:%i:%s')
+	    FROM leitura_sensor as l
+        join sensor on l.fk_sensor = id_sensor
+        join lixeira on fk_lixeira = id_lixeira
+        join ecoponto on fk_ecoponto = id_ecoponto
+	    WHERE fk_ecoponto = 1
+	    ORDER BY id_ecoponto DESC LIMIT 7;
+
+CREATE VIEW captura_nivel_sensor
+AS
+SELECT 
+        l.nivel_preenchimento,
+        l.cadastrado_em, DATE_FORMAT(l.cadastrado_em,'%H:%i:%s')
+	    FROM leitura_sensor as l
+        join sensor on l.fk_sensor = id_sensor
+        join lixeira on fk_lixeira = id_lixeira
+        join ecoponto on fk_ecoponto = id_ecoponto
+	    WHERE fk_ecoponto = id_ecoponto
+	    ORDER BY l.cadastrado_em DESC LIMIT 1;
