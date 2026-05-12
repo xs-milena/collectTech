@@ -2,6 +2,7 @@
 CREATE DATABASE collect_tech;
 USE collect_tech;
 
+
 -- Cadastro empresa
 CREATE TABLE empresa (
 id_empresa INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
@@ -52,18 +53,17 @@ INSERT INTO funcionario (nome, telefone, email, senha, cargo, situacao_funcionar
 CREATE TABLE subprefeitura(
   id_subprefeitura INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
   nome VARCHAR(225) NULL,
-  empresa_id_empresa INT NOT NULL,
+  fk_empresa INT NOT NULL,
   CONSTRAINT fk_subprefeitura_empresa
-	FOREIGN KEY (empresa_id_empresa)
+FOREIGN KEY (fk_empresa)
     REFERENCES empresa(id_empresa)
 );
 
-INSERT INTO subprefeitura(nome, empresa_id_empresa) VALUES
+INSERT INTO subprefeitura(nome, fk_empresa) VALUES
 ('Sé', 1),
 ('Liberdade', 2),
 ('Cambuci', 3), 
 ('Bela Vista', 4);
-select * from subprefeitura;
 
 
 -- endereco do ecoponto
@@ -137,11 +137,21 @@ cadastrado_em DATETIME DEFAULT CURRENT_TIMESTAMP(),
 FOREIGN KEY (fk_sensor) REFERENCES sensor(id_sensor)
 );
 
+insert into leitura_sensor(nivel_preenchimento, fk_sensor) value
+(67, 1);
+
+insert into leitura_sensor(nivel_preenchimento, fk_sensor) values
+(68, 1),
+(54, 2),
+(18, 3),
+(38, 4),
+(98, 1),
+(11, 1),
+(60, 1);
+
 SELECT u.nome, e.cnpj FROM funcionario u INNER JOIN empresa e ON u.fk_empresa = e.id_empresa; -- nome e cnpj
 
 SELECT ec.nome_ecoponto, l.id_lixeira FROM ecoponto ec INNER JOIN lixeira l ON ec.id_ecoponto = l.fk_ecoponto; -- ecoponto e lixeiras
-
-SELECT ec.bairro, s.id_sensor FROM ecoponto ec INNER JOIN lixeira l ON ec.id_ecoponto = l.fk_ecoponto INNER JOIN sensor s ON l.id_lixeira = s.fk_lixeira; -- sensor e bairro
 
 SELECT * FROM funcionario ORDER BY cadastrado_em DESC; -- informações sobre o usuário
 
@@ -159,3 +169,39 @@ UPDATE funcionario SET nome = 'Alan C. Hyppolito' WHERE id_funcionario = 1;
 UPDATE lixeira SET capacidade = 500 WHERE id_lixeira > 8;
 
 UPDATE leitura_sensor SET nivel_preenchimento = 0.0 WHERE fk_sensor = 4;
+
+select * from funcionario where nome like "%alan%";
+
+-- select que mostra o nível de preenchimento da lixeira de acordo com o id do sensor
+
+
+CREATE VIEW captura_ultimos_dados_sensor
+AS
+  SELECT id_sensor,
+        l.nivel_preenchimento,
+        l.cadastrado_em, DATE_FORMAT(l.cadastrado_em,'%H:%i:%s')
+	    FROM leitura_sensor as l
+        join sensor on l.fk_sensor = id_sensor
+        join lixeira on fk_lixeira = id_lixeira
+        join ecoponto on fk_ecoponto = id_ecoponto
+	    WHERE fk_ecoponto = 1
+	    ORDER BY id_ecoponto DESC LIMIT 7;
+
+select * from captura_ultimos_dados_sensor;
+
+CREATE VIEW captura_nivel_sensor
+AS
+SELECT 
+        l.nivel_preenchimento,
+        l.cadastrado_em, DATE_FORMAT(l.cadastrado_em,'%H:%i:%s')
+	    FROM leitura_sensor as l
+        join sensor on l.fk_sensor = id_sensor
+        join lixeira on fk_lixeira = id_lixeira
+        join ecoponto on fk_ecoponto = id_ecoponto
+	    WHERE fk_ecoponto = id_ecoponto
+	    ORDER BY l.cadastrado_em DESC LIMIT 1;
+
+select * from captura_nivel_sensor;
+
+SELECT ec.bairro, s.id_sensor FROM ecoponto ec INNER JOIN lixeira l ON ec.id_ecoponto = l.fk_ecoponto INNER JOIN sensor s ON l.id_lixeira = s.fk_lixeira; -- sensor e bairro
+        

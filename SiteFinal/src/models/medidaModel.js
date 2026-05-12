@@ -19,8 +19,8 @@ function buscarUltimasMedidas(id_ecoponto, limite_linhas) {
 function buscarMedidasEmTempoReal(id_ecoponto) {
 
     var instrucaoSql = `SELECT 
-        l.nivel_preenchimento as preenchimento, 
-        l.cadastrado_em, DATE_FORMAT(l.cadastrado_em,'%H:%i:%s') as captura_as
+        l.nivel_preenchimento, 
+        l.cadastrado_em, DATE_FORMAT(l.cadastrado_em,'%H:%i:%s')
 	    FROM leitura_sensor as l
         join sensor on l.fk_sensor = id_sensor
         join lixeira on fk_lixeira = id_lixeira

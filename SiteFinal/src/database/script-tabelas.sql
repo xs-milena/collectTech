@@ -1,14 +1,7 @@
--- Arquivo de apoio, caso você queira criar tabelas como as aqui criadas para a API funcionar.
--- Você precisa executar os comandos no banco de dados para criar as tabelas,
--- ter este arquivo aqui não significa que a tabela em seu BD estará como abaixo!
-
-/*
-comandos para mysql server
-*/
-
 -- criação do banco de dados
 CREATE DATABASE collect_tech;
 USE collect_tech;
+
 
 -- Cadastro empresa
 CREATE TABLE empresa (
@@ -40,7 +33,7 @@ telefone CHAR(11),
 email VARCHAR(100) NOT NULL UNIQUE, -- EMAIL único
 senha VARCHAR(100) NOT NULL,
 cargo VARCHAR(100) NOT NULL,
-situacao_funcionario BOOLEAN NOT NULL DEFAULT TRUE, -- ativo ou inativo
+situacao_funcionario BOOLEAN NOT NULL DEFAULT FALSE, -- ativo ou inativo
 fk_empresa INT NOT NULL,
 cadastrado_em DATETIME DEFAULT CURRENT_TIMESTAMP(),
 atualizado_em DATETIME DEFAULT CURRENT_TIMESTAMP() ON UPDATE CURRENT_TIMESTAMP, 
@@ -60,18 +53,17 @@ INSERT INTO funcionario (nome, telefone, email, senha, cargo, situacao_funcionar
 CREATE TABLE subprefeitura(
   id_subprefeitura INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
   nome VARCHAR(225) NULL,
-  empresa_id_empresa INT NOT NULL,
+  fk_empresa INT NOT NULL,
   CONSTRAINT fk_subprefeitura_empresa
-	FOREIGN KEY (empresa_id_empresa)
+FOREIGN KEY (fk_empresa)
     REFERENCES empresa(id_empresa)
 );
 
-INSERT INTO subprefeitura(nome, empresa_id_empresa) VALUES
+INSERT INTO subprefeitura(nome, fk_empresa) VALUES
 ('Sé', 1),
 ('Liberdade', 2),
 ('Cambuci', 3), 
 ('Bela Vista', 4);
-select * from subprefeitura;
 
 
 -- endereco do ecoponto
@@ -144,3 +136,4 @@ fk_sensor INT NOT NULL,
 cadastrado_em DATETIME DEFAULT CURRENT_TIMESTAMP(),
 FOREIGN KEY (fk_sensor) REFERENCES sensor(id_sensor)
 );
+
