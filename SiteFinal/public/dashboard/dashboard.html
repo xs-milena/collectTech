@@ -21,7 +21,7 @@ vf<!DOCTYPE html>
                 <p>Smart City Solution</p>
                 <div class="linha"></div>
             </div>
-            <ul class="menu">vfvf
+            <ul class="menu">
                 <a href="./dashboard.html">
                     <li class="ativo">Geral</li>
                 </a>
@@ -687,6 +687,7 @@ vf<!DOCTYPE html>
             }
         })
     }
+
     function atualizarTabela() {
     fetch("/ecopontos/listarEcoponto").then(function (resposta) {
         if (resposta.ok) {
@@ -696,14 +697,14 @@ vf<!DOCTYPE html>
 
                 for (let i = 0; i < dados.length; i++) {
                     let linha = dados[i];
-                    
                     // cria a linha da tabela com os dados do banco
                     corpo.innerHTML += `
                         <tr>
-                            <td>${linha.nome_ecoponto}</td>
-                            <td>${linha.codigo}</td>
-                            <td>${linha.nivel_preenchimento}%</td>
-                            <td>${linha.data_hora}</td>
+                            <td>${dados[i].ecoponto}</td>
+                            <td>${dados[i].codigo}</td>
+                            <td>${dados[i].nivel}%</td>
+                            <td>${dados[i].captura}%</td>
+                            <td>${dados[i].data}</td>
                         </tr>
                     `;
                 }

@@ -39,5 +39,6 @@ function cadastrar(id_empresa) {
 
 module.exports = {
   buscarEcopontosPorEmpresa,
+  listarEcoponto,
   cadastrar
 }
