@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+vf<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -21,7 +21,7 @@
                 <p>Smart City Solution</p>
                 <div class="linha"></div>
             </div>
-            <ul class="menu">
+            <ul class="menu">vfvf
                 <a href="./dashboard.html">
                     <li class="ativo">Geral</li>
                 </a>
@@ -126,63 +126,18 @@
 
     <h2>Tabelas</h2>
 
-    <table class="tabela_ecopontos">
+    <table id="tabela_ecopontos" class="tabela_ecopontos">
         <tr>
+        <thead>
             <th>Ecoponto</th>
             <th>Código</th>
             <th>Nivel</th>
             <th>Hora da captura do dado</th>
             <th>Data da captura do dado</th>
         </tr>
-        <tr>
-            <td>Ecoponto 1</td>
-            <td>1</td>
-            <td>40%</td>
-            <td>12:56</td>
-            <td>06/05/2026</td>
-        </tr>
-        <tr>
-            <td>Ecoponto 2</td>
-            <td>2</td>
-            <td>60%</td>
-            <td>20:56</td>
-            <td>01/05/2026</td>
-        </tr>
-        <tr>
-            <td>Ecoponto 3</td>
-            <td>3</td>
-            <td>85%</td>
-            <td>09:15</td>
-            <td>07/05/2026</td>
-        </tr>
-        <tr>
-            <td>Ecoponto 4</td>
-            <td>4</td>
-            <td>15%</td>
-            <td>14:30</td>
-            <td>07/05/2026</td>
-        </tr>
-        <tr>
-            <td>Ecoponto 5</td>
-            <td>5</td>
-            <td>92%</td>
-            <td>08:00</td>
-            <td>07/05/2026</td>
-        </tr>
-        <tr>
-            <td>Ecoponto 6</td>
-            <td>6</td>
-            <td>30%</td>
-            <td>11:20</td>
-            <td>06/05/2026</td>
-        </tr>
-        <tr>
-            <td>Ecoponto 7</td>
-            <td>7</td>
-            <td>55%</td>
-            <td>17:45</td>
-            <td>05/05/2026</td>
-        </tr>
+        </thead>
+        <tbody id="corpo_tabela">
+        </tbody>
     </table>
 </body>
 
@@ -732,4 +687,28 @@
             }
         })
     }
+    function atualizarTabela() {
+    fetch("/ecopontos/listarEcoponto").then(function (resposta) {
+        if (resposta.ok) {
+            resposta.json().then(function (dados) {
+                let corpo = document.getElementById("corpo_tabela");
+                corpo.innerHTML = ""; 
+
+                for (let i = 0; i < dados.length; i++) {
+                    let linha = dados[i];
+                    
+                    // Cria a linha da tabela com os dados do banco
+                    corpo.innerHTML += `
+                        <tr>
+                            <td>${linha.nome_ecoponto}</td>
+                            <td>${linha.codigo}</td>
+                            <td>${linha.nivel_preenchimento}%</td>
+                            <td>${linha.data_hora}</td>
+                        </tr>
+                    `;
+                }
+            });
+        }
+    });
+}
 </script>

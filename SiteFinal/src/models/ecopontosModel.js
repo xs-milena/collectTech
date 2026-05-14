@@ -12,6 +12,14 @@ function buscarEcopontosPorEmpresa(id_empresa) {
   return database.executar(instrucaoSql);
 }
 
+function listarEcoponto() {
+
+  var instrucaoSql = `SELECT  `;
+
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
+
 function cadastrar(id_empresa) {
   
   var instrucaoSql = `INSERT INTO (fk_empresa) ecoponto VALUES (${id_empresa})`;
