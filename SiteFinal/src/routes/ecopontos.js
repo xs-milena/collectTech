@@ -11,7 +11,7 @@ router.post("/cadastrar", function (req, res) {
   ecopontosController.cadastrar(req, res);
 })
 
-router.get("/listarEcoponto", function (req, res) {
+router.post("/listarEcoponto", function (req, res) {
   ecopontosController.listarEcoponto(req, res);
 })
 

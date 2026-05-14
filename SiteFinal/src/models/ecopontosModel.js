@@ -12,7 +12,7 @@ function buscarEcopontosPorEmpresa(id_empresa) {
   return database.executar(instrucaoSql);
 }
 
-function listarEcoponto() {
+function listarEcoponto(id_ecoponto) {
 
   var instrucaoSql = ` SELECT e.nome_ecoponto ecoponto,
 		id_sensor codigo,
@@ -22,7 +22,7 @@ function listarEcoponto() {
 	    FROM leitura_sensor AS l
         JOIN sensor ON l.fk_sensor = id_sensor
         JOIN lixeira ON fk_lixeira = id_lixeira
-        JOIN ecoponto e ON fk_ecoponto = e.id_ecoponto
+        JOIN ecoponto e ON fk_ecoponto = e.${id_ecoponto}
 	    ORDER BY e.id_ecoponto DESC LIMIT 7;`;
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);

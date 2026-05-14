@@ -41,7 +41,7 @@ function cadastrar(req, res) {
 }
 
 function listarEcoponto(req, res) {
-    ecopontoModel.listar().then(function (resultado) {
+    ecopontosModel.listarEcoponto().then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
