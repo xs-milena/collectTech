@@ -161,3 +161,17 @@ SELECT
         join ecoponto on fk_ecoponto = id_ecoponto
 	    WHERE fk_ecoponto = id_ecoponto
 	    ORDER BY l.cadastrado_em DESC LIMIT 1;
+
+
+CREATE VIEW captura_ultimos_dados_sensor_tabela
+AS
+  SELECT e.nome_ecoponto ecoponto,
+		id_sensor codigo,
+        l.nivel_preenchimento nivel ,
+        DATE_FORMAT(l.cadastrado_em,'%H:%i:%s') captura,
+        DATE_FORMAT(l.cadastrado_em,'%d/%m/%Y') data
+	    FROM leitura_sensor as l
+        join sensor on l.fk_sensor = id_sensor
+        join lixeira on fk_lixeira = id_lixeira
+        join ecoponto e on fk_ecoponto = e.id_ecoponto
+	    ORDER BY e.id_ecoponto DESC LIMIT 7;

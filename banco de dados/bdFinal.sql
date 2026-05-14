@@ -205,4 +205,18 @@ SELECT
 select * from captura_nivel_sensor;
 
 SELECT ec.bairro, s.id_sensor FROM ecoponto ec INNER JOIN lixeira l ON ec.id_ecoponto = l.fk_ecoponto INNER JOIN sensor s ON l.id_lixeira = s.fk_lixeira; -- sensor e bairro
-        
+	
+CREATE VIEW captura_ultimos_dados_sensor_tabela
+AS
+  SELECT e.nome_ecoponto ecoponto,
+		id_sensor codigo,
+        l.nivel_preenchimento nivel ,
+        DATE_FORMAT(l.cadastrado_em,'%H:%i:%s') captura,
+        DATE_FORMAT(l.cadastrado_em,'%d/%m/%Y') data
+	    FROM leitura_sensor as l
+        join sensor on l.fk_sensor = id_sensor
+        join lixeira on fk_lixeira = id_lixeira
+        join ecoponto e on fk_ecoponto = e.id_ecoponto
+	    ORDER BY e.id_ecoponto DESC LIMIT 7;
+
+select * from captura_ultimos_dados_sensor_tabela;
