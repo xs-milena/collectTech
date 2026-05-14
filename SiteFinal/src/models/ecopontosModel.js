@@ -14,7 +14,16 @@ function buscarEcopontosPorEmpresa(id_empresa) {
 
 function listarEcoponto() {
 
-  var instrucaoSql = `SELECT  `;
+  var instrucaoSql = ` SELECT e.nome_ecoponto ecoponto,
+		id_sensor codigo,
+        l.nivel_preenchimento nivel ,
+        DATE_FORMAT(l.cadastrado_em,'%H:%i:%s') captura,
+        DATE_FORMAT(l.cadastrado_em,'%d/%m/%Y') data
+	    FROM leitura_sensor AS l
+        JOIN sensor ON l.fk_sensor = id_sensor
+        JOIN lixeira ON fk_lixeira = id_lixeira
+        JOIN ecoponto e ON fk_ecoponto = e.id_ecoponto
+	    ORDER BY e.id_ecoponto DESC LIMIT 7;`;
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);
