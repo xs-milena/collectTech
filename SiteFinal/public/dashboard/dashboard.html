@@ -143,552 +143,554 @@ vf<!DOCTYPE html>
 
 </html>
 <script>
-    Chart.defaults.backgroundColor = ['rgba(231, 0, 11)', 'rgba(225, 113, 0)', 'rgba(0, 166, 62)']
+    // Chart.defaults.backgroundColor = ['rgba(231, 0, 11)', 'rgba(225, 113, 0)', 'rgba(0, 166, 62)']
 
-    // let bairro = ''
+    // // let bairro = ''
 
-    // const barras_bairros = document.getElementById('graf_barras_bairros')
-    // let grafico = new Chart(barras_bairros, {
-    //     type: 'bar',
+    // // const barras_bairros = document.getElementById('graf_barras_bairros')
+    // // let grafico = new Chart(barras_bairros, {
+    // //     type: 'bar',
+    // //     data: {
+    // //         labels: ['Porcentagem(%) média do nível das lixeiras nos bairros'],
+    // //         datasets: [{
+    // //             label: 'Bela Vista',
+    // //             data: [12],
+    // //             backgroundColor: '#016938'
+    // //         },
+    // //         {
+    // //             label: 'Sé',
+    // //             data: [76],
+    // //             backgroundColor: '#3ab34c'
+    // //         },
+    // //         {
+    // //             label: 'Liberdade',
+    // //             data: [65],
+    // //             backgroundColor: '#81b63a'
+    // //         },
+    // //         {
+    // //             label: 'Cambuci',
+    // //             data: [32],
+    // //             backgroundColor: '#9be931'
+    // //         },]
+    // //     },
+    // //     options: {
+    // //         scales: {
+    // //             y: {
+    // //                 beginAtZero: true,
+    // //                 suggestedMax: 100
+    // //             }
+    // //         },
+    // //     }
+    // // })
+
+    // const graf_belaVista = document.getElementById('graf_bela_vista');
+
+    // new Chart(graf_belaVista, {
+    //     type: 'doughnut',
     //     data: {
-    //         labels: ['Porcentagem(%) média do nível das lixeiras nos bairros'],
+    //         labels: ['Nivel Alto', 'Nivel Medio', 'Nivel Baixo'],
     //         datasets: [{
-    //             label: 'Bela Vista',
-    //             data: [12],
-    //             backgroundColor: '#016938'
-    //         },
-    //         {
-    //             label: 'Sé',
-    //             data: [76],
-    //             backgroundColor: '#3ab34c'
-    //         },
-    //         {
-    //             label: 'Liberdade',
-    //             data: [65],
-    //             backgroundColor: '#81b63a'
-    //         },
-    //         {
-    //             label: 'Cambuci',
-    //             data: [32],
-    //             backgroundColor: '#9be931'
-    //         },]
+    //             data: [3, 1, 1],
+    //             borderWidth: 1,
+    //             backgroundColor: ['rgba(231, 0, 11)', '#ffcf55', '#7ed957']
+    //         }]
     //     },
     //     options: {
-    //         scales: {
-    //             y: {
-    //                 beginAtZero: true,
-    //                 suggestedMax: 100
+    //         plugins: {
+    //             legend: {
+    //                 display: false
     //             }
-    //         },
+    //         }
     //     }
     // })
 
-    const graf_belaVista = document.getElementById('graf_bela_vista');
+    // const graf_se = document.getElementById('graf_se');
 
-    new Chart(graf_belaVista, {
-        type: 'doughnut',
-        data: {
-            labels: ['Nivel Alto', 'Nivel Medio', 'Nivel Baixo'],
-            datasets: [{
-                data: [3, 1, 1],
-                borderWidth: 1,
-                backgroundColor: ['rgba(231, 0, 11)', '#ffcf55', '#7ed957']
-            }]
-        },
-        options: {
-            plugins: {
-                legend: {
-                    display: false
-                }
-            }
-        }
-    })
+    // new Chart(graf_se, {
+    //     type: 'doughnut',
+    //     data: {
+    //         labels: ['Nivel Alto', 'Nivel Medio', 'Nivel Baixo'],
+    //         datasets: [{
+    //             data: [1, 2, 2],
+    //             borderWidth: 1,
+    //             backgroundColor: ['rgba(231, 0, 11)', '#ffcf55', '#7ed957']
+    //         }]
+    //     },
+    //     options: {
+    //         plugins: {
+    //             legend: {
+    //                 display: false
+    //             }
+    //         }
+    //     }
+    // })
 
-    const graf_se = document.getElementById('graf_se');
+    // const graf_liberdade = document.getElementById('graf_liberdade');
 
-    new Chart(graf_se, {
-        type: 'doughnut',
-        data: {
-            labels: ['Nivel Alto', 'Nivel Medio', 'Nivel Baixo'],
-            datasets: [{
-                data: [1, 2, 2],
-                borderWidth: 1,
-                backgroundColor: ['rgba(231, 0, 11)', '#ffcf55', '#7ed957']
-            }]
-        },
-        options: {
-            plugins: {
-                legend: {
-                    display: false
-                }
-            }
-        }
-    })
+    // new Chart(graf_liberdade, {
+    //     type: 'doughnut',
+    //     data: {
+    //         labels: ['Nivel Alto', 'Nivel Medio', 'Nivel Baixo'],
+    //         datasets: [{
+    //             data: [3, 2, 0],
+    //             borderWidth: 1,
+    //             backgroundColor: ['rgba(231, 0, 11)', '#ffcf55', '#7ed957']
+    //         }]
+    //     },
+    //     options: {
+    //         plugins: {
+    //             legend: {
+    //                 display: false
+    //             }
+    //         }
+    //     }
+    // })
 
-    const graf_liberdade = document.getElementById('graf_liberdade');
+    // const graf_cambuci = document.getElementById('graf_cambuci');
 
-    new Chart(graf_liberdade, {
-        type: 'doughnut',
-        data: {
-            labels: ['Nivel Alto', 'Nivel Medio', 'Nivel Baixo'],
-            datasets: [{
-                data: [3, 2, 0],
-                borderWidth: 1,
-                backgroundColor: ['rgba(231, 0, 11)', '#ffcf55', '#7ed957']
-            }]
-        },
-        options: {
-            plugins: {
-                legend: {
-                    display: false
-                }
-            }
-        }
-    })
+    // new Chart(graf_cambuci, {
+    //     type: 'doughnut',
+    //     data: {
+    //         labels: ['Nivel Alto', 'Nivel Medio', 'Nivel Baixo'],
+    //         datasets: [{
+    //             data: [1, 3, 1],
+    //             borderWidth: 1,
+    //             backgroundColor: ['rgba(231, 0, 11)', '#ffcf55', '#7ed957']
+    //         }]
+    //     },
+    //     options: {
+    //         plugins: {
+    //             legend: {
+    //                 display: false
+    //             }
+    //         }
+    //     }
+    // })
 
-    const graf_cambuci = document.getElementById('graf_cambuci');
+    // /* Função*/
+    // function belaVista() {
+    //     // grafico.destroy()
+    //     lixo_total.innerHTML = '5'
+    //     lixo_baixo.innerHTML = '1'
+    //     lixo_medio.innerHTML = '1'
+    //     lixo_alto.innerHTML = '3'
+    //     let dado = 0
+    //     let vetor1 = []
+    //     let vetor2 = []
+    //     let vetor3 = []
+    //     let vetor4 = []
+    //     let vetor5 = []
+    //     bairro = 'Bela vista'
+    //     // div_select_dia.innerHTML = `<select name="dia" id="slct_dia_semana" class="caixa_dia" oninput="mostraGraf()">
+    //     //                                 <option value="seg">Seg.</option>
+    //     //                                 <option value="ter">Ter.</option>
+    //     //                                 <option value="qua">Qua.</option>
+    //     //                                 <option value="qui">Qui.</option>
+    //     //                                 <option value="sex">Sex.</option>
+    //     //                                 <option value="sab">Sab.</option>
+    //     //                                 <option value="dom">Dom.</option>
+    //     //                         </select>`
 
-    new Chart(graf_cambuci, {
-        type: 'doughnut',
-        data: {
-            labels: ['Nivel Alto', 'Nivel Medio', 'Nivel Baixo'],
-            datasets: [{
-                data: [1, 3, 1],
-                borderWidth: 1,
-                backgroundColor: ['rgba(231, 0, 11)', '#ffcf55', '#7ed957']
-            }]
-        },
-        options: {
-            plugins: {
-                legend: {
-                    display: false
-                }
-            }
-        }
-    })
+    //     for (let i = 8; i > 0; i--) {
+    //         dado = (Math.random() * 100).toFixed(0)
+    //         vetor1.push(dado)
+    //         dado = (Math.random() * 100).toFixed(0)
+    //         vetor2.push(dado)
+    //         dado = (Math.random() * 100).toFixed(0)
+    //         vetor3.push(dado)
+    //         dado = (Math.random() * 100).toFixed(0)
+    //         vetor4.push(dado)
+    //         dado = (Math.random() * 100).toFixed(0)
+    //         vetor5.push(dado)
+    //     }
+    //     grafico = new Chart(barras_bairros, {
+    //         type: 'bar',
+    //         data: {
+    //             labels: ['00h', '03h', '06h', '09h', '12h', '15h', '18h', '21h'],
+    //             datasets: [{
+    //                 label: 'Ecoponto 1',
+    //                 data: vetor1,
+    //                 backgroundColor: '#016938'
 
-    /* Função*/
-    function belaVista() {
-        // grafico.destroy()
-        lixo_total.innerHTML = '5'
-        lixo_baixo.innerHTML = '1'
-        lixo_medio.innerHTML = '1'
-        lixo_alto.innerHTML = '3'
-        let dado = 0
-        let vetor1 = []
-        let vetor2 = []
-        let vetor3 = []
-        let vetor4 = []
-        let vetor5 = []
-        bairro = 'Bela vista'
-        // div_select_dia.innerHTML = `<select name="dia" id="slct_dia_semana" class="caixa_dia" oninput="mostraGraf()">
-        //                                 <option value="seg">Seg.</option>
-        //                                 <option value="ter">Ter.</option>
-        //                                 <option value="qua">Qua.</option>
-        //                                 <option value="qui">Qui.</option>
-        //                                 <option value="sex">Sex.</option>
-        //                                 <option value="sab">Sab.</option>
-        //                                 <option value="dom">Dom.</option>
-        //                         </select>`
+    //             },
+    //             {
+    //                 label: 'Ecoponto 2',
+    //                 data: vetor2,
+    //                 backgroundColor: '#81b63a'
 
-        for (let i = 8; i > 0; i--) {
-            dado = (Math.random() * 100).toFixed(0)
-            vetor1.push(dado)
-            dado = (Math.random() * 100).toFixed(0)
-            vetor2.push(dado)
-            dado = (Math.random() * 100).toFixed(0)
-            vetor3.push(dado)
-            dado = (Math.random() * 100).toFixed(0)
-            vetor4.push(dado)
-            dado = (Math.random() * 100).toFixed(0)
-            vetor5.push(dado)
-        }
-        grafico = new Chart(barras_bairros, {
-            type: 'bar',
-            data: {
-                labels: ['00h', '03h', '06h', '09h', '12h', '15h', '18h', '21h'],
-                datasets: [{
-                    label: 'Ecoponto 1',
-                    data: vetor1,
-                    backgroundColor: '#016938'
+    //             },
+    //             {
+    //                 label: 'Ecoponto 3',
+    //                 data: vetor3,
+    //                 backgroundColor: '#008017'
+    //             },
+    //             {
+    //                 label: 'Ecoponto 4',
+    //                 data: vetor4,
+    //                 backgroundColor: '#3ab34c'
 
-                },
-                {
-                    label: 'Ecoponto 2',
-                    data: vetor2,
-                    backgroundColor: '#81b63a'
+    //             },
+    //             {
+    //                 label: 'Ecoponto 5',
+    //                 data: vetor5,
+    //                 backgroundColor: '#9be931'
+    //             }
+    //             ]
+    //         },
+    //         options: {
+    //             plugins: {
+    //                 title: {
+    //                     display: true,
+    //                     text: bairro,
+    //                     maxSize: '100px'
+    //                 }
+    //             },
+    //             scales: {
+    //                 y: {
+    //                     beginAtZero: true,
+    //                     suggestedMax: 100
+    //                 }
+    //             },
+    //         }
+    //     })
+    // }
 
-                },
-                {
-                    label: 'Ecoponto 3',
-                    data: vetor3,
-                    backgroundColor: '#008017'
-                },
-                {
-                    label: 'Ecoponto 4',
-                    data: vetor4,
-                    backgroundColor: '#3ab34c'
+    // function se() {
+    //     // grafico.destroy()
+    //     lixo_total.innerHTML = '5'
+    //     lixo_baixo.innerHTML = '2'
+    //     lixo_medio.innerHTML = '2'
+    //     lixo_alto.innerHTML = '1'
+    //     let dado = 0
+    //     let vetor1 = []
+    //     let vetor2 = []
+    //     let vetor3 = []
+    //     let vetor4 = []
+    //     let vetor5 = []
+    //     bairro = 'Sé'
+    //     // div_select_dia.innerHTML = `<select name="dia" id="slct_dia_semana" class="caixa_dia" oninput="mostraGraf()">
+    //     //                                 <option value="seg">Seg.</option>
+    //     //                                 <option value="ter">Ter.</option>
+    //     //                                 <option value="qua">Qua.</option>
+    //     //                                 <option value="qui">Qui.</option>
+    //     //                                 <option value="sex">Sex.</option>
+    //     //                                 <option value="sab">Sab.</option>
+    //     //                                 <option value="dom">Dom.</option>
+    //     //                         </select>`
 
-                },
-                {
-                    label: 'Ecoponto 5',
-                    data: vetor5,
-                    backgroundColor: '#9be931'
-                }
-                ]
-            },
-            options: {
-                plugins: {
-                    title: {
-                        display: true,
-                        text: bairro,
-                        maxSize: '100px'
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        suggestedMax: 100
-                    }
-                },
-            }
-        })
-    }
+    //     for (let i = 8; i > 0; i--) {
+    //         dado = (Math.random() * 100).toFixed(0)
+    //         vetor1.push(dado)
+    //         dado = (Math.random() * 100).toFixed(0)
+    //         vetor2.push(dado)
+    //         dado = (Math.random() * 100).toFixed(0)
+    //         vetor3.push(dado)
+    //         dado = (Math.random() * 100).toFixed(0)
+    //         vetor4.push(dado)
+    //         dado = (Math.random() * 100).toFixed(0)
+    //         vetor5.push(dado)
+    //     }
+    //     grafico = new Chart(barras_bairros, {
+    //         type: 'bar',
+    //         data: {
+    //             labels: ['00h', '03h', '06h', '09h', '12h', '15h', '18h', '21h'],
+    //             datasets: [{
+    //                 label: 'Ecoponto 1',
+    //                 data: vetor1,
+    //                 backgroundColor: '#016938'
 
-    function se() {
-        // grafico.destroy()
-        lixo_total.innerHTML = '5'
-        lixo_baixo.innerHTML = '2'
-        lixo_medio.innerHTML = '2'
-        lixo_alto.innerHTML = '1'
-        let dado = 0
-        let vetor1 = []
-        let vetor2 = []
-        let vetor3 = []
-        let vetor4 = []
-        let vetor5 = []
-        bairro = 'Sé'
-        // div_select_dia.innerHTML = `<select name="dia" id="slct_dia_semana" class="caixa_dia" oninput="mostraGraf()">
-        //                                 <option value="seg">Seg.</option>
-        //                                 <option value="ter">Ter.</option>
-        //                                 <option value="qua">Qua.</option>
-        //                                 <option value="qui">Qui.</option>
-        //                                 <option value="sex">Sex.</option>
-        //                                 <option value="sab">Sab.</option>
-        //                                 <option value="dom">Dom.</option>
-        //                         </select>`
+    //             },
+    //             {
+    //                 label: 'Ecoponto 2',
+    //                 data: vetor2,
+    //                 backgroundColor: '#81b63a'
 
-        for (let i = 8; i > 0; i--) {
-            dado = (Math.random() * 100).toFixed(0)
-            vetor1.push(dado)
-            dado = (Math.random() * 100).toFixed(0)
-            vetor2.push(dado)
-            dado = (Math.random() * 100).toFixed(0)
-            vetor3.push(dado)
-            dado = (Math.random() * 100).toFixed(0)
-            vetor4.push(dado)
-            dado = (Math.random() * 100).toFixed(0)
-            vetor5.push(dado)
-        }
-        grafico = new Chart(barras_bairros, {
-            type: 'bar',
-            data: {
-                labels: ['00h', '03h', '06h', '09h', '12h', '15h', '18h', '21h'],
-                datasets: [{
-                    label: 'Ecoponto 1',
-                    data: vetor1,
-                    backgroundColor: '#016938'
+    //             },
+    //             {
+    //                 label: 'Ecoponto 3',
+    //                 data: vetor3,
+    //                 backgroundColor: '#008017'
+    //             },
+    //             {
+    //                 label: 'Ecoponto 4',
+    //                 data: vetor4,
+    //                 backgroundColor: '#3ab34c'
 
-                },
-                {
-                    label: 'Ecoponto 2',
-                    data: vetor2,
-                    backgroundColor: '#81b63a'
+    //             },
+    //             {
+    //                 label: 'Ecoponto 5',
+    //                 data: vetor5,
+    //                 backgroundColor: '#9be931'
+    //             }
+    //             ]
+    //         },
+    //         options: {
+    //             plugins: {
+    //                 title: {
+    //                     display: true,
+    //                     text: bairro,
+    //                     maxSize: '100px'
+    //                 }
+    //             },
+    //             scales: {
+    //                 y: {
+    //                     beginAtZero: true,
+    //                     suggestedMax: 100
+    //                 }
+    //             },
+    //         }
+    //     })
+    // }
 
-                },
-                {
-                    label: 'Ecoponto 3',
-                    data: vetor3,
-                    backgroundColor: '#008017'
-                },
-                {
-                    label: 'Ecoponto 4',
-                    data: vetor4,
-                    backgroundColor: '#3ab34c'
+    // function liberdade() {
+    //     // grafico.destroy()
+    //     lixo_total.innerHTML = '5'
+    //     lixo_baixo.innerHTML = '0'
+    //     lixo_medio.innerHTML = '2'
+    //     lixo_alto.innerHTML = '3'
+    //     let dado = 0
+    //     let vetor1 = []
+    //     let vetor2 = []
+    //     let vetor3 = []
+    //     let vetor4 = []
+    //     let vetor5 = []
+    //     bairro = 'Liberdade'
+    //     // div_select_dia.innerHTML = `<select name="dia" id="slct_dia_semana" class="caixa_dia" oninput="mostraGraf()">
+    //     //                                 <option value="seg">Seg.</option>
+    //     //                                 <option value="ter">Ter.</option>
+    //     //                                 <option value="qua">Qua.</option>
+    //     //                                 <option value="qui">Qui.</option>
+    //     //                                 <option value="sex">Sex.</option>
+    //     //                                 <option value="sab">Sab.</option>
+    //     //                                 <option value="dom">Dom.</option>
+    //     //                         </select>`
 
-                },
-                {
-                    label: 'Ecoponto 5',
-                    data: vetor5,
-                    backgroundColor: '#9be931'
-                }
-                ]
-            },
-            options: {
-                plugins: {
-                    title: {
-                        display: true,
-                        text: bairro,
-                        maxSize: '100px'
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        suggestedMax: 100
-                    }
-                },
-            }
-        })
-    }
+    //     for (let i = 8; i > 0; i--) {
+    //         dado = (Math.random() * 100).toFixed(0)
+    //         vetor1.push(dado)
+    //         dado = (Math.random() * 100).toFixed(0)
+    //         vetor2.push(dado)
+    //         dado = (Math.random() * 100).toFixed(0)
+    //         vetor3.push(dado)
+    //         dado = (Math.random() * 100).toFixed(0)
+    //         vetor4.push(dado)
+    //         dado = (Math.random() * 100).toFixed(0)
+    //         vetor5.push(dado)
+    //     }
+    //     grafico = new Chart(barras_bairros, {
+    //         type: 'bar',
+    //         data: {
+    //             labels: ['00h', '03h', '06h', '09h', '12h', '15h', '18h', '21h'],
+    //             datasets: [{
+    //                 label: 'Ecoponto 1',
+    //                 data: vetor1,
+    //                 backgroundColor: '#016938'
 
-    function liberdade() {
-        // grafico.destroy()
-        lixo_total.innerHTML = '5'
-        lixo_baixo.innerHTML = '0'
-        lixo_medio.innerHTML = '2'
-        lixo_alto.innerHTML = '3'
-        let dado = 0
-        let vetor1 = []
-        let vetor2 = []
-        let vetor3 = []
-        let vetor4 = []
-        let vetor5 = []
-        bairro = 'Liberdade'
-        // div_select_dia.innerHTML = `<select name="dia" id="slct_dia_semana" class="caixa_dia" oninput="mostraGraf()">
-        //                                 <option value="seg">Seg.</option>
-        //                                 <option value="ter">Ter.</option>
-        //                                 <option value="qua">Qua.</option>
-        //                                 <option value="qui">Qui.</option>
-        //                                 <option value="sex">Sex.</option>
-        //                                 <option value="sab">Sab.</option>
-        //                                 <option value="dom">Dom.</option>
-        //                         </select>`
+    //             },
+    //             {
+    //                 label: 'Ecoponto 2',
+    //                 data: vetor2,
+    //                 backgroundColor: '#81b63a'
 
-        for (let i = 8; i > 0; i--) {
-            dado = (Math.random() * 100).toFixed(0)
-            vetor1.push(dado)
-            dado = (Math.random() * 100).toFixed(0)
-            vetor2.push(dado)
-            dado = (Math.random() * 100).toFixed(0)
-            vetor3.push(dado)
-            dado = (Math.random() * 100).toFixed(0)
-            vetor4.push(dado)
-            dado = (Math.random() * 100).toFixed(0)
-            vetor5.push(dado)
-        }
-        grafico = new Chart(barras_bairros, {
-            type: 'bar',
-            data: {
-                labels: ['00h', '03h', '06h', '09h', '12h', '15h', '18h', '21h'],
-                datasets: [{
-                    label: 'Ecoponto 1',
-                    data: vetor1,
-                    backgroundColor: '#016938'
+    //             },
+    //             {
+    //                 label: 'Ecoponto 3',
+    //                 data: vetor3,
+    //                 backgroundColor: '#008017'
+    //             },
+    //             {
+    //                 label: 'Ecoponto 4',
+    //                 data: vetor4,
+    //                 backgroundColor: '#3ab34c'
 
-                },
-                {
-                    label: 'Ecoponto 2',
-                    data: vetor2,
-                    backgroundColor: '#81b63a'
+    //             },
+    //             {
+    //                 label: 'Ecoponto 5',
+    //                 data: vetor5,
+    //                 backgroundColor: '#9be931'
+    //             }
+    //             ]
+    //         },
+    //         options: {
+    //             plugins: {
+    //                 title: {
+    //                     display: true,
+    //                     text: bairro,
+    //                     maxSize: '100px'
+    //                 }
+    //             },
+    //             scales: {
+    //                 y: {
+    //                     beginAtZero: true,
+    //                     suggestedMax: 100
+    //                 }
+    //             },
+    //         }
+    //     })
+    // }
 
-                },
-                {
-                    label: 'Ecoponto 3',
-                    data: vetor3,
-                    backgroundColor: '#008017'
-                },
-                {
-                    label: 'Ecoponto 4',
-                    data: vetor4,
-                    backgroundColor: '#3ab34c'
+    // function cambuci() {
+    //     // grafico.destroy()
+    //     lixo_total.innerHTML = '5'
+    //     lixo_baixo.innerHTML = '1'
+    //     lixo_medio.innerHTML = '3'
+    //     lixo_alto.innerHTML = '1'
+    //     let dado = 0
+    //     let vetor1 = []
+    //     let vetor2 = []
+    //     let vetor3 = []
+    //     let vetor4 = []
+    //     let vetor5 = []
+    //     bairro = 'Cambuci'
+    //     // div_select_dia.innerHTML = `<select name="dia" id="slct_dia_semana" class="caixa_dia" oninput="mostraGraf()">
+    //     //                                 <option value="seg">Seg.</option>
+    //     //                                 <option value="ter">Ter.</option>
+    //     //                                 <option value="qua">Qua.</option>
+    //     //                                 <option value="qui">Qui.</option>
+    //     //                                 <option value="sex">Sex.</option>
+    //     //                                 <option value="sab">Sab.</option>
+    //     //                                 <option value="dom">Dom.</option>
+    //     //                         </select>`
 
-                },
-                {
-                    label: 'Ecoponto 5',
-                    data: vetor5,
-                    backgroundColor: '#9be931'
-                }
-                ]
-            },
-            options: {
-                plugins: {
-                    title: {
-                        display: true,
-                        text: bairro,
-                        maxSize: '100px'
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        suggestedMax: 100
-                    }
-                },
-            }
-        })
-    }
+    //     for (let i = 8; i > 0; i--) {
+    //         dado = (Math.random() * 100).toFixed(0)
+    //         vetor1.push(dado)
+    //         dado = (Math.random() * 100).toFixed(0)
+    //         vetor2.push(dado)
+    //         dado = (Math.random() * 100).toFixed(0)
+    //         vetor3.push(dado)
+    //         dado = (Math.random() * 100).toFixed(0)
+    //         vetor4.push(dado)
+    //         dado = (Math.random() * 100).toFixed(0)
+    //         vetor5.push(dado)
+    //     }
+    //     grafico = new Chart(barras_bairros, {
+    //         type: 'bar',
+    //         data: {
+    //             labels: ['00h', '03h', '06h', '09h', '12h', '15h', '18h', '21h'],
+    //             datasets: [{
+    //                 label: 'Ecoponto 1',
+    //                 data: vetor1,
+    //                 backgroundColor: '#016938'
 
-    function cambuci() {
-        // grafico.destroy()
-        lixo_total.innerHTML = '5'
-        lixo_baixo.innerHTML = '1'
-        lixo_medio.innerHTML = '3'
-        lixo_alto.innerHTML = '1'
-        let dado = 0
-        let vetor1 = []
-        let vetor2 = []
-        let vetor3 = []
-        let vetor4 = []
-        let vetor5 = []
-        bairro = 'Cambuci'
-        // div_select_dia.innerHTML = `<select name="dia" id="slct_dia_semana" class="caixa_dia" oninput="mostraGraf()">
-        //                                 <option value="seg">Seg.</option>
-        //                                 <option value="ter">Ter.</option>
-        //                                 <option value="qua">Qua.</option>
-        //                                 <option value="qui">Qui.</option>
-        //                                 <option value="sex">Sex.</option>
-        //                                 <option value="sab">Sab.</option>
-        //                                 <option value="dom">Dom.</option>
-        //                         </select>`
+    //             },
+    //             {
+    //                 label: 'Ecoponto 2',
+    //                 data: vetor2,
+    //                 backgroundColor: '#81b63a'
 
-        for (let i = 8; i > 0; i--) {
-            dado = (Math.random() * 100).toFixed(0)
-            vetor1.push(dado)
-            dado = (Math.random() * 100).toFixed(0)
-            vetor2.push(dado)
-            dado = (Math.random() * 100).toFixed(0)
-            vetor3.push(dado)
-            dado = (Math.random() * 100).toFixed(0)
-            vetor4.push(dado)
-            dado = (Math.random() * 100).toFixed(0)
-            vetor5.push(dado)
-        }
-        grafico = new Chart(barras_bairros, {
-            type: 'bar',
-            data: {
-                labels: ['00h', '03h', '06h', '09h', '12h', '15h', '18h', '21h'],
-                datasets: [{
-                    label: 'Ecoponto 1',
-                    data: vetor1,
-                    backgroundColor: '#016938'
+    //             },
+    //             {
+    //                 label: 'Ecoponto 3',
+    //                 data: vetor3,
+    //                 backgroundColor: '#008017'
+    //             },
+    //             {
+    //                 label: 'Ecoponto 4',
+    //                 data: vetor4,
+    //                 backgroundColor: '#3ab34c'
 
-                },
-                {
-                    label: 'Ecoponto 2',
-                    data: vetor2,
-                    backgroundColor: '#81b63a'
+    //             },
+    //             {
+    //                 label: 'Ecoponto 5',
+    //                 data: vetor5,
+    //                 backgroundColor: '#9be931'
+    //             }
+    //             ]
+    //         },
+    //         options: {
+    //             plugins: {
+    //                 title: {
+    //                     display: true,
+    //                     text: bairro,
+    //                     maxSize: '100px'
+    //                 }
+    //             },
+    //             scales: {
+    //                 y: {
+    //                     beginAtZero: true,
+    //                     suggestedMax: 100
+    //                 }
+    //             },
+    //         }
+    //     })
+    // }
+    // function mostraGraf() {
+    //     grafico.destroy()
+    //     let dado = 0
+    //     let vetor1 = []
+    //     let vetor2 = []
+    //     let vetor3 = []
+    //     let vetor4 = []
+    //     let vetor5 = []
 
-                },
-                {
-                    label: 'Ecoponto 3',
-                    data: vetor3,
-                    backgroundColor: '#008017'
-                },
-                {
-                    label: 'Ecoponto 4',
-                    data: vetor4,
-                    backgroundColor: '#3ab34c'
+    //     for (let i = 8; i > 0; i--) {
+    //         dado = (Math.random() * 100).toFixed(0)
+    //         vetor1.push(dado)
+    //         dado = (Math.random() * 100).toFixed(0)
+    //         vetor2.push(dado)
+    //         dado = (Math.random() * 100).toFixed(0)
+    //         vetor3.push(dado)
+    //         dado = (Math.random() * 100).toFixed(0)
+    //         vetor4.push(dado)
+    //         dado = (Math.random() * 100).toFixed(0)
+    //         vetor5.push(dado)
+    //     }
+    //     grafico = new Chart(barras_bairros, {
+    //         type: 'bar',
+    //         data: {
+    //             labels: ['00h', '03h', '06h', '09h', '12h', '15h', '18h', '21h'],
+    //             datasets: [{
+    //                 label: 'Ecoponto 1',
+    //                 data: vetor1,
+    //                 backgroundColor: '#016938'
 
-                },
-                {
-                    label: 'Ecoponto 5',
-                    data: vetor5,
-                    backgroundColor: '#9be931'
-                }
-                ]
-            },
-            options: {
-                plugins: {
-                    title: {
-                        display: true,
-                        text: bairro,
-                        maxSize: '100px'
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        suggestedMax: 100
-                    }
-                },
-            }
-        })
-    }
-    function mostraGraf() {
-        grafico.destroy()
-        let dado = 0
-        let vetor1 = []
-        let vetor2 = []
-        let vetor3 = []
-        let vetor4 = []
-        let vetor5 = []
+    //             },
+    //             {
+    //                 label: 'Ecoponto 2',
+    //                 data: vetor2,
+    //                 backgroundColor: '#81b63a'
 
-        for (let i = 8; i > 0; i--) {
-            dado = (Math.random() * 100).toFixed(0)
-            vetor1.push(dado)
-            dado = (Math.random() * 100).toFixed(0)
-            vetor2.push(dado)
-            dado = (Math.random() * 100).toFixed(0)
-            vetor3.push(dado)
-            dado = (Math.random() * 100).toFixed(0)
-            vetor4.push(dado)
-            dado = (Math.random() * 100).toFixed(0)
-            vetor5.push(dado)
-        }
-        grafico = new Chart(barras_bairros, {
-            type: 'bar',
-            data: {
-                labels: ['00h', '03h', '06h', '09h', '12h', '15h', '18h', '21h'],
-                datasets: [{
-                    label: 'Ecoponto 1',
-                    data: vetor1,
-                    backgroundColor: '#016938'
+    //             },
+    //             {
+    //                 label: 'Ecoponto 3',
+    //                 data: vetor3,
+    //                 backgroundColor: '#008017'
+    //             },
+    //             {
+    //                 label: 'Ecoponto 4',
+    //                 data: vetor4,
+    //                 backgroundColor: '#3ab34c'
 
-                },
-                {
-                    label: 'Ecoponto 2',
-                    data: vetor2,
-                    backgroundColor: '#81b63a'
+    //             },
+    //             {
+    //                 label: 'Ecoponto 5',
+    //                 data: vetor5,
+    //                 backgroundColor: '#9be931'
+    //             }
+    //             ]
+    //         },
+    //         options: {
+    //             plugins: {
+    //                 title: {
+    //                     display: true,
+    //                     text: bairro,
+    //                     maxSize: '100px'
+    //                 }
+    //             },
+    //             scales: {
+    //                 y: {
+    //                     beginAtZero: true,
+    //                     suggestedMax: 100
+    //                 }
+    //             },
+    //         }
+    //     })
+    // }
 
-                },
-                {
-                    label: 'Ecoponto 3',
-                    data: vetor3,
-                    backgroundColor: '#008017'
-                },
-                {
-                    label: 'Ecoponto 4',
-                    data: vetor4,
-                    backgroundColor: '#3ab34c'
+    window.onload = listarEcoponto();
 
-                },
-                {
-                    label: 'Ecoponto 5',
-                    data: vetor5,
-                    backgroundColor: '#9be931'
-                }
-                ]
-            },
-            options: {
-                plugins: {
-                    title: {
-                        display: true,
-                        text: bairro,
-                        maxSize: '100px'
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        suggestedMax: 100
-                    }
-                },
-            }
-        })
-    }
-
-    function atualizarTabela() {
+    function listarEcoponto() {
     fetch("/ecopontos/listarEcoponto").then(function (resposta) {
         if (resposta.ok) {
             resposta.json().then(function (dados) {
@@ -699,13 +701,13 @@ vf<!DOCTYPE html>
                     let linha = dados[i];
                     // cria a linha da tabela com os dados do banco
                     corpo.innerHTML += `
-                        <tr>
+                       <tr>
                             <td>${dados[i].ecoponto}</td>
                             <td>${dados[i].codigo}</td>
                             <td>${dados[i].nivel}%</td>
-                            <td>${dados[i].captura}%</td>
+                            <td>${dados[i].captura}</td>
                             <td>${dados[i].data}</td>
-                        </tr>
+                            </tr>
                     `;
                 }
             });

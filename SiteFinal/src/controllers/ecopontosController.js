@@ -55,6 +55,6 @@ function listarEcoponto(req, res) {
 
 module.exports = {
   buscarEcopontosPorEmpresa,
+  listarEcoponto,
   cadastrar,
-  listarEcoponto
 }
