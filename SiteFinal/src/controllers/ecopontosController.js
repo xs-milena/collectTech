@@ -1,7 +1,7 @@
 var ecopontosModel = require("../models/ecopontosModel");
 
 function buscarEcopontosPorEmpresa(req, res) {
-  var idUsuario = req.params.idUsuario;
+  // var idUsuario = req.params.idUsuario;
   var id_empresa = req.params.id_empresa;
 
   ecopontosModel.buscarEcopontosPorEmpresa(id_empresa).then((resultado) => {
@@ -26,7 +26,7 @@ function cadastrar(req, res) {
   } else {
 
 
-    aquarioModel.cadastrar(idUsuario)
+    ecopontosModel.cadastrar(idUsuario)
       .then((resultado) => {
         res.status(201).json(resultado);
       }
@@ -42,9 +42,9 @@ function cadastrar(req, res) {
 }
 
 function listarEcoponto(req, res) {
-    var id_empresa = req.body.id_empresa;
+    var id_empresa = req.params.id_empresa;
 
-    ecopontosModel.listarEcoponto().then(function (resultado) {
+    ecopontosModel.listarEcoponto(id_empresa).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {

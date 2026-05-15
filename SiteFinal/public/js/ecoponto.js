@@ -3,7 +3,7 @@ var router = express.Router();
 var ecopontosController = require("../controllers/ecopontosController");
 
 router.get("/listarEcoponto", function (req, res) {
-    ecopontosController.listar(req, res);
+    ecopontosController.listarEcoponto(req, res);
 });
 
 module.exports = { router };
