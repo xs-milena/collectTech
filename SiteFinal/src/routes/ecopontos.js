@@ -11,7 +11,7 @@ router.post("/cadastrar", function (req, res) {
   ecopontosController.cadastrar(req, res);
 })
 
-router.post("/listarEcoponto", function (req, res) {
+router.get(`/listarEcoponto/:id_empresa`, function (req, res) {
   ecopontosController.listarEcoponto(req, res);
 })
 

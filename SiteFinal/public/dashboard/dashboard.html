@@ -687,15 +687,15 @@ vf<!DOCTYPE html>
     //         }
     //     })
     // }
-
-    window.onload = listarEcoponto();
-
+    let id_empresa = sessionStorage.ID_EMPRESA;
+    
+    window.onload = listarEcoponto(id_empresa);
+        console.log(sessionStorage.id_empresa);
     function listarEcoponto() {
-    fetch("/ecopontos/listarEcoponto").then(function (resposta) {
-        if (resposta.ok) {
-            resposta.json().then(function (dados) {
+    fetch(`/ecopontos/listarEcoponto/${id_empresa}`).then(function (res) {
+        if (res.ok) {
+            res.json().then(function (dados) {
                 let corpo = document.getElementById("corpo_tabela");
-                corpo.innerHTML = ""; 
 
                 for (let i = 0; i < dados.length; i++) {
                     let linha = dados[i];
