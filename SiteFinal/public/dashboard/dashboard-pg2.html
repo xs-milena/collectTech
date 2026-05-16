@@ -9,7 +9,8 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="icon" href="../assets/img/folha.png">
-    
+    <script src="../js/sessao.js"></script>
+
 </head>
 
 <body>
@@ -22,16 +23,24 @@
                 <div class="linha"></div>
             </div>
             <ul class="menu">
-    <a href="./dashboard.html"><li>Geral</li></a>
-    <a href="./dashboard-pg2.html"><li class="ativo">Lixeiras</li></a>
-    <a href="./rotas.html"><li>Rotas</li></a>
-    <a href="./cadastro.html"><li>Cadastrar Usuário</li></a>
-</ul>
+                <a href="./dashboard.html">
+                    <li>Geral</li>
+                </a>
+                <a href="./dashboard-pg2.html">
+                    <li class="ativo">Lixeiras</li>
+                </a>
+                <a href="./rotas.html">
+                    <li>Rotas</li>
+                </a>
+                <a href="./cadastro.html">
+                    <li>Cadastrar Usuário</li>
+                </a>
+            </ul>
         </div>
-       <div id="sair">
-    <span class="material-icons">logout</span>
-    <span class="link"><a href="./index.html">Sair</a></span>
-</div>
+        <div id="sair">
+            <span class="material-icons">logout</span>
+            <span class="link"><a href="./index.html">Sair</a></span>
+        </div>
     </div>
     <!-- <div class="graficos1">
         <div class="container">
@@ -39,370 +48,309 @@
         </div>
     </div> -->
 
-<div class="graficos">
-    <div class="container3 graficos">
-        <div class="container-pesquisa">
-            <input type="text" placeholder="Pesquisar um bairro" class="pesquisa"><button class="botao-pesquisa"><img src="../assets/img/lupa.png" class="lupa-pesquisa"></button>
+    <div class="graficos">
+        <div class="container3 graficos">
+            <div class="container-pesquisa">
+                <input type="text" placeholder="Pesquisar um bairro" class="pesquisa"><button
+                    class="botao-pesquisa"><img src="../assets/img/lupa.png" class="lupa-pesquisa"></button>
+            </div>
         </div>
-    </div>
-    <div class="container3">
-        <div class="kpi">
-            <!-- Lixeira 6 - 89% (CHEIA) -->
-            <div class="box_lixeiras1 cheia">
-                <div>
-                    <span>Ecoponto 1</span>
-                    <p>Bela Vista</p>
-                    <h3>ID: 6</h3>
-                    <h5>Capacidade:</h5>
-                    <div class="progresso-container">
-                        <div class="progresso-barra-critico" style="width: 89%;"></div>
-                        <span class="progresso-texto">89%</span>
-                    </div>
-                </div>
-                <div class="container_icone icone_cheia">
-                    <img src="../assets/img/lixeira.png" class="icone_box">
-                </div>
-            </div>
-            <!-- Lixeira 11 - 72% (MEDIO) -->
-            <div class="box_lixeiras1 medio">
-                <div>
-                    <span>Ecoponto 2</span>
-                    <p>Cambuci</p>
-                    <h3>ID: 11</h3>
-                    <h5>Capacidade:</h5>
-                    <div class="progresso-container">
-                        <div class="progresso-barra-medio" style="width: 72%;"></div>
-                        <span class="progresso-texto">72%</span>
-                    </div>
-                </div>
-                <div class="container_icone icone_medio">
-                    <img src="../assets/img/lixeira.png" class="icone_box">
-                </div>
-            </div>
-            <!-- Lixeira 13 - 67% (MEDIO) -->
-            <div class="box_lixeiras1 medio">
-                <div>
-                    <span>Ecoponto 3</span>
-                    <p>Liberdade</p>
-                    <h3>ID: 13</h3>
-                    <h5>Capacidade:</h5>
-                    <div class="progresso-container">
-                        <div class="progresso-barra-medio" style="width: 67%;"></div>
-                        <span class="progresso-texto">67%</span>
-                    </div>
-                </div>
-                <div class="container_icone icone_medio">
-                    <img src="../assets/img/lixeira.png" class="icone_box">
-                </div>
-            </div>
-            <!-- Lixeira 3 - 60% (MEDIO) -->
-            <div class="box_lixeiras1 medio">
-                <div>
-                    <span>Ecoponto 4</span>
-                    <p>Bela Vista</p>
-                    <h3>ID: 3</h3>
-                    <h5>Capacidade:</h5>
-                    <div class="progresso-container">
-                        <div class="progresso-barra-medio" style="width: 60%;"></div>
-                        <span class="progresso-texto">60%</span>
-                    </div>
-                </div>
-                <div class="container_icone icone_medio">
-                    <img src="../assets/img/lixeira.png" class="icone_box">
-                </div>
+        <div class="container3">
+            <div class="kpi" id="div_teste">
+                <!-- Lixeira 6 - 89% (CHEIA) -->
+                
             </div>
         </div>
     </div>
-</div>
 
 
-<div class="graficos">
-    <div class="container3">
-        <div class="kpi">
-      
-            <div class="box_lixeiras1 medio">
-                <div>
-                    <span>Ecoponto 5</span>
-                    <p>Cambuci</p>
-                    <h3>ID: 20</h3>
-                    <h5>Capacidade:</h5>
-                    <div class="progresso-container">
-                        <div class="progresso-barra-medio" style="width: 60%;"></div>
-                        <span class="progresso-texto">60%</span>
+    <div class="graficos">
+        <div class="container3">
+            <div class="kpi">
+
+                <div class="box_lixeiras1 medio">
+                    <div>
+                        <span>Ecoponto 5</span>
+                        <p>Cambuci</p>
+                        <h3>ID: 20</h3>
+                        <h5>Capacidade:</h5>
+                        <div class="progresso-container">
+                            <div class="progresso-barra-medio" style="width: 60%;"></div>
+                            <span class="progresso-texto">60%</span>
+                        </div>
+                    </div>
+                    <div class="container_icone icone_medio">
+                        <img src="../assets/img/lixeira.png" class="icone_box">
                     </div>
                 </div>
-                <div class="container_icone icone_medio">
-                    <img src="../assets/img/lixeira.png" class="icone_box">
-                </div>
-            </div>
-           
-            <div class="box_lixeiras1 medio">
-                <div>
-                    <span>Ecoponto 1</span>
-                    <p>Liberdade</p>
-                    <h3>ID: 7</h3>
-                    <h5>Capacidade:</h5>
-                    <div class="progresso-container">
-                        <div class="progresso-barra-medio" style="width: 52%;"></div>
-                        <span class="progresso-texto">52%</span>
+
+                <div class="box_lixeiras1 medio">
+                    <div>
+                        <span>Ecoponto 1</span>
+                        <p>Liberdade</p>
+                        <h3>ID: 7</h3>
+                        <h5>Capacidade:</h5>
+                        <div class="progresso-container">
+                            <div class="progresso-barra-medio" style="width: 52%;"></div>
+                            <span class="progresso-texto">52%</span>
+                        </div>
+                    </div>
+                    <div class="container_icone icone_medio">
+                        <img src="../assets/img/lixeira.png" class="icone_box">
                     </div>
                 </div>
-                <div class="container_icone icone_medio">
-                    <img src="../assets/img/lixeira.png" class="icone_box">
-                </div>
-            </div>
-           
-            <div class="box_lixeiras1 vazia">
-                <div>
-                    <span>Ecoponto 2</span>
-                    <p>Bela Vista</p>
-                    <h3>ID: 16</h3>
-                    <h5>Capacidade:</h5>
-                    <div class="progresso-container">
-                        <div class="progresso-barra-vazia" style="width: 48%;"></div>
-                        <span class="progresso-texto">48%</span>
+
+                <div class="box_lixeiras1 vazia">
+                    <div>
+                        <span>Ecoponto 2</span>
+                        <p>Bela Vista</p>
+                        <h3>ID: 16</h3>
+                        <h5>Capacidade:</h5>
+                        <div class="progresso-container">
+                            <div class="progresso-barra-vazia" style="width: 48%;"></div>
+                            <span class="progresso-texto">48%</span>
+                        </div>
+                    </div>
+                    <div class="container_icone icone_vazia">
+                        <img src="../assets/img/lixeira.png" class="icone_box">
                     </div>
                 </div>
-                <div class="container_icone icone_vazia">
-                    <img src="../assets/img/lixeira.png" class="icone_box">
-                </div>
-            </div>
-          
-            <div class="box_lixeiras1 vazia">
-                <div>
-                    <span>Ecoponto 3</span>
-                    <p>Cambuci</p>
-                    <h3>ID: 12</h3>
-                    <h5>Capacidade:</h5>
-                    <div class="progresso-container">
-                        <div class="progresso-barra-vazia" style="width: 45%;"></div>
-                        <span class="progresso-texto">45%</span>
+
+                <div class="box_lixeiras1 vazia">
+                    <div>
+                        <span>Ecoponto 3</span>
+                        <p>Cambuci</p>
+                        <h3>ID: 12</h3>
+                        <h5>Capacidade:</h5>
+                        <div class="progresso-container">
+                            <div class="progresso-barra-vazia" style="width: 45%;"></div>
+                            <span class="progresso-texto">45%</span>
+                        </div>
                     </div>
-                </div>
-                <div class="container_icone icone_vazia">
-                    <img src="../assets/img/lixeira.png" class="icone_box">
+                    <div class="container_icone icone_vazia">
+                        <img src="../assets/img/lixeira.png" class="icone_box">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 
-<div class="graficos">
-    <div class="container3">
-        <div class="kpi">
-            <!-- Lixeira 9 - 40% (VAZIA) -->
-            <div class="box_lixeiras1 vazia">
-                <div>
-                    <span>Ecoponto 4</span>
-                    <p>Liberdade</p>
-                    <h3>ID: 9</h3>
-                    <h5>Capacidade:</h5>
-                    <div class="progresso-container">
-                        <div class="progresso-barra-vazia" style="width: 40%;"></div>
-                        <span class="progresso-texto">40%</span>
+    <div class="graficos">
+        <div class="container3">
+            <div class="kpi">
+                <!-- Lixeira 9 - 40% (VAZIA) -->
+                <div class="box_lixeiras1 vazia">
+                    <div>
+                        <span>Ecoponto 4</span>
+                        <p>Liberdade</p>
+                        <h3>ID: 9</h3>
+                        <h5>Capacidade:</h5>
+                        <div class="progresso-container">
+                            <div class="progresso-barra-vazia" style="width: 40%;"></div>
+                            <span class="progresso-texto">40%</span>
+                        </div>
+                    </div>
+                    <div class="container_icone icone_vazia">
+                        <img src="../assets/img/lixeira.png" class="icone_box">
                     </div>
                 </div>
-                <div class="container_icone icone_vazia">
-                    <img src="../assets/img/lixeira.png" class="icone_box">
-                </div>
-            </div>
-            <!-- Lixeira 4 - 32% (VAZIA) -->
-            <div class="box_lixeiras1 vazia">
-                <div>
-                    <span>Ecoponto 5</span>
-                    <p>Bela Vista</p>
-                    <h3>ID: 4</h3>
-                    <h5>Capacidade:</h5>
-                    <div class="progresso-container">
-                        <div class="progresso-barra-vazia" style="width: 32%;"></div>
-                        <span class="progresso-texto">32%</span>
+                <!-- Lixeira 4 - 32% (VAZIA) -->
+                <div class="box_lixeiras1 vazia">
+                    <div>
+                        <span>Ecoponto 5</span>
+                        <p>Bela Vista</p>
+                        <h3>ID: 4</h3>
+                        <h5>Capacidade:</h5>
+                        <div class="progresso-container">
+                            <div class="progresso-barra-vazia" style="width: 32%;"></div>
+                            <span class="progresso-texto">32%</span>
+                        </div>
+                    </div>
+                    <div class="container_icone icone_vazia">
+                        <img src="../assets/img/lixeira.png" class="icone_box">
                     </div>
                 </div>
-                <div class="container_icone icone_vazia">
-                    <img src="../assets/img/lixeira.png" class="icone_box">
-                </div>
-            </div>
-            <!-- Lixeira 5 - 28% (VAZIA) -->
-            <div class="box_lixeiras1 vazia">
-                <div>
-                    <span>Ecoponto 1</span>
-                    <p>Cambuci</p>
-                    <h3>ID: 5</h3>
-                    <h5>Capacidade:</h5>
-                    <div class="progresso-container">
-                        <div class="progresso-barra-vazia" style="width: 28%;"></div>
-                        <span class="progresso-texto">28%</span>
+                <!-- Lixeira 5 - 28% (VAZIA) -->
+                <div class="box_lixeiras1 vazia">
+                    <div>
+                        <span>Ecoponto 1</span>
+                        <p>Cambuci</p>
+                        <h3>ID: 5</h3>
+                        <h5>Capacidade:</h5>
+                        <div class="progresso-container">
+                            <div class="progresso-barra-vazia" style="width: 28%;"></div>
+                            <span class="progresso-texto">28%</span>
+                        </div>
+                    </div>
+                    <div class="container_icone icone_vazia">
+                        <img src="../assets/img/lixeira.png" class="icone_box">
                     </div>
                 </div>
-                <div class="container_icone icone_vazia">
-                    <img src="../assets/img/lixeira.png" class="icone_box">
-                </div>
-            </div>
-            <!-- Lixeira 10 - 20% (VAZIA) -->
-            <div class="box_lixeiras1 vazia">
-                <div>
-                    <span>Ecoponto 2</span>
-                    <p>Liberdade</p>
-                    <h3>ID: 10</h3>
-                    <h5>Capacidade:</h5>
-                    <div class="progresso-container">
-                        <div class="progresso-barra-vazia" style="width: 20%;"></div>
-                        <span class="progresso-texto">20%</span>
+                <!-- Lixeira 10 - 20% (VAZIA) -->
+                <div class="box_lixeiras1 vazia">
+                    <div>
+                        <span>Ecoponto 2</span>
+                        <p>Liberdade</p>
+                        <h3>ID: 10</h3>
+                        <h5>Capacidade:</h5>
+                        <div class="progresso-container">
+                            <div class="progresso-barra-vazia" style="width: 20%;"></div>
+                            <span class="progresso-texto">20%</span>
+                        </div>
                     </div>
-                </div>
-                <div class="container_icone icone_vazia">
-                    <img src="../assets/img/lixeira.png" class="icone_box">
+                    <div class="container_icone icone_vazia">
+                        <img src="../assets/img/lixeira.png" class="icone_box">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 
-<div class="graficos">
-    <div class="container3">
-        <div class="kpi">
-          
-            <div class="box_lixeiras1 vazia">
-                <div>
-                    <span>Ecoponto 3</span>
-                    <p>Bela Vista</p>
-                    <h3>ID: 2</h3>
-                    <h5>Capacidade:</h5>
-                    <div class="progresso-container">
-                        <div class="progresso-barra-vazia" style="width: 18%;"></div>
-                        <span class="progresso-texto">18%</span>
+    <div class="graficos">
+        <div class="container3">
+            <div class="kpi">
+
+                <div class="box_lixeiras1 vazia">
+                    <div>
+                        <span>Ecoponto 3</span>
+                        <p>Bela Vista</p>
+                        <h3>ID: 2</h3>
+                        <h5>Capacidade:</h5>
+                        <div class="progresso-container">
+                            <div class="progresso-barra-vazia" style="width: 18%;"></div>
+                            <span class="progresso-texto">18%</span>
+                        </div>
+                    </div>
+                    <div class="container_icone icone_vazia">
+                        <img src="../assets/img/lixeira.png" class="icone_box">
                     </div>
                 </div>
-                <div class="container_icone icone_vazia">
-                    <img src="../assets/img/lixeira.png" class="icone_box">
-                </div>
-            </div>
-           
-            <div class="box_lixeiras1 vazia">
-                <div>
-                    <span>Ecoponto 4</span>
-                    <p>Cambuci</p>
-                    <h3>ID: 15</h3>
-                    <h5>Capacidade:</h5>
-                    <div class="progresso-container">
-                        <div class="progresso-barra-vazia" style="width: 18%;"></div>
-                        <span class="progresso-texto">18%</span>
+
+                <div class="box_lixeiras1 vazia">
+                    <div>
+                        <span>Ecoponto 4</span>
+                        <p>Cambuci</p>
+                        <h3>ID: 15</h3>
+                        <h5>Capacidade:</h5>
+                        <div class="progresso-container">
+                            <div class="progresso-barra-vazia" style="width: 18%;"></div>
+                            <span class="progresso-texto">18%</span>
+                        </div>
+                    </div>
+                    <div class="container_icone icone_vazia">
+                        <img src="../assets/img/lixeira.png" class="icone_box">
                     </div>
                 </div>
-                <div class="container_icone icone_vazia">
-                    <img src="../assets/img/lixeira.png" class="icone_box">
-                </div>
-            </div>
-            
-            <div class="box_lixeiras1 vazia">
-                <div>
-                    <span>Ecoponto 5</span>
-                    <p>Liberdade</p>
-                    <h3>ID: 18</h3>
-                    <h5>Capacidade:</h5>
-                    <div class="progresso-container">
-                        <div class="progresso-barra-vazia" style="width: 15%;"></div>
-                        <span class="progresso-texto">15%</span>
+
+                <div class="box_lixeiras1 vazia">
+                    <div>
+                        <span>Ecoponto 5</span>
+                        <p>Liberdade</p>
+                        <h3>ID: 18</h3>
+                        <h5>Capacidade:</h5>
+                        <div class="progresso-container">
+                            <div class="progresso-barra-vazia" style="width: 15%;"></div>
+                            <span class="progresso-texto">15%</span>
+                        </div>
+                    </div>
+                    <div class="container_icone icone_vazia">
+                        <img src="../assets/img/lixeira.png" class="icone_box">
                     </div>
                 </div>
-                <div class="container_icone icone_vazia">
-                    <img src="../assets/img/lixeira.png" class="icone_box">
-                </div>
-            </div>
-            
-            <div class="box_lixeiras1 vazia">
-                <div>
-                    <span>Ecoponto 1</span>
-                    <p>Bela Vista</p>
-                    <h3>ID: 8</h3>
-                    <h5>Capacidade:</h5>
-                    <div class="progresso-container">
-                        <div class="progresso-barra-vazia" style="width: 12%;"></div>
-                        <span class="progresso-texto">12%</span>
+
+                <div class="box_lixeiras1 vazia">
+                    <div>
+                        <span>Ecoponto 1</span>
+                        <p>Bela Vista</p>
+                        <h3>ID: 8</h3>
+                        <h5>Capacidade:</h5>
+                        <div class="progresso-container">
+                            <div class="progresso-barra-vazia" style="width: 12%;"></div>
+                            <span class="progresso-texto">12%</span>
+                        </div>
                     </div>
-                </div>
-                <div class="container_icone icone_vazia">
-                    <img src="../assets/img/lixeira.png" class="icone_box">
+                    <div class="container_icone icone_vazia">
+                        <img src="../assets/img/lixeira.png" class="icone_box">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 
-<div class="graficos">
-    <div class="container3">
-        <div class="kpi">
-            
-            <div class="box_lixeiras1 vazia">
-                <div>
-                    <span>Ecoponto 2</span>
-                    <p>Cambuci</p>
-                    <h3>ID: 19</h3>
-                    <h5>Capacidade:</h5>
-                    <div class="progresso-container">
-                        <div class="progresso-barra-vazia" style="width: 12%;"></div>
-                        <span class="progresso-texto">12%</span>
+    <div class="graficos">
+        <div class="container3">
+            <div class="kpi">
+
+                <div class="box_lixeiras1 vazia">
+                    <div>
+                        <span>Ecoponto 2</span>
+                        <p>Cambuci</p>
+                        <h3>ID: 19</h3>
+                        <h5>Capacidade:</h5>
+                        <div class="progresso-container">
+                            <div class="progresso-barra-vazia" style="width: 12%;"></div>
+                            <span class="progresso-texto">12%</span>
+                        </div>
+                    </div>
+                    <div class="container_icone icone_vazia">
+                        <img src="../assets/img/lixeira.png" class="icone_box">
                     </div>
                 </div>
-                <div class="container_icone icone_vazia">
-                    <img src="../assets/img/lixeira.png" class="icone_box">
-                </div>
-            </div>
-           
-            <div class="box_lixeiras1 vazia">
-                <div>
-                    <span>Ecoponto 3</span>
-                    <p>Liberdade</p>
-                    <h3>ID: 17</h3>
-                    <h5>Capacidade:</h5>
-                    <div class="progresso-container">
-                        <div class="progresso-barra-vazia" style="width: 10%;"></div>
-                        <span class="progresso-texto">10%</span>
+
+                <div class="box_lixeiras1 vazia">
+                    <div>
+                        <span>Ecoponto 3</span>
+                        <p>Liberdade</p>
+                        <h3>ID: 17</h3>
+                        <h5>Capacidade:</h5>
+                        <div class="progresso-container">
+                            <div class="progresso-barra-vazia" style="width: 10%;"></div>
+                            <span class="progresso-texto">10%</span>
+                        </div>
+                    </div>
+                    <div class="container_icone icone_vazia">
+                        <img src="../assets/img/lixeira.png" class="icone_box">
                     </div>
                 </div>
-                <div class="container_icone icone_vazia">
-                    <img src="../assets/img/lixeira.png" class="icone_box">
-                </div>
-            </div>
-          
-            <div class="box_lixeiras1 vazia">
-                <div>
-                    <span>Ecoponto 4</span>
-                    <p>Bela Vista</p>
-                    <h3>ID: 1</h3>
-                    <h5>Capacidade:</h5>
-                    <div class="progresso-container">
-                        <div class="progresso-barra-vazia" style="width: 8%;"></div>
-                        <span class="progresso-texto">8%</span>
+
+                <div class="box_lixeiras1 vazia">
+                    <div>
+                        <span>Ecoponto 4</span>
+                        <p>Bela Vista</p>
+                        <h3>ID: 1</h3>
+                        <h5>Capacidade:</h5>
+                        <div class="progresso-container">
+                            <div class="progresso-barra-vazia" style="width: 8%;"></div>
+                            <span class="progresso-texto">8%</span>
+                        </div>
+                    </div>
+                    <div class="container_icone icone_vazia">
+                        <img src="../assets/img/lixeira.png" class="icone_box">
                     </div>
                 </div>
-                <div class="container_icone icone_vazia">
-                    <img src="../assets/img/lixeira.png" class="icone_box">
-                </div>
-            </div>
-            
-            <div class="box_lixeiras1 vazia">
-                <div>
-                    <span>Ecoponto 5</span>
-                    <p>Cambuci</p>
-                    <h3>ID: 14</h3>
-                    <h5>Capacidade:</h5>
-                    <div class="progresso-container">
-                        <div class="progresso-barra-vazia" style="width: 5%;"></div>
-                        <span class="progresso-texto">5%</span>
+
+                <div class="box_lixeiras1 vazia">
+                    <div>
+                        <span>Ecoponto 5</span>
+                        <p>Cambuci</p>
+                        <h3>ID: 14</h3>
+                        <h5>Capacidade:</h5>
+                        <div class="progresso-container">
+                            <div class="progresso-barra-vazia" style="width: 5%;"></div>
+                            <span class="progresso-texto">5%</span>
+                        </div>
                     </div>
-                </div>
-                <div class="container_icone icone_vazia">
-                    <img src="../assets/img/lixeira.png" class="icone_box">
+                    <div class="container_icone icone_vazia">
+                        <img src="../assets/img/lixeira.png" class="icone_box">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
+    
 </body>
 
 </html>
@@ -413,45 +361,244 @@
         numeroLixeira.push("Lixeira " + i);
     }
 
-    Chart.defaults.backgroundColor = ['#12A454', '#009775', '#48c962']
+    // b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
-    const linha_lixeiras = document.getElementById('graf_lixeiras_total');
-    let grafico = new Chart(linha_lixeiras, {
-        type: 'line',
-        data: {
-            labels: numeroLixeira,
+    let proximaAtualizacao;
+    window.onload = exibirEcopontosDoUsuario();
+
+    function exibirEcopontosDoUsuario() {
+        var ecopontos = JSON.parse(sessionStorage.ECOPONTOS);
+        ecopontos.forEach(item => {
+            // document.getElementById("btnAquario").innerHTML += `
+            // <button class="btn-chart" onclick="exibirEcopontos(${item.id_ecoponto})" id="btnAquario${item.id_ecoponto}">${item.nome_ecoponto}</button>
+            // `
+
+            // document.getElementById("graficos").innerHTML += `
+            //     <div id="grafico${item.id_ecoponto}" class="display-none">
+            //         <h3 class="tituloGraficos">
+            //             <span id="tituloAquario${item.id_ecoponto}">${item.nome_ecoponto}</span>
+            //         </h3>
+            //         <div class="graph">
+            //             <canvas id="myChartCanvas${item.id_ecoponto}"></canvas>
+            //         </div>
+            //         <div class="label-captura">
+            //             <p id="avisoCaptura${item.id_ecoponto}" style="color: white"></p>
+            //         </div>
+            //     </div>
+            // `
+
+            obterDadosGrafico(item.id_ecoponto)
+        });
+
+        if (ecopontos.length > 0) {
+            exibirEcopontos(ecopontos[0].id_ecoponto)
+        }
+    }
+
+    function alterarTitulo(id_ecoponto) {
+        var tituloEcopontos = document.getElementById(`tituloAquario${id_ecoponto}`)
+        var nome_ecoponto = JSON.parse(sessionStorage.ECOPONTOS).find(item => item.id_ecoponto == id_ecoponto).nome_ecoponto;
+        // tituloEcopontos.innerHTML = "Últimas medidas de Temperatura e Umidade do <span style='color: #e6005a'>" + nome_ecoponto + "</span>"
+    }
+
+    function exibirEcopontos(id_ecoponto) {
+        let todosOsGraficos = JSON.parse(sessionStorage.ECOPONTOS);
+
+        for (i = 0; i < todosOsGraficos.length; i++) {
+            // exibindo - ou não - o gráfico
+            if (todosOsGraficos[i].id_ecoponto != id_ecoponto) {
+                let elementoAtual = document.getElementById(`grafico${todosOsGraficos[i].id_ecoponto}`)
+                if (elementoAtual.classList.contains("display-block")) {
+                    elementoAtual.classList.remove("display-block")
+                }
+                elementoAtual.classList.add("display-none")
+
+                // alterando estilo do botão
+                // let btnAtual = document.getElementById(`btnAquario${todosOsGraficos[i].id_ecoponto}`)
+                if (btnAtual.classList.contains("btn-pink")) {
+                    btnAtual.classList.remove("btn-pink")
+                }
+                btnAtual.classList.add("btn-white")
+            }
+        }
+
+        // exibindo - ou não - o gráfico
+        let graficoExibir = document.getElementById(`grafico${id_ecoponto}`)
+        graficoExibir.classList.remove("display-none")
+        graficoExibir.classList.add("display-block")
+
+        // alterando estilo do botão
+        // let btnExibir = document.getElementById(`btnAquario${id_ecoponto}`)
+        btnExibir.classList.remove("btn-white")
+        btnExibir.classList.add("btn-pink")
+    }
+
+    // O gráfico é construído com três funções:
+    // 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
+    // 2. plotarGrafico -> Monta o gráfico com os dados trazidos e exibe em tela
+    // 3. atualizarGrafico -> Atualiza o gráfico, trazendo novamente dados do Banco
+
+    // Esta função *obterDadosGrafico* busca os últimos dados inseridos em tabela de medidas.
+    // para, quando carregar o gráfico da primeira vez, já trazer com vários dados.
+    // A função *obterDadosGrafico* também invoca a função *plotarGrafico*
+
+    //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
+    //     Para ajustar o "select", ajuste o comando sql em src/models
+    function obterDadosGrafico(id_ecoponto) {
+
+        alterarTitulo(id_ecoponto)
+
+        if (proximaAtualizacao != undefined) {
+            clearTimeout(proximaAtualizacao);
+        }
+
+        fetch(`/medidas/ultimas/${id_ecoponto}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
+
+                    plotarGrafico(resposta, id_ecoponto);
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
+    // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
+    // A função *plotarGrafico* também invoca a função *atualizarGrafico*
+    function plotarGrafico(resposta, id_ecoponto) {
+
+        console.log('iniciando plotagem do gráfico...');
+
+        // Criando estrutura para plotar gráfico - labels
+        let labels = [];
+
+        // Criando estrutura para plotar gráfico - dados
+        let dados = {
+            labels: labels,
             datasets: [{
-                label: 'Nível de Carga',
-                data: [8, 18, 60, 32, 28, 89, 52, 12, 40, 20, 72, 45, 67, 5, 18, 48, 10, 15, 12, 60],
-                borderColor: '#38a169',
-                backgroundColor: '#38a169',
-                borderWidth: 3, //espessura da linha
-                tension: 0.4, //efeito curvo, se for 0 a linha fica reta
-                pointRadius: 4, //tamanho da bolinha
-                pointBackgroundColor: '#38a169'
-            }]
-        },
-        options: {
-             plugins: {
-        title: {
-            display: true,
-            text: 'Nível percentual de cada lixeira',
-            font: {
-                size: 18
+                label: 'Nível de preenchimento',
+                data: [],
+                fill: false,
+                borderColor: 'rgb(75, 192, 192)',
+                tension: 0.1
             }
+            ]
+        };
+
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log(resposta)
+        
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            labels.push(registro.cadastrado_em);
+            dados.datasets[0].data.push(registro.nivel_preenchimento);
+            div_teste.innerHTML += `<div class="box_lixeiras1 medio">
+                        <div>
+                        <span>Ecoponto ${i}</span>
+                        <p>Cambuci</p>
+                        <h3>ID: 11</h3>
+                        <h5>Capacidade:</h5>
+                        <div class="progresso-container">
+                            <progress value="${registro.nivel_preenchimento}" max="100"></progress><span>${registro.nivel_preenchimento}</span>
+                        </div>
+                    </div>
+                    <div class="container_icone icone_medio">
+                        <img src="../assets/img/lixeira.png" class="icone_box">
+                    </div>
+                    </div>`
         }
-    },
-            scales: {
-                y: {
-                    beginAtZero: true,
+        
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('Labels:')
+        console.log(labels)
+        console.log('Dados:')
+        console.log(dados.datasets)
+        console.log('----------------------------------------------')
+
+        // Criando estrutura para plotar gráfico - config
+        const config = {
+            type: 'progress',
+            data: dados,
+        };
+
+        // Adicionando gráfico criado em div na tela
+        let myChart = new Chart(
+            document.getElementById(`myChartCanvas${id_ecoponto}`),
+            config
+        );
+
+        setTimeout(() => atualizarGrafico(id_ecoponto, dados, myChart), 2000);
+    }
 
 
-                },
-                x: {
-                    grid: { display: false },
-                },
+    // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
+    // buscando a última medida inserida em tabela contendo as capturas, 
+
+    //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
+    //     Para ajustar o "select", ajuste o comando sql em src/models
+    function atualizarGrafico(id_ecoponto, dados, myChart) {
+
+
+
+        fetch(`/medidas/tempo-real/${id_ecoponto}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (novoRegistro) {
+
+                    obterdados(id_ecoponto);
+                    // alertar(novoRegistro, idAquario);
+                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                    console.log(`Dados atuais do gráfico:`);
+                    console.log(dados);
+
+                    let avisoCaptura = document.getElementById(`avisoCaptura${id_ecoponto}`)
+                    avisoCaptura.innerHTML = ""
+
+
+                    if (novoRegistro[0].cadastrado_em == dados.labels[dados.labels.length - 1]) {
+                        console.log("---------------------------------------------------------------")
+                        console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+                        avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
+                        console.log("Horário do novo dado capturado:")
+                        console.log(novoRegistro[0].cadastrado_em)
+                        console.log("Horário do último dado capturado:")
+                        console.log(dados.labels[dados.labels.length - 1])
+                        console.log("---------------------------------------------------------------")
+                    } else {
+                        // tirando e colocando valores no gráfico
+                        dados.labels.shift(); // apagar o primeiro
+                        dados.labels.push(novoRegistro[0].cadastrado_em); // incluir um novo momento
+
+                        dados.datasets[0].data.shift();  // apagar o primeiro de umidade
+                        dados.datasets[0].data.push(novoRegistro[0].nivel_preenchimento); // incluir uma nova medida de umidade
+
+                        
+
+                        myChart.update();
+                    }
+
+                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(id_ecoponto, dados, myChart), 2000);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(id_ecoponto, dados, myChart), 2000);
             }
-            
-        }
-    });
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+    }
 </script>
