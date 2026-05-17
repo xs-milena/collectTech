@@ -139,8 +139,8 @@
             sessionStorage.NOME_USUARIO = json.nome;
             sessionStorage.ID_USUARIO = json.id;
             sessionStorage.CODIGO_ATIVACAO = json.codigo_ativacao;
+            sessionStorage.ID_EMPRESA = json.id_empresa;  
             sessionStorage.ECOPONTOS = JSON.stringify(json.ecopontos);
-            sessionStorage.ID_EMPRESA = json.fk_empresa;  
             setTimeout(function () {
               window.location = "./dashboard/dashboard.html";
             }, 1000); // apenas para exibir o loading

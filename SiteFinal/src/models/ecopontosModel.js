@@ -27,6 +27,7 @@ function listarEcoponto(id_empresa) {
     JOIN ecoponto e ON fk_ecoponto = e.id_ecoponto
     JOIN subprefeitura ON e.fk_subprefeitura = id_subprefeitura
     JOIN empresa ON fk_empresa = id_empresa 
+    WHERE id_empresa = ${id_empresa}
     ORDER BY l.cadastrado_em DESC LIMIT 7;`
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
