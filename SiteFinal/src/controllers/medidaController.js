@@ -4,11 +4,11 @@ function buscarUltimasMedidas(req, res) {
 
     const limite_linhas = 7;
 
-    var id_ecoponto = req.params.id_ecoponto;
+    var id_empresa = req.params.id_empresa;
 
     console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
 
-    medidaModel.buscarUltimasMedidas(id_ecoponto, limite_linhas).then(function (resultado) {
+    medidaModel.buscarUltimasMedidas(id_empresa, limite_linhas).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -24,11 +24,11 @@ function buscarUltimasMedidas(req, res) {
 
 function buscarMedidasEmTempoReal(req, res) {
 
-    var id_ecoponto = req.params.id_ecoponto;
+    var id_empresa = req.params.id_empresa;
 
     console.log(`Recuperando medidas em tempo real`);
 
-    medidaModel.buscarMedidasEmTempoReal(id_ecoponto).then(function (resultado) {
+    medidaModel.buscarMedidasEmTempoReal(id_empresa).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
