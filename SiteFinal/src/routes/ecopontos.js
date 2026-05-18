@@ -15,4 +15,8 @@ router.get(`/listarEcoponto/:id_empresa`, function (req, res) {
   ecopontosController.listarEcoponto(req, res);
 })
 
+router.get(`/listarBairro/:id_empresa`, function (req, res) {
+  ecopontosController.listarBairro(req, res);
+})
+
 module.exports = router;

@@ -27,15 +27,25 @@ function listarEcoponto(id_empresa) {
     JOIN ecoponto e ON fk_ecoponto = e.id_ecoponto
     JOIN subprefeitura ON e.fk_subprefeitura = id_subprefeitura
     JOIN empresa ON fk_empresa = id_empresa 
-    WHERE id_empresa = ${id_empresa}
-    ORDER BY l.cadastrado_em DESC LIMIT 7;`
+    where id_empresa = ${id_empresa}
+    ORDER BY l.cadastrado_em DESC;`
+
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
+
+function listarBairro(id_empresa) {
+  var instrucaoSql = `
+  select id_empresa, nome_subprefeitura, soma_nivel_cheia, soma_nivel_medio, soma_nivel_baixo from vw_bairros_empresa
+  where id_empresa = ${id_empresa};
+  `;
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);
 }
 
 function cadastrar(id_empresa) {
-  
+
   var instrucaoSql = `INSERT INTO (fk_empresa) ecoponto VALUES (${id_empresa})`;
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
@@ -45,5 +55,6 @@ function cadastrar(id_empresa) {
 module.exports = {
   buscarEcopontosPorEmpresa,
   listarEcoponto,
+  listarBairro,
   cadastrar
 }

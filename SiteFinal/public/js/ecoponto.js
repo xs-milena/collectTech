@@ -6,4 +6,8 @@ router.get("/listarEcoponto", function (req, res) {
     ecopontosController.listarEcoponto(req, res);
 });
 
+router.get("/listarBairro", function (req, res) {
+    ecopontosController.listarBairro(req, res);
+});
+
 module.exports = { router };

@@ -12,11 +12,9 @@ function autenticar(req, res) {
         res.status(400).send("Seu email está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está indefinida!");
-    }  
-    
-    else 
-        
-        {
+    }
+
+    else {
 
         usuarioModel.autenticar(codigo_ativacao, email, senha)
             .then(
@@ -30,15 +28,23 @@ function autenticar(req, res) {
                         ecopontosModel.buscarEcopontosPorEmpresa(resultadoAutenticar[0].id_empresa)
                             .then((resultadoEcopontos) => {
                                 if (resultadoEcopontos.length > 0) {
-                                    res.json({
-                                        id: resultadoAutenticar[0].id_funcionario,
-                                        email: resultadoAutenticar[0].email,
-                                        nome: resultadoAutenticar[0].nome,
-                                        senha: resultadoAutenticar[0].senha,
-                                        codigo_ativacao: resultadoAutenticar[0].codigo_ativacao,
-                                        id_empresa: resultadoAutenticar[0].id_empresa,
-                                        ecopontos: resultadoEcopontos
-                                    });
+                                    ecopontosModel.listarBairro(resultadoAutenticar[0].id_empresa)
+                                        .then((resultadoBairro) => {
+                                            if (resultadoBairro.length > 0) {
+                                                res.json({
+                                                    id: resultadoAutenticar[0].id_funcionario,
+                                                    email: resultadoAutenticar[0].email,
+                                                    nome: resultadoAutenticar[0].nome,
+                                                    senha: resultadoAutenticar[0].senha,
+                                                    codigo_ativacao: resultadoAutenticar[0].codigo_ativacao,
+                                                    id_empresa: resultadoAutenticar[0].id_empresa,
+                                                    ecopontos: resultadoEcopontos,
+                                                    vw_bairros_empresa: resultadoBairro
+                                                });
+                                            } else {
+                                                res.status(204).json({ vw_bairros_empresa: [] });
+                                            }
+                                        })
                                 } else {
                                     res.status(204).json({ ecopontos: [] });
                                 }
@@ -105,7 +111,7 @@ function cadastrar(req, res) {
         res.status(400).send("Sua senha está undefined!");
     } else if (fkEmpresa == undefined) {
         res.status(400).send("Sua empresa a vincular está undefined!");
-    }else if (cargo == undefined) {
+    } else if (cargo == undefined) {
         res.status(400).send("Seu cargo está undefined!");
     } else {
 
