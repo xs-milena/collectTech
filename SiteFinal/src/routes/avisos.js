@@ -19,12 +19,20 @@ router.post("/publicar/:idUsuario", function (req, res) {
     avisoController.publicar(req, res);
 });
 
-router.put("/editar/:idAviso", function (req, res) {
+router.put("/editar/:id_funcionario", function (req, res) {
     avisoController.editar(req, res);
 });
 
-router.delete("/deletar/:idAviso", function (req, res) {
-    avisoController.deletar(req, res);
+router.put("/desativar/:id_funcionario", function (req, res) {
+    avisoController.desativar(req, res);
+});
+
+router.get("/buscarDados", function (req, res) {
+    avisoController.buscarDados(req, res);
+});
+
+router.get("/listarFuncionarios", function (req, res) {
+    avisoController.listarFuncionarios(req, res);
 });
 
 module.exports = router;

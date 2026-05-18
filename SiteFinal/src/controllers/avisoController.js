@@ -88,11 +88,71 @@ function publicar(req, res) {
     }
 }
 
-function editar(req, res) {
-    var novaDescricao = req.body.descricao;
-    var idAviso = req.params.idAviso;
+function buscarDados(req, res) {
+    var nomeFuncionario = req.query.nome;
+    var emailFuncionario = req.query.email;
 
-    avisoModel.editar(novaDescricao, idAviso)
+    if (nomeFuncionario == undefined || emailFuncionario == undefined) {
+        res.status(400).send("Nome ou Email estão indefinidos!");
+        return;
+    }
+
+    avisoModel.buscarDados(nomeFuncionario, emailFuncionario)
+        .then(
+            function (resultado) {
+                if (resultado.length > 0) {
+                    res.status(200).json(resultado[0]);
+                } else {
+                    res.status(204).send("Nenhum resultado encontrado no buscarDados!");
+                }
+            }
+        )
+        .catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "Houve um erro ao buscar os buscar o nome do funcionario: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function listarFuncionarios(req, res) {
+
+    avisoModel.listarFuncionarios()
+        .then(
+            function (resultado) {
+                if (resultado.length > 0) {
+                    res.status(200).json(resultado);
+                } else {
+                    res.status(204).send("Nenhum resultado encontrado!");
+                }
+            }
+        )
+        .catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "Houve um erro ao buscar os avisos: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function editar(req, res) {
+    var codigoFuncionario = req.params.id_funcionario;
+    var nomeFuncionario = req.body.nome;
+    var emailFuncionario = req.body.email;
+    var telefoneFuncionario = req.body.telefone;
+    var cargoFuncionario = req.body.cargo;
+    var situacaoFuncionario = req.body.situacao_funcionario;
+
+
+    avisoModel.editar(codigoFuncionario, nomeFuncionario, emailFuncionario, telefoneFuncionario, cargoFuncionario, situacaoFuncionario)
         .then(
             function (resultado) {
                 res.json(resultado);
@@ -108,10 +168,10 @@ function editar(req, res) {
 
 }
 
-function deletar(req, res) {
-    var idAviso = req.params.idAviso;
+function desativar(req, res) {
+    var codigoFuncionario = req.params.id_funcionario;
 
-    avisoModel.deletar(idAviso)
+    avisoModel.desativar(codigoFuncionario)
         .then(
             function (resultado) {
                 res.json(resultado);
@@ -129,8 +189,10 @@ function deletar(req, res) {
 module.exports = {
     listar,
     listarPorUsuario,
+    listarFuncionarios,
     pesquisarDescricao,
     publicar,
     editar,
-    deletar
+    desativar,
+    buscarDados
 }

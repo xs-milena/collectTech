@@ -1,0 +1,228 @@
+HTML
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciar Usuário</title>
+    <link rel="stylesheet" href="../style/usuario.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="icon" href="./img/folha.png">
+</head>
+
+<body>
+    <div class="gerenciarUsuario">
+        <div class="sidebar">
+            <div>
+                <div class="logoSide">
+                    <img src="../assets/img/broto.png">
+                    <h1>Collect Tech</h1>
+                    <p>Smart City Solution</p>
+                    <div class="linha"></div>
+                </div>
+                <ul class="menu">
+                    <a href="./dashboard.html">
+                        <li>Geral</li>
+                    </a>
+                    <a href="./dashboard-pg2.html">
+                        <li>Lixeiras</li>
+                    </a>
+                    <a href="./rotas.html">
+                        <li>Rotas</li>
+                    </a>
+                    <a href="../cadastro.html">
+                        <li>Cadastrar Usuário</li>
+                    </a>
+                    <a href="./gerenciarUsuario.html">
+                        <li class="ativo">Gerenciar Usuário</li>
+                    </a>
+                </ul>
+            </div>
+            <div id="sair">
+                <span class="material-icons">logout</span>
+                <span class="link"><a href="./index.html">Sair</a></span>
+            </div>
+        </div>
+        <div class="card-gerenciarUsuario">
+            <div class="input-gerenciarUsuario">
+                <div>
+                    <div>
+                        <input class="ipt_busca" type="text" id="ipt_usuario" placeholder="Informe o nome do usuário">
+                    </div>
+                    <div>
+                        <input class="ipt_busca" type="text" id="ipt_email_usuario"
+                            placeholder="Informe o email do usuário">
+                    </div>
+                </div>
+                <div>
+                </div>
+            </div>
+            <div>
+                <button class="botao buscar" onclick="buscarDados()">Pesquisar</button>
+            </div>
+            <div class="card-informacoes">
+                <div class="nomes">
+                    <div class="informacoes">
+                        <!-- <div class="input-nomes">
+                           <div>
+                               <span class="spn-nome">Nome:</span>
+                           </div>
+                           <div>
+                               <span class="spn-nome">Email:</span>
+                           </div>
+                           <div>
+                               <span class="spn-nome">Telefone:</span>
+                           </div>
+                           <div>
+                               <span class="spn-nome">Código:</span>
+                           </div>
+                       </div> -->
+                        <div class="input-informacoes">
+                            <div>
+                                <span class="spn-nome">Código:</span>
+                                <input class="ipt" type="text" id="ipt_codigo" disabled>
+                            </div>
+                            <div>
+                                <span class="spn-nome">Nome:</span>
+                                <input class="ipt" type="text" id="ipt_nome">
+                            </div>
+                            <div>
+                                <span class="spn-nome">Email:</span>
+                                <input class="ipt" type="text" id="ipt_email">
+                            </div>
+                            <div>
+                                <span class="spn-nome">Telefone:</span>
+                                <input class="ipt" type="text" id="ipt_telefone">
+                            </div>
+                            <div>
+                                <span class="spn-nome">Cargo:</span>
+                                <input class="ipt" type="text" id="ipt_cargo">
+                            </div>
+                            <div>
+                                <span class="spn-nome">Situação:</span>
+                                <input class="ipt" type="text" id="ipt_situacao_funcionario">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="botoes-nome">
+                        <button class="botao" onclick="editar()">Modificar</button>
+                        <button class="botao desativar" onclick="desativar()">Desativar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+
+<script>
+    function buscarDados() {
+        let nomeDaBusca = ipt_usuario.value;
+        let emailDaBusca = ipt_email_usuario.value;
+
+        if (nomeDaBusca == "" || emailDaBusca == "") {
+            alert("Por favor, digite um nome e um email para buscar.");
+            return;
+        }
+
+        fetch(`/avisos/buscarDados?nome=${nomeDaBusca}&email=${emailDaBusca}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+            .then(function (resposta) {
+                if (resposta.ok) {
+                    resposta.json().then(function (dados) {
+                        console.log("Funcionário encontrado:", dados);
+
+                        ipt_nome.value = dados.nome;
+                        ipt_email.value = dados.email;
+                        ipt_telefone.value = dados.telefone;
+                        ipt_cargo.value = dados.cargo;
+                        ipt_codigo.value = dados.id_funcionario;
+                        ipt_situacao_funcionario.value = dados.situacao_funcionario ? "Ativo" : "Inativo";
+                    });
+                } else {
+                    console.error("Funcionário não encontrado ou erro no servidor.");
+                    alert("Funcionário não encontrado.");
+                }
+            })
+            .catch(function (erro) {
+                console.error("Erro de rede:", erro);
+            });
+    }
+
+    function editar() {
+        let idFuncionario = ipt_codigo.value;
+
+        if (!idFuncionario) {
+            alert("Pesquise um usuário antes de tentar modificar.");
+            return;
+        }
+
+        fetch(`/avisos/editar/${idFuncionario}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                codigo: ipt_codigo.value,
+                nome: ipt_nome.value,
+                email: ipt_email.value,
+                telefone: ipt_telefone.value,
+                cargo: ipt_cargo.value,
+                situacao_funcionario: ipt_situacao_funcionario.value === "Ativo" ? 1 : 0
+            })
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+                console.log("Post atualizado com sucesso pelo usuario de email: " + sessionStorage.getItem("email_Funcionario") + "!");
+                window.location = "/dashboard/gerenciarUsuario.html"
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
+
+
+    // deleta a pessoa?
+function desativar() { // Removido o parâmetro duplicado
+    let idFuncionario = ipt_codigo.value;
+    
+    if (!idFuncionario) {
+        alert("Pesquise um usuário antes de tentar desativar.");
+        return;
+    }
+    
+    console.log("ID capturado no clique do botão:", idFuncionario);
+
+        fetch(`/avisos/desativar/${idFuncionario}`, {
+            method: "PUT",
+            // method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+                console.log("Post deletado com sucesso pelo usuario de email: " + sessionStorage.getItem("email_Funcionario") + "!");
+                window.location = "/dashboard/gerenciarUsuario.html"
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
+</script>

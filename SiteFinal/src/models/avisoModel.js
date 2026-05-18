@@ -71,19 +71,45 @@ function publicar(titulo, descricao, idUsuario) {
     return database.executar(instrucaoSql);
 }
 
-function editar(novaDescricao, idAviso) {
-    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function editar(): ", novaDescricao, idAviso);
+function editar(codigoFuncionario, nomeFuncionario, emailFuncionario, telefoneFuncionario, cargoFuncionario, situacaoFuncionario) {
+    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Executando função editar() para o ID: " + codigoFuncionario);
+    
     var instrucaoSql = `
-        UPDATE aviso SET descricao = '${novaDescricao}' WHERE id = ${idAviso};
+        UPDATE funcionario SET  
+            nome = '${nomeFuncionario}',  
+            email = '${emailFuncionario}',  
+            telefone = '${telefoneFuncionario}',  
+            cargo = '${cargoFuncionario}',  
+            situacao_funcionario = ${situacaoFuncionario}
+        WHERE id_funcionario = ${codigoFuncionario};
+    `;
+    
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function desativar(codigoFuncionario) {
+    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Executando função desativar() para o ID: " + codigoFuncionario);
+    var instrucaoSql = `
+        UPDATE funcionario 
+        SET situacao_funcionario = false 
+        WHERE id_funcionario = ${codigoFuncionario};
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
-function deletar(idAviso) {
-    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function deletar():", idAviso);
+function buscarDados(nomeFuncionario, emailFuncionario){
     var instrucaoSql = `
-        DELETE FROM aviso WHERE id = ${idAviso};
+        SELECT id_funcionario, nome, telefone, email, cargo, situacao_funcionario FROM funcionario WHERE nome = '${nomeFuncionario}' AND email = '${emailFuncionario}';
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function listarFuncionarios() {
+    var instrucaoSql = `
+        SELECT id_funcionario, nome, email FROM funcionario;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -92,8 +118,10 @@ function deletar(idAviso) {
 module.exports = {
     listar,
     listarPorUsuario,
+    listarFuncionarios,
     pesquisarDescricao,
     publicar,
     editar,
-    deletar
+    desativar,
+    buscarDados
 }

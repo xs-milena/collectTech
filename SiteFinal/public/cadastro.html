@@ -14,7 +14,8 @@
 
 </head>
 
-<body onload="listar()">
+<body>
+  <!-- onload="listar()" -->
   <div class="sidebar">
     <div>
       <div class="logoSide">
@@ -33,7 +34,7 @@
         <a href="./rotas.html">
           <li>Rotas</li>
         </a>
-        <a href="./cadastro.html">
+        <a href="../cadastro.html">
           <li class="ativo">Cadastrar Usuário</li>
         </a>
       </ul>
@@ -142,12 +143,18 @@
         <div id="div_aguardar"></div>
 
         <div id="cardErro"></div>
+
         <!-- <button class="button voltar"><a href="login.html">← Voltar para o Login</a></button>
     </div>
 
     <p class="linkLogin">Já possui cadastro? <a class="linkVerde" href="login.html">Faça login aqui</a></p> -->
 
+
       </div>
+      <div class="listarFuncionarios">
+        <button class="button cadastro" onclick="listarFuncionarios()">Listar Funcionarios</button>
+      </div>
+       <div id="div_mensagem"></div>
     </div>
 
 </body>
@@ -156,8 +163,8 @@
 
 <script>
 
-  // Array para armazenar empresas cadastradas para validação de código de ativação 
-  let listaEmpresasCadastradas = [];
+  // Array para armazenar avisos cadastradas para validação de código de ativação 
+  let listaavisosCadastradas = [];
 
   function cadastrar() {
     // aguardar();
@@ -240,14 +247,14 @@
       finalizarAguardar();
       return false;
 
-    }else {
+    } else {
       setInterval(sumirMensagem, 5000);
     }
 
     // Verificando se o código de ativação é de alguma empresa cadastrada
-    for (let i = 0; i < listaEmpresasCadastradas.length; i++) {
-      if (listaEmpresasCadastradas[i].codigo_ativacao == codigoVar) {
-        idEmpresaVincular = listaEmpresasCadastradas[i].id_empresa
+    for (let i = 0; i < listaavisosCadastradas.length; i++) {
+      if (listaavisosCadastradas[i].codigo_ativacao == codigoVar) {
+        idEmpresaVincular = listaavisosCadastradas[i].id_empresa
         console.log("Código de ativação válido.");
         break;
       } else {
@@ -297,23 +304,77 @@
     return false;
   }
 
-  // Listando empresas cadastradas 
-  function listar() {
-    fetch("/empresas/listar", {
+  // Listando avisos cadastradas 
+  // function listarFuncionarios() {
+  //   fetch("/avisos/listarFuncionarios", {
+  //     method: "GET",
+  //   })
+  //     .then(function (resposta) {
+  //       resposta.json().then((avisos) => {
+  //         avisos.forEach((empresa) => {
+  //           listaavisosCadastradas.push(empresa);
+
+  //           console.log("listaavisosCadastradas")
+  //           console.log(listaavisosCadastradas[0].codigo_ativacao)
+  //         });
+  //       });
+  //     })
+  //     .catch(function (resposta) {
+  //       console.log(`#ERRO: ${resposta}`);
+  //     });
+  // }
+
+  // Crie a array global antes da função (caso já não tenha criado no seu código)
+  let listaFuncionariosCadastrados = [];
+
+  function listarFuncionarios() {
+    fetch("/avisos/listarFuncionarios", {
       method: "GET",
     })
       .then(function (resposta) {
-        resposta.json().then((empresas) => {
-          empresas.forEach((empresa) => {
-            listaEmpresasCadastradas.push(empresa);
+        if (resposta.ok) {
+          if (resposta.status == 204) {
+            console.log("Nenhum funcionário encontrado.");
+            return;
+          }
 
-            console.log("listaEmpresasCadastradas")
-            console.log(listaEmpresasCadastradas[0].codigo_ativacao)
+          resposta.json().then((funcionarios) => {
+            console.log("Funcionários recebidos do servidor:", funcionarios);
+
+            listaFuncionariosCadastrados = [];
+
+            funcionarios.forEach((funcionario) => {
+              let dadosSimplificados = {
+                id: funcionario.id_funcionario,
+                nome: funcionario.nome,
+                email: funcionario.email
+              };
+
+              listaFuncionariosCadastrados.push(dadosSimplificados);
+            });
+
+
+            //pega só o is, nome e email dos funcionarios
+            div_mensagem.innerHTML = "";
+
+            if (listaFuncionariosCadastrados.length > 0) {
+              for (let i = 0; i < listaFuncionariosCadastrados.length; i++) {
+                div_mensagem.innerHTML += `
+                    ID: ${listaFuncionariosCadastrados[i].id}<br>
+                    Nome: ${listaFuncionariosCadastrados[i].nome}<br>
+                    E-mail: ${listaFuncionariosCadastrados[i].email}<br><br>
+                `;
+              }
+            } else {
+              div_mensagem.innerHTML = "Nenhum funcionário cadastrado para exibir.";
+            }
           });
-        });
+        } else {
+          console.error("Erro na resposta do servidor. Status:", resposta.status);
+        }
       })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
+      .catch(function (erro) {
+        console.error(`#ERRO na requisição: ${erro}`);
       });
   }
 
