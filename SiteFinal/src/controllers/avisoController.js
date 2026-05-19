@@ -91,13 +91,14 @@ function publicar(req, res) {
 function buscarDados(req, res) {
     var nomeFuncionario = req.query.nome;
     var emailFuncionario = req.query.email;
+    var fkEmpresa = req.query.fkEmpresa;
 
     if (nomeFuncionario == undefined || emailFuncionario == undefined) {
         res.status(400).send("Nome ou Email estão indefinidos!");
         return;
     }
 
-    avisoModel.buscarDados(nomeFuncionario, emailFuncionario)
+    avisoModel.buscarDados(nomeFuncionario, emailFuncionario, fkEmpresa)
         .then(
             function (resultado) {
                 if (resultado.length > 0) {
@@ -120,8 +121,14 @@ function buscarDados(req, res) {
 }
 
 function listarFuncionarios(req, res) {
+    var fkEmpresa = req.query.fkEmpresa;
 
-    avisoModel.listarFuncionarios()
+    if (fkEmpresa == undefined) {
+        res.status(400).send("A fkEmpresa está indefinida!");
+        return;
+    }
+
+    avisoModel.listarFuncionarios(fkEmpresa)
         .then(
             function (resultado) {
                 if (resultado.length > 0) {
@@ -150,9 +157,14 @@ function editar(req, res) {
     var telefoneFuncionario = req.body.telefone;
     var cargoFuncionario = req.body.cargo;
     var situacaoFuncionario = req.body.situacao_funcionario;
+    var fkEmpresa = req.body.fkEmpresa;
 
+    if (fkEmpresa == undefined) {
+        res.status(400).send("A fkEmpresa está indefinida no corpo da requisição!");
+        return;
+    }
 
-    avisoModel.editar(codigoFuncionario, nomeFuncionario, emailFuncionario, telefoneFuncionario, cargoFuncionario, situacaoFuncionario)
+    avisoModel.editar(codigoFuncionario, nomeFuncionario, emailFuncionario, telefoneFuncionario, cargoFuncionario, situacaoFuncionario, fkEmpresa)
         .then(
             function (resultado) {
                 res.json(resultado);
@@ -170,8 +182,14 @@ function editar(req, res) {
 
 function desativar(req, res) {
     var codigoFuncionario = req.params.id_funcionario;
+    var fkEmpresa = req.query.fkEmpresa;
 
-    avisoModel.desativar(codigoFuncionario)
+    if (fkEmpresa == undefined) {
+        res.status(400).send("A fkEmpresa está indefinida na URL da requisição!");
+        return;
+    }
+
+    avisoModel.desativar(codigoFuncionario, fkEmpresa)
         .then(
             function (resultado) {
                 res.json(resultado);

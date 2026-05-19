@@ -71,7 +71,7 @@ function publicar(titulo, descricao, idUsuario) {
     return database.executar(instrucaoSql);
 }
 
-function editar(codigoFuncionario, nomeFuncionario, emailFuncionario, telefoneFuncionario, cargoFuncionario, situacaoFuncionario) {
+function editar(codigoFuncionario, nomeFuncionario, emailFuncionario, telefoneFuncionario, cargoFuncionario, situacaoFuncionario, fkEmpresa) {
     console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Executando função editar() para o ID: " + codigoFuncionario);
     
     var instrucaoSql = `
@@ -81,35 +81,35 @@ function editar(codigoFuncionario, nomeFuncionario, emailFuncionario, telefoneFu
             telefone = '${telefoneFuncionario}',  
             cargo = '${cargoFuncionario}',  
             situacao_funcionario = ${situacaoFuncionario}
-        WHERE id_funcionario = ${codigoFuncionario};
+        WHERE id_funcionario = ${codigoFuncionario} AND fk_empresa = ${fkEmpresa};
     `;
     
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
-function desativar(codigoFuncionario) {
+function desativar(codigoFuncionario, fkEmpresa) {
     console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Executando função desativar() para o ID: " + codigoFuncionario);
     var instrucaoSql = `
         UPDATE funcionario 
         SET situacao_funcionario = false 
-        WHERE id_funcionario = ${codigoFuncionario};
+        WHERE id_funcionario = ${codigoFuncionario} AND fk_empresa = ${fkEmpresa};
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
-function buscarDados(nomeFuncionario, emailFuncionario){
+function buscarDados(nomeFuncionario, emailFuncionario, fkEmpresa){
     var instrucaoSql = `
-        SELECT id_funcionario, nome, telefone, email, cargo, situacao_funcionario FROM funcionario WHERE nome = '${nomeFuncionario}' AND email = '${emailFuncionario}';
+        SELECT id_funcionario, nome, telefone, email, cargo, situacao_funcionario FROM funcionario WHERE nome = '${nomeFuncionario}' AND email = '${emailFuncionario}' AND fk_empresa = ${fkEmpresa};
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
-function listarFuncionarios() {
+function listarFuncionarios(fkEmpresa) {
     var instrucaoSql = `
-        SELECT id_funcionario, nome, email FROM funcionario;
+        SELECT id_funcionario, nome, email FROM funcionario WHERE fk_empresa = ${fkEmpresa};
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);

@@ -328,7 +328,9 @@
   let listaFuncionariosCadastrados = [];
 
   function listarFuncionarios() {
-    fetch("/avisos/listarFuncionarios", {
+    let empresadoFuncionario = sessionStorage.getItem("fk_empresa_Funcionario");
+
+    fetch(`/avisos/listarFuncionarios?fkEmpresa=${empresadoFuncionario}`, {
       method: "GET",
     })
       .then(function (resposta) {
