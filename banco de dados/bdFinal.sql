@@ -16,15 +16,7 @@ INSERT INTO
     empresa (cnpj, codigo_ativacao)
 VALUES
     ('11111111000101', 'AB123'),
-    ('22222222000102', 'CD456'),
-    ('33333333000103', 'EF789'),
-    ('44444444000104', 'GH101'),
-    ('55555555000105', 'IJ112'),
-    ('66666666000106', 'KL131'),
-    ('77777777000107', 'MN415'),
-    ('88888888000108', 'OP161'),
-    ('99999999000109', 'QR718'),
-    ('00000000000100', 'ST191');
+    ('22222222000102', 'CD456');
 
 -- Cadastro/login funcionário
 CREATE TABLE funcionario (
@@ -71,27 +63,27 @@ VALUES
         '11922222222',
         'julia@gmail.com',
         SHA2('28u2e82', 256),
-        'gestor ambiental',
+        'motorista',
         TRUE,
-        2
+        1
     ),
     (
         'Lucas Nogueira Buono de Albuquerque',
         '11933333333',
         'lucas@gmail.com',
         SHA2('93iend', 256),
-        'coordenador',
+        'motorista',
         TRUE,
-        3
+        1
     ),
     (
         'Milena Maria de Amorim Silva',
         '11944444444',
         'milena@gmail.com',
         SHA2('1dkdn2', 256),
-        'motorista',
+        'coordenador',
         TRUE,
-        4
+        2
     ),
     (
         'Sophie de Souza Ferraz',
@@ -100,16 +92,16 @@ VALUES
         SHA2('92n292', 256),
         'motorista',
         TRUE,
-        5
+        2
     ),
     (
         'Thabata Vitoria Daniel de Sousa',
         '11966666666',
         'thabata@gmail.com',
         SHA2('212un21', 256),
-        'gestor ambiental',
+        'coordenador',
         TRUE,
-        6
+        2
     );
 
 -- subprefeitura
@@ -124,9 +116,7 @@ INSERT INTO
     subprefeitura(nome, fk_empresa)
 VALUES
     ('Sé', 1),
-    ('Liberdade', 2),
-    ('Cambuci', 3),
-    ('Bela Vista', 4);
+    ('Pinheiros', 2);
 
 -- endereco do ecoponto
 CREATE TABLE ecoponto (
@@ -136,6 +126,8 @@ CREATE TABLE ecoponto (
     numero VARCHAR(10) NOT NULL,
     bairro VARCHAR(100) NOT NULL,
     cep CHAR(8) NOT NULL,
+    latitude DECIMAL NOT NULL,
+    longitude DECIMAL NOT NULL,
     estado CHAR(2) NOT NULL,
     municipio VARCHAR(50) NOT NULL,
     cadastrado_em DATETIME NULL DEFAULT CURRENT_TIMESTAMP(),
@@ -151,17 +143,20 @@ INSERT INTO
         numero,
         bairro,
         cep,
-        estado,
-        municipio,
+        latitude,
+        longetudo,
+        estado municipio,
         fk_subprefeitura
     )
 VALUES
     (
-        'Ecoponto Liberdade',
+        'Ecoponto Liberdade Norte',
         'Rua Conselheiro Furtado',
         1200,
         'Liberdade',
         '01511000',
+        -23.5635,
+        -46.6324,
         'SP',
         'São Paulo',
         1
@@ -172,9 +167,11 @@ VALUES
         500,
         'Sé',
         '01007000',
+        -23.5484,
+        -46.6264,
         'SP',
         'São Paulo',
-        2
+        1
     ),
     (
         'Ecoponto Cambuci',
@@ -182,9 +179,11 @@ VALUES
         1800,
         'Cambuci',
         '01538000',
+        -23.5684,
+        -46.6231,
         'SP',
         'São Paulo',
-        3
+        1
     ),
     (
         'Ecoponto Bela Vista',
@@ -192,9 +191,42 @@ VALUES
         1500,
         'Bela Vista',
         '01327000',
+        -23.5663,
+        -46.6445,
         'SP',
         'São Paulo',
-        4
+        1
+    ),
+    (
+        'Ecoponto Alto dePinheiros',
+        'Praça Arcipreste Anselmo de Oliveira',
+        15,
+        'Alto de Pinheiros',
+        '05463080',
+        -23.5571,
+        -46.7112,
+        'SP',
+        2
+    ),
+(
+        'Ecoponto Vila Madalena',
+        'Rua Girassol',
+        15,
+        'Vila Madalena',
+        '05433000',
+        ,
+        ,
+        'SP',
+        2
+    ),
+    (
+        'Ecoponto Pinheiros',
+        'Pça. do Cancioneiro',
+        15,
+        'Pinheiros',
+        '04548060',
+        'Sp',
+        2
     );
 
 -- lixeira
@@ -221,9 +253,15 @@ INSERT INTO
 VALUES
     (190.5, 95.5, 190.5, 115.5, 1),
     (190.5, 95.5, 190.5, 115.5, 2),
-    (190.5, 95.5, 190.5, 115.5, 3),
-    (190.5, 95.5, 190.5, 115.5, 4),
-    (190.5, 95.5, 190.5, 115.5, 4),
+    (190.5, 95.5, 190.5, 115.5, 2),
+    (190.5, 95.5, 190.5, 115.5, 1),
+    (190.5, 95.5, 190.5, 115.5, 2),
+    (190.5, 95.5, 190.5, 115.5, 1),
+    (190.5, 95.5, 190.5, 115.5, 1),
+    (190.5, 95.5, 190.5, 115.5, 2),
+    (190.5, 95.5, 190.5, 115.5, 2),
+    (190.5, 95.5, 190.5, 115.5, 1),
+    (190.5, 95.5, 190.5, 115.5, 2),
     (190.5, 95.5, 190.5, 115.5, 1);
 
 -- sensor (em caso de queima, dará para saber qual sensor queimou)
