@@ -29,6 +29,7 @@ body {
     flex-direction: column;
     align-items: center;
     box-shadow: rgba(100, 100, 111, 0.486) 0px 7px 29px 0px;
+
     a {
         color: white;
         text-decoration: none;
@@ -80,6 +81,7 @@ body {
     transition: 0.2s;
 }
 
+
 .menu li:hover {
     background: rgba(255, 255, 255, 0.2);
 }
@@ -96,27 +98,22 @@ body {
 .graficos {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
 }
 
 .grafico-e-kpi {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-left: 350px;
-    margin-right: 200px;
-    margin-bottom: 10px;
+    margin-left: 310px;
+    margin-right: 60px;
 }
 
 .container2 {
     border-radius: 10px;
-    border-color: 1px solid black;
+    border-color: black;
     align-items: center;
     justify-content: center;
-    padding: 30px;
-    margin-top: 9px;
-    width: 950px;
+    margin-top: 12px;
 }
 
 .kpi {
@@ -124,10 +121,6 @@ body {
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 20px; 
-    width: 100%;
-    max-width: 950px;
-    margin: 0 auto 30px auto; 
 }
 
 .graficos1 {
@@ -151,19 +144,18 @@ body {
     padding: 20px;
     height: fit-content;
     width: 410px;
-    max-width: 460px;
     border-radius: 15px;
     background-blend-mode: screen;
     padding: 25px;
     margin: 10px;
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
     h3 {
         font-size: xx-large;
     }
 }
 
 /* ===========================================KPIS ESPECIFICAS============================================== */
-
 /* KPI TOTAL LIXEIRAS */
 .icone_total {
     background-color: #6370fd;
@@ -211,7 +203,6 @@ body {
 }
 
 /* =========================================GRAFICO DE BARRAS========================================== */
-
 .tabela_ecopontos {
     margin-bottom: 70px;
 }
@@ -220,8 +211,7 @@ table,
 th,
 td {
     width: 950px;
-    margin-left: 350px;
-    margin-right: 200px;
+    margin-left: 330px;
     border: 1px;
     border-collapse: collapse;
     padding: 12px 2px;
@@ -255,12 +245,12 @@ tr:hover {
     height: auto;
     border-radius: 10px;
     border-color: black;
+    margin-top: 15px;
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     margin-left: 350px;
-    margin-right: 200px;
     align-self: center;
     padding: 20px;
-    margin-bottom: 40px;
+    margin-bottom: 15px;
     background: linear-gradient(#0aae43, #318752);
     color: white;
 }
@@ -278,8 +268,15 @@ tr:hover {
     margin-left: 20px;
 }
 
+.seta{
+     width: 22px;
+    height: 22px;
+    margin-right: 300px;
+}
+
 .barra-pesquisa {
     margin-left: 60px;
+    align-items: end;
     display: flex;
     flex-direction: row;
     margin-bottom: 30px;
@@ -337,23 +334,15 @@ tr:hover {
     width: 100px;
     height: 100px;
 }
-.select {
-   margin-left: 0px;
-    margin-right: 15px;
-    align-items: end;
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 18px;
-    position: relative;
-    cursor: pointer;
-    border-radius: 7.5px;
-}
+
+
+
 
 /* =========================================OUTRAS PAGINAS========================================== */
 .container4 {
     border-radius: 16px;
     padding: 20px;
-    margin: 10px;
+    margin: 15px;
     align-items: center;
     justify-content: center;
     border: 1px solid #e0e0e0;
@@ -362,7 +351,6 @@ tr:hover {
     text-align: center;
     color: #318752;
     margin-bottom: 50px;
-    width: 900px;
 }
 
 .container3 {
