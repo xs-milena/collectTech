@@ -9,7 +9,6 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="icon" href="./img/folha.png">
-
 </head>
 
 <body>
@@ -29,14 +28,17 @@
                     <li>Lixeiras</li>
                 </a>
                 <a href="./rotas.html">
-                    <li>Rotas</li>
+                    <li>Mapa</li>
                 </a>
                 <a href="../cadastro.html">
                     <li>Cadastrar Usuário</li>
                 </a>
                 <a href="./gerenciarUsuario.html">
-                    <li>Gerenciar Usuário</li>
+                    <li>Gerenciar Usuários</li>
                 </a>
+                <a href="https://collectech.atlassian.net/servicedesk/customer/portal/2">
+                        <li>Central de Suporte</li>
+                    </a>
             </ul>
         </div>
         <div id="sair">
@@ -96,27 +98,19 @@
             </div>
         </div>
 
-    </div>
 
     <div class="container5">
         <div id="topo">
-            <select name="" id="select_bairros">
-
-            </select>
-
+            <select name="" id="select_bairros" class="select"></select>
             <h3>Bairros</h3>
             <div class="barra-pesquisa">
                 <input type="text">
                 <img src="../assets/img/pesquisa.png" alt="">
             </div>
         </div>
-        <div id="roscas">
-            
-        </div>
+        <div id="roscas"></div>
     </div>
-
-    <h2>Tabelas</h2>
-
+    
     <table id="tabela_ecopontos" class="tabela_ecopontos">
         <tr>
             <thead>
@@ -129,7 +123,9 @@
         </thead>
         <tbody id="corpo_tabela">
         </tbody>
-    </table>
+    </table>    
+</div>
+
 </body>
 
 </html>
@@ -880,8 +876,6 @@
     //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
     //     Para ajustar o "select", ajuste o comando sql em src/models
     function atualizarGrafico(idAquario, dados, myChart) {
-
-
 
         fetch(`/medidas/tempo-real/${idAquario}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
