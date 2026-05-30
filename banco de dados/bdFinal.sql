@@ -26,7 +26,7 @@ CREATE TABLE funcionario (
     email VARCHAR(100) NOT NULL UNIQUE,
     senha VARCHAR(100) NOT NULL,
     cargo VARCHAR(100) NOT NULL,
-    situacao_funcionario BOOLEAN NOT NULL DEFAULT FALSE,
+    ativo BOOLEAN NOT NULL DEFAULT FALSE,
     fk_empresa INT NOT NULL,
     cadastrado_em DATETIME DEFAULT CURRENT_TIMESTAMP,
     atualizado_em DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -45,7 +45,7 @@ INSERT INTO funcionario (
     email,
     senha,
     cargo,
-    situacao_funcionario,
+    ativo,
     fk_empresa
 )
 VALUES
@@ -108,24 +108,33 @@ VALUES
 
 CREATE TABLE subprefeitura (
     id_subprefeitura INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    nome VARCHAR(225),
-    fk_empresa INT NOT NULL,
-
-    CONSTRAINT fk_subprefeitura_empresa
-        FOREIGN KEY (fk_empresa)
-        REFERENCES empresa(id_empresa)
+    nome VARCHAR(225) NOT NULL
 );
 
-INSERT INTO subprefeitura (nome, fk_empresa)
+INSERT INTO subprefeitura (nome)
 VALUES
-('Sé', 1),
-('Pinheiros', 2);
+('Sé'),
+('Pinheiros');
 
+
+CREATE TABLE empresa_subprefeitura(
+	fk_empresa INT NOT NULL,
+    fk_subprefeitura INT NOT NULL,
+    PRIMARY KEY(fk_empresa, fk_subprefeitura),
+    FOREIGN KEY (fk_empresa) REFERENCES empresa(id_empresa),
+    FOREIGN KEY (fk_subprefeitura) REFERENCES subprefeitura(id_subprefeitura)
+);
+
+INSERT INTO empresa_subprefeitura (fk_empresa, fk_subprefeitura)
+VALUES
+(1,1),
+(1,2),
+(2,2);
 
 -- ECOPONTO
 CREATE TABLE ecoponto (
     id_ecoponto INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    nome_ecoponto VARCHAR(200),
+    nome_ecoponto VARCHAR(200) NOT NULL,
     rua VARCHAR(100) NOT NULL,
     numero VARCHAR(10) NOT NULL,
     bairro VARCHAR(100) NOT NULL,
@@ -137,10 +146,11 @@ CREATE TABLE ecoponto (
     cadastrado_em DATETIME DEFAULT CURRENT_TIMESTAMP,
     atualizado_em DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     fk_subprefeitura INT NOT NULL,
-
-    CONSTRAINT fk_ecoponto_subprefeitura
-        FOREIGN KEY (fk_subprefeitura)
-        REFERENCES subprefeitura(id_subprefeitura)
+    fk_empresa INT NOT NULL,
+    
+    CONSTRAINT fk_ecoponto_empresa_subprefeitura
+        FOREIGN KEY (fk_empresa ,fk_subprefeitura)
+        REFERENCES empresa_subprefeitura(fk_empresa, fk_subprefeitura)
 );
 
 INSERT INTO ecoponto (
@@ -153,44 +163,37 @@ INSERT INTO ecoponto (
     longitude,
     estado,
     municipio,
-    fk_subprefeitura
+    fk_subprefeitura,
+    fk_empresa
 )
 VALUES
+('Ecoponto Liberdade Norte','Rua Conselheiro Furtado','1200','Liberdade','01508-000',-23.5635,-46.6324,'SP','São Paulo',1,1),
+('Ecoponto Liberdade Sul','Rua Galvão Bueno','850','Liberdade','01506-000',-23.5618,-46.6352,'SP','São Paulo',1,1),
+('Ecoponto Liberdade Leste','Rua da Glória','430','Liberdade','01510-000',-23.5661,-46.6295,'SP','São Paulo',1,1),
 
--- LIBERDADE
-('Ecoponto Liberdade Norte','Rua Conselheiro Furtado','1200','Liberdade','01508-000',-23.5635,-46.6324,'SP','São Paulo',1),
-('Ecoponto Liberdade Sul','Rua Galvão Bueno','850','Liberdade','01506-000',-23.5618,-46.6352,'SP','São Paulo',1),
-('Ecoponto Liberdade Leste','Rua da Glória','430','Liberdade','01510-000',-23.5661,-46.6295,'SP','São Paulo',1),
+('Ecoponto Sé Central','Rua da Figueira','500','Sé','01007-000',-23.5484,-46.6264,'SP','São Paulo',1,1),
+('Ecoponto Sé Leste','Rua Florêncio de Abreu','320','Sé','01030-000',-23.5449,-46.6331,'SP','São Paulo',1,1),
+('Ecoponto Sé Norte','Rua Boa Vista','710','Sé','01014-000',-23.5470,-46.6355,'SP','São Paulo',1,1),
 
--- SÉ
-('Ecoponto Sé Central','Rua da Figueira','500','Sé','01007-000',-23.5484,-46.6264,'SP','São Paulo',1),
-('Ecoponto Sé Leste','Rua Florêncio de Abreu','320','Sé','01030-000',-23.5449,-46.6331,'SP','São Paulo',1),
-('Ecoponto Sé Norte','Rua Boa Vista','710','Sé','01014-000',-23.5470,-46.6355,'SP','São Paulo',1),
+('Ecoponto Cambuci','Av. Lins de Vasconcelos','1800','Cambuci','01538-001',-23.5684,-46.6231,'SP','São Paulo',1,1),
+('Ecoponto Cambuci Sul','Rua Clímaco Barbosa','420','Cambuci','01523-001',-23.5731,-46.6205,'SP','São Paulo',1,1),
+('Ecoponto Cambuci Norte','Rua do Lavapés','1500','Cambuci','01519-000',-23.5659,-46.6202,'SP','São Paulo',1,1),
 
--- CAMBUCI
-('Ecoponto Cambuci','Av. Lins de Vasconcelos','1800','Cambuci','01538-001',-23.5684,-46.6231,'SP','São Paulo',1),
-('Ecoponto Cambuci Sul','Rua Clímaco Barbosa','420','Cambuci','01523-001',-23.5731,-46.6205,'SP','São Paulo',1),
-('Ecoponto Cambuci Norte','Rua do Lavapés','1500','Cambuci','01519-000',-23.5659,-46.6202,'SP','São Paulo',1),
+('Ecoponto Bela Vista','Rua Treze de Maio','1500','Bela Vista','01327-000',-23.5663,-46.6445,'SP','São Paulo',1,1),
+('Ecoponto Bela Vista Oeste','Rua Rui Barbosa','700','Bela Vista','01326-010',-23.5609,-46.6461,'SP','São Paulo',1,1),
+('Ecoponto Bela Vista Norte','Rua Santo Antônio','520','Bela Vista','01314-000',-23.5537,-46.6417,'SP','São Paulo',1,1),
 
--- BELA VISTA
-('Ecoponto Bela Vista','Rua Treze de Maio','1500','Bela Vista','01327-000',-23.5663,-46.6445,'SP','São Paulo',1),
-('Ecoponto Bela Vista Oeste','Rua Rui Barbosa','700','Bela Vista','01326-010',-23.5609,-46.6461,'SP','São Paulo',1),
-('Ecoponto Bela Vista Norte','Rua Santo Antônio','520','Bela Vista','01314-000',-23.5537,-46.6417,'SP','São Paulo',1),
+('Ecoponto Alto de Pinheiros','Praça Arcipreste Anselmo','15','Alto de Pinheiros','05463-080',-23.5571,-46.7112,'SP','São Paulo',2,1),
+('Ecoponto Alto de Pinheiros Norte','Rua Pio XI','980','Alto de Pinheiros','05468-000',-23.5524,-46.7075,'SP','São Paulo',2,1),
+('Ecoponto Alto de Pinheiros Sul','Av. Diógenes Ribeiro','1400','Alto de Pinheiros','05458-001',-23.5541,-46.7180,'SP','São Paulo',2,1),
 
--- ALTO DE PINHEIROS
-('Ecoponto Alto de Pinheiros','Praça Arcipreste Anselmo','15','Alto de Pinheiros','05463-080',-23.5571,-46.7112,'SP','São Paulo',1),
-('Ecoponto Alto de Pinheiros Norte','Rua Pio XI','980','Alto de Pinheiros','05468-000',-23.5524,-46.7075,'SP','São Paulo',1),
-('Ecoponto Alto de Pinheiros Sul','Av. Diógenes Ribeiro','1400','Alto de Pinheiros','05458-001',-23.5541,-46.7180,'SP','São Paulo',1),
+('Ecoponto Vila Madalena','Rua Girassol','15','Vila Madalena','05433-000',-23.5507,-46.6894,'SP','São Paulo',2,2),
+('Ecoponto Vila Madalena Oeste','Rua Harmonia','400','Vila Madalena','05435-000',-23.5528,-46.6915,'SP','São Paulo',2,2),
+('Ecoponto Vila Madalena Norte','Rua Wisard','220','Vila Madalena','05434-080',-23.5481,-46.6877,'SP','São Paulo',2,2),
 
--- VILA MADALENA
-('Ecoponto Vila Madalena','Rua Girassol','15','Vila Madalena','05433-000',-23.5507,-46.6894,'SP','São Paulo',2),
-('Ecoponto Vila Madalena Oeste','Rua Harmonia','400','Vila Madalena','05435-000',-23.5528,-46.6915,'SP','São Paulo',2),
-('Ecoponto Vila Madalena Norte','Rua Wisard','220','Vila Madalena','05434-080',-23.5481,-46.6877,'SP','São Paulo',2),
-
--- PINHEIROS
-('Ecoponto Pinheiros','Praça do Cancioneiro','15','Pinheiros','05422-000',-23.5672,-46.6921,'SP','São Paulo',2),
-('Ecoponto Pinheiros Oeste','Rua dos Pinheiros','1200','Pinheiros','05422-002',-23.5615,-46.6824,'SP','São Paulo',2),
-('Ecoponto Pinheiros Norte','Rua Teodoro Sampaio','2100','Pinheiros','05406-150',-23.5569,-46.6840,'SP','São Paulo',2);
+('Ecoponto Pinheiros','Praça do Cancioneiro','15','Pinheiros','05422-000',-23.5672,-46.6921,'SP','São Paulo',2,2),
+('Ecoponto Pinheiros Oeste','Rua dos Pinheiros','1200','Pinheiros','05422-002',-23.5615,-46.6824,'SP','São Paulo',2,2),
+('Ecoponto Pinheiros Norte','Rua Teodoro Sampaio','2100','Pinheiros','05406-150',-23.5569,-46.6840,'SP','São Paulo',2,2);
 
 
 -- LIXEIRA
@@ -536,7 +539,7 @@ ORDER BY
 -- informações sobre o usuário
 UPDATE funcionario
 SET
-    situacao_funcionario = false
+    ativo = false
 WHERE
     id_funcionario = 1;
 
