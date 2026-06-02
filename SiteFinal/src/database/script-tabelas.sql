@@ -697,12 +697,12 @@ SELECT
 
 select * from captura_nivel_sensor;
 
-
+drop view vw_nivel_lixeiras_empresa;
 
 create view vw_nivel_lixeiras_empresa
 as
 SELECT 
-    li.id_lixeira, 
+    li.id_lixeira,
     emp.id_empresa,
     SUBSTRING_INDEX( GROUP_CONCAT(l.nivel_preenchimento ORDER BY l.cadastrado_em DESC), ',', 1 ) AS nivel_preenchimento,
     MAX(l.cadastrado_em) AS cadastrado_em,
@@ -712,7 +712,8 @@ JOIN sensor AS s ON l.fk_sensor = s.id_sensor
 JOIN lixeira AS li ON s.fk_lixeira = li.id_lixeira 
 JOIN ecoponto AS e ON li.fk_ecoponto = e.id_ecoponto 
 JOIN empresa AS emp ON e.fk_empresa = emp.id_empresa 
-GROUP BY li.id_lixeira;
+GROUP BY li.id_lixeira
+order by nivel_preenchimento desc;
 
 select * from vw_nivel_lixeiras_empresa;
 
@@ -720,28 +721,19 @@ select * from vw_nivel_lixeiras_empresa;
 
 create view vw_bairros_empresa
 as
-select e.id_empresa, s.nome as nome_subprefeitura, eco.bairro,
+select e.id_empresa, eco.bairro, (select count(*) from vw_nivel_lixeiras_empresa where id_empresa = 1) as total,
 (sum(case
 when v.nivel_preenchimento > 80 then v.nivel_preenchimento
 else 0
-end) / sum(case
-when v.nivel_preenchimento > 80 then 1
-else 0
-end)) 
+end))
 as soma_nivel_cheia,
 (sum(case
 when v.nivel_preenchimento > 50 and v.nivel_preenchimento <= 80 then v.nivel_preenchimento
-else 0
-end) / sum( case
-when v.nivel_preenchimento > 50 and v.nivel_preenchimento <= 80 then 1
 else 0
 end))
 as soma_nivel_medio,
 (sum(case
 when v.nivel_preenchimento <= 50 then v.nivel_preenchimento
-else 0
-end) / sum(case
-when v.nivel_preenchimento <= 50 then 1
 else 0
 end))
 as soma_nivel_baixo
@@ -749,26 +741,38 @@ from vw_nivel_lixeiras_empresa v
 join empresa e on e.id_empresa = v.id_empresa 
 join ecoponto eco on v.id_ecoponto = eco.id_ecoponto
 join subprefeitura s on eco.fk_subprefeitura = s.id_subprefeitura 
-GROUP BY e.id_empresa, s.nome, eco.bairro;
+where v.id_empresa = 1
+GROUP BY e.id_empresa, eco.bairro;
 
 select * from vw_bairros_empresa;
+
+select count(*), be.bairro,
+be.soma_nivel_cheia / count(*),
+be.soma_nivel_medio / count(*),
+be.soma_nivel_baixo / count(*)
+from vw_nivel_lixeiras_empresa le
+join vw_bairros_empresa be on le.id_empresa = be.id_empresa
+group by be.id_empresa, be.bairro;
+
 
 
 create view vw_nivel_ecoponto
 as
 SELECT 
-    nome_ecoponto ecoponto,
-    id_ecoponto codigo,
-    MAX(DATE_FORMAT(cadastrado_em, '%H:%i:%s')) AS captura,
-    MAX(DATE_FORMAT(cadastrado_em, '%d/%m/%Y')) AS data,
-    AVG(nivel_preenchimento) AS nivel
+    vw.nome_ecoponto ecoponto,
+    e.bairro,
+    vw.id_empresa,
+    MAX(DATE_FORMAT(vw.cadastrado_em, '%H:%i:%s%d/%m/%Y')) AS captura,
+    MAX(DATE_FORMAT(vw.cadastrado_em, '%d/%m/%Y')) AS data,
+    AVG(vw.nivel_preenchimento) AS nivel
 FROM 
-    vw_nivel_lixeiras_empresa
+    vw_nivel_lixeiras_empresa vw
+join ecoponto e on e.id_ecoponto = vw.id_ecoponto 
 GROUP BY 
-    id_ecoponto, 
-    nome_ecoponto;
+    vw.id_ecoponto, 
+    vw.nome_ecoponto;
 
-
+select * from vw_total_lixeiras;
 
 create view vw_total_lixeiras
 as

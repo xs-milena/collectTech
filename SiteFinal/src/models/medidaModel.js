@@ -2,7 +2,7 @@ var database = require("../database/config");
 
 function buscarUltimasMedidas(id_empresa) {
 
-    var instrucaoSql = `select * from vw_nivel_lixeiras_empresa
+    var instrucaoSql = `select *, DATE_FORMAT(cadastrado_em, '%d/%m/%Y %H:%i:%s') as cadastrado_em from vw_nivel_lixeiras_empresa
     where id_empresa = ${id_empresa};`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);

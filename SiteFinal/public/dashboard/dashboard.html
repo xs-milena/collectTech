@@ -93,12 +93,16 @@
 
         <div class="container5">
             <div id="topo">
-                <select name="" id="select_bairros" class="select"></select>
+                <input type="text" id="ipt_ecoponto" list="listaEcoponto" placeholder="Ecoponto">
+                <datalist id="listaEcoponto">
+                    <option value="Sé">Sé</option>
+                    <option value="Cambuci">Cambuci</option>
+                    <option value="Liberdade">Liberdade</option>
+                    <option value="Bela Vista">Bela Vista</option>
+                    <option value="Vila Madalena">Vila Madalena</option>
+                    <option value="Alto de Pinheiros">Alto de Pinheiros</option>
+                </datalist>
                 <h3>Bairros</h3>
-                <div class="barra-pesquisa">
-                    <input type="text">
-                    <img src="../assets/img/pesquisa.png" alt="">
-                </div>
             </div>
             <div id="roscas"></div>
         </div>
@@ -107,7 +111,7 @@
             <thead>
                 <tr>
                     <th>Ecoponto</th>
-                    <th>Código</th>
+                    <th>Bairro</th>
                     <th>Nivel</th>
                     <th>Hora da captura do dado</th>
                     <th>Data da captura do dado</th>
@@ -733,7 +737,7 @@
                         corpo.innerHTML += `
                        <tr>
                             <td>${dados[i].ecoponto}</td>
-                            <td>${dados[i].codigo}</td>
+                            <td>${dados[i].bairro}</td>
                             <td>${dados[i].nivel.toFixed(2)}%</td>
                             <td>${dados[i].captura}</td>
                             <td>${dados[i].data}</td>
