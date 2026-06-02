@@ -16,7 +16,8 @@ function listarEcoponto(id_empresa) {
 
   var instrucaoSql = `
    SELECT 
-    * from vw_nivel_ecoponto`
+    * from vw_nivel_ecoponto
+   where id_empresa = ${id_empresa}`
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);

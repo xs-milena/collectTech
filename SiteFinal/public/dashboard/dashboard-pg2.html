@@ -72,16 +72,18 @@
     let lixeiras = []
     let mostrou = false
 
+    let id_empresa = sessionStorage.ID_EMPRESA;
+
     window.onload = exibirEcopontosDoUsuario();
 
     function exibirEcopontosDoUsuario() {
         var ecopontos = JSON.parse(sessionStorage.ECOPONTOS);
         ecopontos.forEach(item => {
-            obterDadosGrafico(item.id_ecoponto)
+            obterDadosGrafico(item.id_empresa)
         });
     }
 
-    function exibirEcopontos(id_ecoponto) {
+    function exibirEcopontos(id_empresa) {
         let todosOsGraficos = JSON.parse(sessionStorage.ECOPONTOS);
     }
 
@@ -96,15 +98,15 @@
 
     //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
     //     Para ajustar o "select", ajuste o comando sql em src/models
-    function obterDadosGrafico(id_ecoponto) {
+    function obterDadosGrafico(id_empresa) {
 
-        fetch(`/medidas/ultimas/${id_ecoponto}`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/medidas/ultimas/${id_empresa}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                     resposta.reverse();
 
-                    plotarGrafico(resposta, id_ecoponto);
+                    plotarGrafico(resposta, id_empresa);
 
                 });
             } else {
@@ -119,7 +121,7 @@
     // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
     // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
     // A função *plotarGrafico* também invoca a função *atualizarGrafico*
-    function plotarGrafico(resposta, id_ecoponto) {
+    function plotarGrafico(resposta, id_empresa) {
         if(mostrou == true){
             console.log('já mostrou')
             return
