@@ -71,9 +71,25 @@ function listarBairro(req, res) {
     });
 }
 
+function totalLixeiras(req, res) {
+    var id_empresa = req.params.id_empresa;
+
+    ecopontosModel.totalLixeiras(id_empresa).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!");
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
 module.exports = {
   buscarEcopontosPorEmpresa,
   listarEcoponto,
   listarBairro,
-  cadastrar
+  cadastrar,
+  totalLixeiras
 }

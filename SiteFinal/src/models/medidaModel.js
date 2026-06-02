@@ -2,19 +2,7 @@ var database = require("../database/config");
 
 function buscarUltimasMedidas(id_empresa) {
 
-    var instrucaoSql = `SELECT 
-    li.id_lixeira, 
-    SUBSTRING_INDEX( GROUP_CONCAT(l.nivel_preenchimento ORDER BY l.cadastrado_em DESC), ',', 1 ) AS nivel_preenchimento,
-    MAX(l.cadastrado_em) AS cadastrado_em,
-    nome_ecoponto, id_ecoponto
-FROM leitura_sensor AS l 
-JOIN sensor AS s ON l.fk_sensor = s.id_sensor 
-JOIN lixeira AS li ON s.fk_lixeira = li.id_lixeira 
-JOIN ecoponto AS e ON li.fk_ecoponto = e.id_ecoponto 
-JOIN subprefeitura AS sub ON e.fk_subprefeitura = sub.id_subprefeitura 
-JOIN empresa AS emp ON sub.fk_empresa = emp.id_empresa 
-WHERE emp.id_empresa = 1 
-GROUP BY li.id_lixeira;`;
+    var instrucaoSql = `select * from vw_nivel_lixeiras_empresa;`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);

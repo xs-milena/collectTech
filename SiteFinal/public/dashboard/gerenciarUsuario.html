@@ -131,7 +131,7 @@
     function buscarDados() {
         let nomeDaBusca = ipt_usuario.value;
         let emailDaBusca = ipt_email_usuario.value;
-        let empresadoFuncionario = sessionStorage.getItem("fk_empresa_Funcionario");
+        let empresadoFuncionario = sessionStorage.ID_EMPRESA;
 
         if (nomeDaBusca == "" || emailDaBusca == "") {
             alert("Por favor, digite um nome e um email para buscar.");
@@ -154,7 +154,7 @@
                         ipt_telefone.value = dados.telefone;
                         ipt_cargo.value = dados.cargo;
                         ipt_codigo.value = dados.id_funcionario;
-                        ipt_situacao_funcionario.value = dados.situacao_funcionario ? "Ativo" : "Inativo";
+                        ipt_situacao_funcionario.value = dados.ativo ? "Ativo" : "Inativo";
                     });
                 } else {
                     console.error("Funcionário não encontrado ou erro no servidor.");
@@ -168,7 +168,7 @@
 
     function editar() {
         let idFuncionario = ipt_codigo.value;
-        let empresadoFuncionario = sessionStorage.getItem("fk_empresa_Funcionario");
+        let empresadoFuncionario = sessionStorage.ID_EMPRESA;
 
         if (!idFuncionario) {
             alert("Pesquise um usuário antes de tentar modificar.");
@@ -208,7 +208,7 @@
     // deleta a pessoa?
 function desativar() {
     let idFuncionario = ipt_codigo.value;
-    let empresadoFuncionario = sessionStorage.getItem("fk_empresa_Funcionario");
+    let empresadoFuncionario = sessionStorage.ID_EMPRESA;
 
     if (!idFuncionario) {
         alert("Pesquise um usuário antes de tentar desativar.");

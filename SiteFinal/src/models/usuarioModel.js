@@ -6,7 +6,7 @@ function autenticar(codigo_ativacao, email, senha) {
         SELECT id_funcionario, nome, email, codigo_ativacao as codigo_ativacao, id_empresa, codigo_ativacao
         FROM funcionario as f
         join empresa on id_empresa = f.fk_empresa
-        WHERE codigo_ativacao = '${codigo_ativacao}' AND f.email = '${email}' AND f.senha = '${senha}';
+        WHERE codigo_ativacao = '${codigo_ativacao}' AND f.email = '${email}' AND f.senha = SHA2('${senha}', 256);
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);

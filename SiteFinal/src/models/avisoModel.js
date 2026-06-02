@@ -80,7 +80,7 @@ function editar(codigoFuncionario, nomeFuncionario, emailFuncionario, telefoneFu
             email = '${emailFuncionario}',  
             telefone = '${telefoneFuncionario}',  
             cargo = '${cargoFuncionario}',  
-            situacao_funcionario = ${situacaoFuncionario}
+            ativo = ${situacaoFuncionario}
         WHERE id_funcionario = ${codigoFuncionario} AND fk_empresa = ${fkEmpresa};
     `;
     
@@ -92,7 +92,7 @@ function desativar(codigoFuncionario, fkEmpresa) {
     console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Executando função desativar() para o ID: " + codigoFuncionario);
     var instrucaoSql = `
         UPDATE funcionario 
-        SET situacao_funcionario = false 
+        SET ativo = FALSE 
         WHERE id_funcionario = ${codigoFuncionario} AND fk_empresa = ${fkEmpresa};
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
@@ -101,7 +101,7 @@ function desativar(codigoFuncionario, fkEmpresa) {
 
 function buscarDados(nomeFuncionario, emailFuncionario, fkEmpresa){
     var instrucaoSql = `
-        SELECT id_funcionario, nome, telefone, email, cargo, situacao_funcionario FROM funcionario WHERE nome = '${nomeFuncionario}' AND email = '${emailFuncionario}' AND fk_empresa = ${fkEmpresa};
+        SELECT id_funcionario, nome, telefone, email, cargo, ativo FROM funcionario WHERE nome = '${nomeFuncionario}' AND email = '${emailFuncionario}' AND fk_empresa = ${fkEmpresa};
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
