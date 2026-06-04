@@ -16,7 +16,7 @@
 
 <body>
   <!-- onload="listar()" -->
-  <div class="sidebar">
+  <div id="sidebar">
     <div>
       <div class="logoSide">
         <img src="./assets/img/broto.png">
@@ -38,15 +38,16 @@
           <li class="ativo">Cadastrar Usuário</li>
         </a>
         <a href="./dashboard/gerenciarUsuario.html">
-          <li>Gerenciar Usuários</li></a>
-          <a href="https://collectech.atlassian.net/servicedesk/customer/portal/2">
-                        <li>Central de Suporte</li>
-                    </a>
+          <li>Gerenciar Usuários</li>
+        </a>
+        <a href="https://collectech.atlassian.net/servicedesk/customer/portal/2">
+          <li>Central de Suporte</li>
+        </a>
       </ul>
     </div>
     <div id="sair">
       <span class="material-icons">logout</span>
-      <span class="link"><a href="./index.html">Sair</a></span>
+      <span class="link" onclick="limparSessao()">Sair</span>
     </div>
   </div>
   <div>
@@ -159,7 +160,7 @@
       <div class="listarFuncionarios">
         <button class="button cadastro" onclick="listarFuncionarios()">Listar Funcionarios</button>
       </div>
-       <div id="div_mensagem"></div>
+      <div id="div_mensagem"></div>
     </div>
 
 </body>
@@ -333,9 +334,9 @@
   let listaFuncionariosCadastrados = [];
 
   function listarFuncionarios() {
-    let empresadoFuncionario = sessionStorage.getItem("fk_empresa_Funcionario");
+    let fkEmpresa = sessionStorage.ID_EMPRESA;
 
-    fetch(`/avisos/listarFuncionarios?fkEmpresa=${empresadoFuncionario}`, {
+    fetch(`/avisos/listarFuncionarios/${fkEmpresa}`, {
       method: "GET",
     })
       .then(function (resposta) {

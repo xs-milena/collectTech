@@ -717,23 +717,29 @@ order by nivel_preenchimento desc;
 
 select * from vw_nivel_lixeiras_empresa;
 
+update leitura_sensor
+set nivel_preenchimento = 60
+where nivel_preenchimento = 95;
 
+update leitura_sensor
+set nivel_preenchimento = 49
+where nivel_preenchimento = 77;
 
 create view vw_bairros_empresa
 as
-select e.id_empresa, eco.bairro, (select count(*) from vw_nivel_lixeiras_empresa where id_empresa = 1) as total,
+select e.id_empresa, eco.bairro,
 (sum(case
-when v.nivel_preenchimento > 80 then v.nivel_preenchimento
+when v.nivel_preenchimento > 80 then 1
 else 0
 end))
 as soma_nivel_cheia,
 (sum(case
-when v.nivel_preenchimento > 50 and v.nivel_preenchimento <= 80 then v.nivel_preenchimento
+when v.nivel_preenchimento > 50 and v.nivel_preenchimento <= 80 then 1
 else 0
 end))
 as soma_nivel_medio,
 (sum(case
-when v.nivel_preenchimento <= 50 then v.nivel_preenchimento
+when v.nivel_preenchimento <= 50 then 1
 else 0
 end))
 as soma_nivel_baixo
@@ -741,20 +747,16 @@ from vw_nivel_lixeiras_empresa v
 join empresa e on e.id_empresa = v.id_empresa 
 join ecoponto eco on v.id_ecoponto = eco.id_ecoponto
 join subprefeitura s on eco.fk_subprefeitura = s.id_subprefeitura 
-where v.id_empresa = 1
 GROUP BY e.id_empresa, eco.bairro;
 
-select * from vw_bairros_empresa;
-
-select count(*), be.bairro,
-be.soma_nivel_cheia / count(*),
-be.soma_nivel_medio / count(*),
-be.soma_nivel_baixo / count(*)
-from vw_nivel_lixeiras_empresa le
-join vw_bairros_empresa be on le.id_empresa = be.id_empresa
-group by be.id_empresa, be.bairro;
+select * from vw_bairros_empresa
+where bairro = "Bela Vista" and id_empresa = 1;
 
 
+select * from funcionario;
+update funcionario
+set cargo = "gestor ambiental"
+where cargo = "motorista";
 
 create view vw_nivel_ecoponto
 as
@@ -762,7 +764,7 @@ SELECT
     vw.nome_ecoponto ecoponto,
     e.bairro,
     vw.id_empresa,
-    MAX(DATE_FORMAT(vw.cadastrado_em, '%H:%i:%s%d/%m/%Y')) AS captura,
+    MAX(DATE_FORMAT(vw.cadastrado_em, '%H:%i:%s')) AS captura,
     MAX(DATE_FORMAT(vw.cadastrado_em, '%d/%m/%Y')) AS data,
     AVG(vw.nivel_preenchimento) AS nivel
 FROM 
@@ -772,7 +774,9 @@ GROUP BY
     vw.id_ecoponto, 
     vw.nome_ecoponto;
 
-select * from vw_total_lixeiras;
+select * from vw_nivel_ecoponto;
+
+
 
 create view vw_total_lixeiras
 as

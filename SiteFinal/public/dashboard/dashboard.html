@@ -8,43 +8,13 @@
     <link rel="stylesheet" href="../style/dashboard.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="icon" href="./img/folha.png">
+    <link rel="icon" href="../assets/img/folha.png">
+    <script src="../js/sessao.js"></script>
 </head>
 
 <body>
-    <div class="sidebar">
-        <div>
-            <div class="logoSide">
-                <img src="../assets/img/broto.png">
-                <h1>Collect Tech</h1>
-                <p>Smart City Solution</p>
-                <div class="linha"></div>
-            </div>
-            <ul class="menu">
-                <a href="./dashboard.html">
-                    <li class="ativo">Geral</li>
-                </a>
-                <a href="./dashboard-pg2.html">
-                    <li>Lixeiras</li>
-                </a>
-                <a href="./rotas.html">
-                    <li>Mapa</li>
-                </a>
-                <a href="../cadastro.html">
-                    <li>Cadastrar Usuário</li>
-                </a>
-                <a href="./gerenciarUsuario.html">
-                    <li>Gerenciar Usuários</li>
-                </a>
-                <a href="https://collectech.atlassian.net/servicedesk/customer/portal/2">
-                    <li>Central de Suporte</li>
-                </a>
-            </ul>
-        </div>
-        <div id="sair">
-            <span class="material-icons">logout</span>
-            <span class="link"><a href="./index.html">Sair</a></span>
-        </div>
+    <div id="sidebar">
+
     </div>
     <div class="graficos">
         <div class="grafico-e-kpi">
@@ -92,17 +62,14 @@
 
 
         <div class="container5">
+            <h3>Bairros</h3>
             <div id="topo">
-                <input type="text" id="ipt_ecoponto" list="listaEcoponto" placeholder="Ecoponto">
+                <input type="text" id="ipt_bairro" list="listaEcoponto" placeholder="Pesquise pelo Ecoponto"
+                    oninput="escolherBairro()">
+                <img src="../assets/img/luta-preta.png" alt="">
                 <datalist id="listaEcoponto">
-                    <option value="Sé">Sé</option>
-                    <option value="Cambuci">Cambuci</option>
-                    <option value="Liberdade">Liberdade</option>
-                    <option value="Bela Vista">Bela Vista</option>
-                    <option value="Vila Madalena">Vila Madalena</option>
-                    <option value="Alto de Pinheiros">Alto de Pinheiros</option>
+                    <option value="Todos">Todos</option>
                 </datalist>
-                <h3>Bairros</h3>
             </div>
             <div id="roscas"></div>
         </div>
@@ -672,9 +639,189 @@
     // }
 
 
+    let cargo = sessionStorage.CARGO;
+
+    if (cargo == "gestor ambiental") {
+        sidebar.innerHTML = `<div>
+            <div class="logoSide">
+                <img src="../assets/img/broto.png">
+                <h1>Collect Tech</h1>
+                <p>Smart City Solution</p>
+                <div class="linha"></div>
+            </div>
+            <ul class="menu">
+                <a href="./dashboard.html">
+                    <li class="ativo">Geral</li>
+                </a>
+                <a href="./dashboard-pg2.html">
+                    <li>Lixeiras</li>
+                </a>
+                <a href="./rotas.html">
+                    <li>Mapa</li>
+                </a>
+                <a href="https://collectech.atlassian.net/servicedesk/customer/portal/2">
+                    <li>Central de Suporte</li>
+                </a>
+            </ul>
+        </div>
+        <div id="sair">
+            <span class="material-icons">logout</span>
+            <span class="link" onclick="limparSessao()">Sair</span>
+        </div>`;
+    } else {
+        sidebar.innerHTML = `<div>
+            <div>
+            <div class="logoSide">
+                <img src="../assets/img/broto.png">
+                <h1>Collect Tech</h1>
+                <p>Smart City Solution</p>
+                <div class="linha"></div>
+            </div>
+            <ul class="menu">
+                <a href="./dashboard.html">
+                    <li class="ativo">Geral</li>
+                </a>
+                <a href="./dashboard-pg2.html">
+                    <li>Lixeiras</li>
+                </a>
+                <a href="./rotas.html">
+                    <li>Mapa</li>
+                </a>
+                <a href="../cadastro.html">
+                    <li>Cadastrar Usuário</li>
+                </a>
+                <a href="./gerenciarUsuario.html">
+                    <li>Gerenciar Usuários</li>
+                </a>
+                <a href="https://collectech.atlassian.net/servicedesk/customer/portal/2">
+                        <li>Central de Suporte</li>
+                    </a>
+            </ul>
+        </div>
+        <div id="sair">
+            <span class="material-icons">logout</span>
+            <span class="link" onclick="limparSessao()">Sair</span>
+        </div>`;
+    }
+
+
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    var BAIRROS = JSON.parse(sessionStorage.BAIRROS);
     let id_empresa = sessionStorage.ID_EMPRESA;
 
+    let bairroEscolhido = "";
+
+    let todos = BAIRROS.length;
+
+    function escolherBairro() {
+        bairroEscolhido = ipt_bairro.value;
+        console.log("aqq" + bairroEscolhido)
+        document.getElementById("roscas").innerHTML = "";
+
+        if (bairroEscolhido == "Todos") {
+            let j = 0;
+
+            let k = BAIRROS.length - 1;
+
+            console.log("aqq" + j)
+
+            BAIRROS.forEach(item => {
+                // document.getElementById("btnAquario").innerHTML += `
+                // <button class="btn-chart" onclick="exibirAquario(${item.id_quiz})" id="btnAquario${item.id_quiz}">${item.NOME_USUARIO}</button>
+                // `
+
+                document.getElementById("roscas").innerHTML += `
+            <button class="botao_graf" onclick="belaVista()" id="botao">
+                <span>${BAIRROS[j].bairro}</span>
+                <canvas id="myChartCanvas${k}" class="graf_rosca"></canvas>
+            </button>
+            `;
+
+                console.log(j);
+                j++;
+                k--;
+
+                obterDadosGrafico(item.id_empresa, todos)
+            });
+
+        } else {
+            fetch(`/medidas/bairroEspecifico/${id_empresa}/'${bairroEscolhido}'`, { cache: 'no-store' }).then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+
+                        for (let i = 0; i < resposta.length; i++) {
+                            document.getElementById("roscas").innerHTML += `
+            <button class="botao_graf" onclick="belaVista()" id="botao">
+                <span>${resposta[i].bairro}</span>
+                <canvas id="myChartCanvas${i}" class="graf_rosca"></canvas>
+            </button>
+            `;
+
+                            let labels = ["Nível alto", "Nível médio", "Nível baixo"];
+
+                            // Criando estrutura para plotar gráfico - dados
+                            let dados = {
+                                labels: labels,
+                                datasets: [{
+                                    label: [],
+                                    data: [],
+                                    fill: false,
+                                    backgroundColor: ['rgba(231, 0, 11)', '#ffcf55', '#7ed957'],
+                                    borderColor: ['rgba(231, 0, 11)', '#ffcf55', '#7ed957'],
+                                    tension: 0.1
+                                }]
+                            };
+
+                            dados.datasets[0].data.push(resposta[i].soma_nivel_cheia);
+                            dados.datasets[0].data.push(resposta[i].soma_nivel_medio);
+                            dados.datasets[0].data.push(resposta[i].soma_nivel_baixo);
+
+
+                            const config1 = {
+                                type: 'doughnut',
+                                data: dados,
+                                options: {
+                                    plugins: {
+                                        legend: {
+                                            display: false
+                                        }
+                                    }
+                                }
+                            };
+
+
+                            // Adicionando gráfico criado em div na tela
+                            let myChart = new Chart(
+                                document.getElementById(`myChartCanvas${i}`),
+                                config1
+                            );
+
+                        }
+
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+                .catch(function (error) {
+                    console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+                });
+        }
+
+    }
+
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
     window.onload = totalLixeiras(id_empresa);
+    setInterval(() => totalLixeiras(), 5000)
 
     function totalLixeiras() {
         fetch(`/ecopontos/totalLixeiras/${id_empresa}`).then(function (res) {
@@ -725,11 +872,15 @@
     window.onload = listarEcoponto(id_empresa);
     console.log(id_empresa);
 
+    setInterval(() => listarEcoponto(), 5000)
+
     function listarEcoponto() {
         fetch(`/ecopontos/listarEcoponto/${id_empresa}`).then(function (res) {
             if (res.ok) {
                 res.json().then(function (dados) {
                     let corpo = document.getElementById("corpo_tabela");
+
+                    corpo.innerHTML = ""
 
                     for (let i = 0; i < dados.length; i++) {
                         let linha = dados[i];
@@ -756,45 +907,37 @@
     window.onload = exibirAquariosDoUsuario();
 
     function exibirAquariosDoUsuario() {
-        document.getElementById("graficos").innerHTML = "";
+        document.getElementById("roscas").innerHTML = "";
 
-        var BAIRROS = JSON.parse(sessionStorage.BAIRROS);
 
-        document.getElementById("graficos").innerHTML += `
-            <p id="textoFacil"><span>Histórico dos resultados</span> fáceis</p>
-                <div id="graficoFacil" class="display-none">
-                    <div class="graph">
-                        <canvas id="myChartCanvasFacil"></canvas>
-                    </div>
-                    <div class="label-captura">
-                        <p id="avisoCapturaFacil" style="color: white"></p>
-                    </div>
-                </div>
-            <p id="textoMedio"><span>Histórico dos resultados</span> médios</p>
-                <div id="graficoMedio" class="display-none">
-                    <div class="graph">
-                        <canvas id="myChart2CanvasMedio"></canvas>
-                    </div>
-                    <div class="label-captura">
-                        <p id="avisoCapturaMedio" style="color: white"></p>
-                    </div>
-                </div>
-            <p id="textoDificil"><span>Histórico dos resultados</span> difíceis</p>
-                <div id="graficoDificil" class="display-none">
-                    <div class="graph">
-                        <canvas id="myChart3CanvasDificil"></canvas>
-                    </div>
-                    <div class="label-captura">
-                        <p id="avisoCapturaDificil" style="color: white"></p>
-                    </div>
-                </div>
-            `
+        let j = 3;
+
+        let k = BAIRROS.length - 1;
+
+        console.log("aqq" + j)
+
+        for (let i = 0; i < 4; i++) {
+            document.getElementById("listaEcoponto").innerHTML += `
+            <option value="${BAIRROS[i].bairro}">${BAIRROS[i].bairro}</option>`;
+
+            document.getElementById("roscas").innerHTML += `
+            <button class="botao_graf" onclick="belaVista()" id="botao">
+                <span>${BAIRROS[i].bairro}</span>
+                <canvas id="myChartCanvas${j}" class="graf_rosca"></canvas>
+            </button>
+            `;
+
+            console.log(j);
+            j--;
+            k--;
+        }
 
         BAIRROS.forEach(item => {
             // document.getElementById("btnAquario").innerHTML += `
             // <button class="btn-chart" onclick="exibirAquario(${item.id_quiz})" id="btnAquario${item.id_quiz}">${item.NOME_USUARIO}</button>
             // `
-            obterDadosGrafico(item.id_empresa)
+
+            obterDadosGrafico(item.id_empresa, 4)
         });
 
         if (BAIRROS.length > 0) {
@@ -830,7 +973,7 @@
         }
 
         // exibindo - ou não - o gráfico
-        let graficoExibir = document.getElementById(`grafico${id_quiz}`)
+        let graficoExibir = document.getElementById(`grafico${id_empresa}`)
         graficoExibir.classList.remove("display-none")
         graficoExibir.classList.add("display-block")
 
@@ -851,27 +994,24 @@
 
     //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
     //     Para ajustar o "select", ajuste o comando sql em src/models
-    function obterDadosGrafico(id_quiz) {
+    function obterDadosGrafico(id_empresa, numero) {
 
         // alterarTitulo(id_quiz)
 
-        if (proximaAtualizacaoFacil != undefined) {
-            clearTimeout(proximaAtualizacaoFacil);
-        }
-        if (proximaAtualizacaoMedio != undefined) {
-            clearTimeout(proximaAtualizacaoMedio);
-        }
-        if (proximaAtualizacaoDificil != undefined) {
-            clearTimeout(proximaAtualizacaoDificil);
+        console.log("aqq" + numero)
+
+        if (proximaAtualizacao != undefined) {
+            clearTimeout(proximaAtualizacao);
         }
 
-        fetch(`/medidas/ultimas/${id_quiz}`, { cache: 'no-store' }).then(function (response) {
+
+        fetch(`/medidas/ultimosBairros/${id_empresa}/${numero}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                     resposta.reverse();
 
-                    plotarGrafico(resposta, id_quiz);
+                    plotarGrafico(resposta, id_empresa);
 
                 });
             } else {
@@ -886,79 +1026,63 @@
     // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
     // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
     // A função *plotarGrafico* também invoca a função *atualizarGrafico*
-    function plotarGrafico(resposta, id_quiz) {
+
+
+    function plotarGrafico(resposta, id_empresa) {
+
+        let quantidadeBairros = 0;
 
         console.log('iniciando plotagem do gráfico...');
 
-        // Criando estrutura para plotar gráfico - labels
-        let labels = [];
+        quantidadeBairros = resposta.length;
 
-        // Criando estrutura para plotar gráfico - dados
-        let dados = {
-            labels: labels,
-            datasets: [{
-                label: 'Matemática',
-                data: [],
-                fill: false,
-                backgroundColor: 'rgb(255, 117, 31)',
-                borderColor: 'rgb(255, 117, 31)',
-                tension: 0.1
-            },
-            {
-                label: 'Série',
-                data: [],
-                fill: false,
-                backgroundColor: 'rgb(81, 188, 165)',
-                borderColor: 'rgb(81, 188, 165)',
-                tension: 0.1
-            }]
-        };
 
-        let labels2 = [];
+        for (let j = quantidadeBairros - 1; j >= 0; j--) {
+            // Criando estrutura para plotar gráfico - labels
+            let labels = ["Nível alto", "Nível médio", "Nível baixo"];
 
-        // Criando estrutura para plotar gráfico - dados
-        let dados2 = {
-            labels: labels2,
-            datasets: [{
-                label: 'Matemática',
-                data: [],
-                fill: false,
-                backgroundColor: 'rgb(255, 117, 31)',
-                borderColor: 'rgb(255, 117, 31)',
-                tension: 0.1
-            },
-            {
-                label: 'Série',
-                data: [],
-                fill: false,
-                backgroundColor: 'rgb(81, 188, 165)',
-                borderColor: 'rgb(81, 188, 165)',
-                tension: 0.1
-            }]
-        };
+            // Criando estrutura para plotar gráfico - dados
+            let dados = {
+                labels: labels,
+                datasets: [{
+                    label: [],
+                    data: [],
+                    fill: false,
+                    backgroundColor: ['rgba(231, 0, 11)', '#ffcf55', '#7ed957'],
+                    borderColor: ['rgba(231, 0, 11)', '#ffcf55', '#7ed957'],
+                    tension: 0.1
+                }]
+            };
 
-        let labels3 = [];
+            dados.datasets[0].data.push(resposta[j].soma_nivel_cheia);
+            dados.datasets[0].data.push(resposta[j].soma_nivel_medio);
+            dados.datasets[0].data.push(resposta[j].soma_nivel_baixo);
 
-        // Criando estrutura para plotar gráfico - dados
-        let dados3 = {
-            labels: labels3,
-            datasets: [{
-                label: 'Matemática',
-                data: [],
-                fill: false,
-                backgroundColor: 'rgb(255, 117, 31)',
-                borderColor: 'rgb(255, 117, 31)',
-                tension: 0.1
-            },
-            {
-                label: 'Série',
-                data: [],
-                fill: false,
-                backgroundColor: 'rgb(81, 188, 165)',
-                borderColor: 'rgb(81, 188, 165)',
-                tension: 0.1
-            }]
-        };
+
+            const config1 = {
+                type: 'doughnut',
+                data: dados,
+                options: {
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            };
+
+
+            // Adicionando gráfico criado em div na tela
+            let myChart = new Chart(
+                document.getElementById(`myChartCanvas${j}`),
+                config1
+            );
+
+            setTimeout(() => atualizarGrafico(id_empresa, dados, myChart), 2000);
+        }
+
+
+
 
         console.log('----------------------------------------------')
         console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
@@ -966,61 +1090,7 @@
 
         // Inserindo valores recebidos em estrutura para plotar o gráfico
 
-        let somaFacil = 0;
-        let somaMedio = 0;
-        let somaDificil = 0;
 
-        for (i = 0; i < resposta.length; i++) {
-            if (resposta[i].tipo == 'Fácil') {
-                var registro = resposta[i];
-                labels.push(registro.cadastrado_em);
-                dados.datasets[0].data.push(registro.pontuacao_matematica);
-                dados.datasets[1].data.push(registro.pontuacao_serie);
-                totalFacil = registro.total_tentativas
-
-                somaFacil = registro.pontuacao_serie + registro.pontuacao_matematica;
-
-                if (somaFacil => maiorFacil) {
-                    maiorFacil = somaFacil
-                    maiorSerieFacil = registro.pontuacao_serie;
-                    maiorMatematicaFacil = registro.pontuacao_matematica;
-                    dataFacil = registro.cadastrado_em;
-                    console.log(registro)
-                }
-
-            } else if (resposta[i].tipo == 'Médio') {
-                var registro = resposta[i];
-                labels2.push(registro.cadastrado_em);
-                dados2.datasets[0].data.push(registro.pontuacao_matematica);
-                dados2.datasets[1].data.push(registro.pontuacao_serie);
-                totalMedio = registro.total_tentativas
-
-                somaMedio = registro.pontuacao_serie + registro.pontuacao_matematica;
-
-                if (somaMedio => maiorMedio) {
-                    maiorMedio = somaMedio
-                    maiorSerieMedio = registro.pontuacao_serie;
-                    maiorMatematicaMedio = registro.pontuacao_matematica;
-                    dataMedio = registro.cadastrado_em;
-                }
-
-            } else if (resposta[i].tipo == 'Difícil') {
-                var registro = resposta[i];
-                labels3.push(registro.cadastrado_em);
-                dados3.datasets[0].data.push(registro.pontuacao_matematica);
-                dados3.datasets[1].data.push(registro.pontuacao_serie);
-                totalDificil = registro.total_tentativas
-
-                somaDificil = registro.pontuacao_serie + registro.pontuacao_matematica;
-
-                if (somaDificil => maiorDificil) {
-                    maiorDificil = somaDificil
-                    maiorSerieDificil = registro.pontuacao_serie;
-                    maiorMatematicaDificil = registro.pontuacao_matematica;
-                    dataDificil = registro.cadastrado_em;
-                }
-            }
-        }
 
 
 
@@ -1033,153 +1103,45 @@
         console.log('----------------------------------------------')
 
         // Criando estrutura para plotar gráfico - config
-        const configFacil = {
-            type: 'bar',
-            data: dados,
-            options: {
-                plugins: {
-                    legend: {
-                        labels: {
-                            color: '#ffffff' // Legendas brancas
-                        }
-                    }
-                },
-                scales: {
-                    x: {
-                        grid: {
-                            color: 'rgba(255, 255, 255, 0.2)', // Linhas verticais brancas com transparência
-                            borderColor: '#ffffff'
-                        },
-                        ticks: {
-                            color: '#ffffff' // Textos do eixo X brancos
-                        }
-                    },
-                    y: {
-                        grid: {
-                            color: 'rgba(255, 255, 255, 0.2)', // Linhas horizontais brancas com transparência
-                            borderColor: '#ffffff'
-                        },
-                        ticks: {
-                            color: '#ffffff' // Textos do eixo Y brancos
-                        }
-                    }
-                }
-            }
-        };
 
-        const configMedio = {
-            type: 'bar',
-            data: dados2,
-            options: {
-                plugins: {
-                    legend: {
-                        labels: {
-                            color: '#ffffff' // Legendas brancas
-                        }
-                    }
-                },
-                scales: {
-                    x: {
-                        grid: {
-                            color: 'rgba(255, 255, 255, 0.2)', // Linhas verticais brancas com transparência
-                            borderColor: '#ffffff'
-                        },
-                        ticks: {
-                            color: '#ffffff' // Textos do eixo X brancos
-                        }
-                    },
-                    y: {
-                        grid: {
-                            color: 'rgba(255, 255, 255, 0.2)', // Linhas horizontais brancas com transparência
-                            borderColor: '#ffffff'
-                        },
-                        ticks: {
-                            color: '#ffffff' // Textos do eixo Y brancos
-                        }
-                    }
-                }
-            }
-        };
+        //     new Chart(graf_cambuci, {
+        //     type: 'doughnut',
+        //     data: {
+        //         labels: ['Nivel Alto', 'Nivel Medio', 'Nivel Baixo'],
+        //         datasets: [{
+        //             data: [1, 3, 1],
+        //             borderWidth: 1,
+        //             backgroundColor: ['rgba(231, 0, 11)', '#ffcf55', '#7ed957']
+        //         }]
+        //     },
+        //     options: {
+        //         plugins: {
+        //             legend: {
+        //                 display: false
+        //             }
+        //         }
+        //     }
+        // })
 
-        const configDificil = {
-            type: 'bar',
-            data: dados3,
-            options: {
-                plugins: {
-                    legend: {
-                        labels: {
-                            color: '#ffffff' // Legendas brancas
-                        }
-                    }
-                },
-                scales: {
-                    x: {
-                        grid: {
-                            color: 'rgba(255, 255, 255, 0.2)', // Linhas verticais brancas com transparência
-                            borderColor: '#ffffff'
-                        },
-                        ticks: {
-                            color: '#ffffff' // Textos do eixo X brancos
-                        }
-                    },
-                    y: {
-                        grid: {
-                            color: 'rgba(255, 255, 255, 0.2)', // Linhas horizontais brancas com transparência
-                            borderColor: '#ffffff'
-                        },
-                        ticks: {
-                            color: '#ffffff' // Textos do eixo Y brancos
-                        }
-                    }
-                }
-            }
-        };
 
-        porcSerieFacil = (maiorSerieFacil / 5) * 100;
-        porcSerieMedio = (maiorSerieMedio / 5) * 100;
-        porcSerieDificil = (maiorSerieDificil / 5) * 100;
-        porcMatematicaFacil = (maiorMatematicaFacil / 5) * 100;
-        porcMatematicaMedio = (maiorMatematicaMedio / 5) * 100;
-        porcMatematicaDificil = (maiorMatematicaDificil / 5) * 100;
 
-        console.log(maiorSerieFacil)
+
+
 
         // kpiTotal.innerHTML = `<div class="material-icons">add</div><span>Total de tentativas</span>
         // <p>${totalFacil}</p>`;
-        kpiFacil.innerHTML = `<div class="material-icons">sentiment_very_satisfied</div><span>Fácil</span>
-        <p>Sua melhor tentativa foi feita: ${dataFacil}</p>
-        <p>% na série: ${porcSerieFacil}%</p>
-        <p>% em matemática: ${porcMatematicaFacil}%</p>`;
-        kpiMedio.innerHTML = `<div class="material-icons">sentiment_satisfied</div><span>Médio</span>
-        <p>Sua melhor tentativa foi feita: ${dataMedio}</p>
-        <p>% na série: ${porcSerieMedio}%</p>
-        <p>% em matemática: ${porcMatematicaMedio}%</p>`;
-        kpiDificil.innerHTML = `<div class="material-icons">sentiment_neutral</div><span>Difícil</span>
-        <p>Sua melhor tentativa foi feita: ${dataDificil}</p>
-        <p>% na série: ${porcSerieDificil}%</p>
-        <p>% em matemática: ${porcMatematicaDificil}%</p>`;
-
-        // Adicionando gráfico criado em div na tela
-        let myChart = new Chart(
-            document.getElementById(`myChartCanvasFacil`),
-            configFacil
-        );
-
-        let myChart2 = new Chart(
-            document.getElementById(`myChart2CanvasMedio`),
-            configMedio
-        );
-
-        let myChart3 = new Chart(
-            document.getElementById(`myChart3CanvasDificil`),
-            configDificil
-        );
-
-        setTimeout(() => atualizarGrafico(id_quiz, dados, myChart), 2000);
-
-        setTimeout(() => atualizarGrafico2(id_quiz, dados2, myChart2), 2000);
-
-        setTimeout(() => atualizarGrafico3(id_quiz, dados3, myChart3), 2000);
+        // kpiFacil.innerHTML = `<div class="material-icons">sentiment_very_satisfied</div><span>Fácil</span>
+        // <p>Sua melhor tentativa foi feita: ${dataFacil}</p>
+        // <p>% na série: ${porcSerieFacil}%</p>
+        // <p>% em matemática: ${porcMatematicaFacil}%</p>`;
+        // kpiMedio.innerHTML = `<div class="material-icons">sentiment_satisfied</div><span>Médio</span>
+        // <p>Sua melhor tentativa foi feita: ${dataMedio}</p>
+        // <p>% na série: ${porcSerieMedio}%</p>
+        // <p>% em matemática: ${porcMatematicaMedio}%</p>`;
+        // kpiDificil.innerHTML = `<div class="material-icons">sentiment_neutral</div><span>Difícil</span>
+        // <p>Sua melhor tentativa foi feita: ${dataDificil}</p>
+        // <p>% na série: ${porcSerieDificil}%</p>
+        // <p>% em matemática: ${porcMatematicaDificil}%</p>`;
 
 
     }
@@ -1190,21 +1152,21 @@
 
     //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
     //     Para ajustar o "select", ajuste o comando sql em src/models
-    function atualizarGrafico(id_quiz, dados, myChart) {
+    function atualizarGrafico(id_empresa, dados, myChart) {
 
 
 
-        fetch(`/medidas/tempo-real/${id_quiz}`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/medidas/tempo-realBairros/${id_empresa}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (novoRegistro) {
 
-                    obterdados(id_quiz);
+                    obterdados(id_empresa);
                     // alertar(novoRegistro, id_quiz);
                     console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
                     console.log(`Dados atuais do gráfico:`);
                     console.log(dados);
 
-                    let avisoCaptura = document.getElementById(`avisoCaptura${id_quiz}`)
+                    let avisoCaptura = document.getElementById(`avisoCaptura${id_empresa}`)
                     avisoCaptura.innerHTML = ""
 
 
@@ -1223,21 +1185,24 @@
                         dados.labels.push(novoRegistro[0].cadastrado_em); // incluir um novo momento
 
                         dados.datasets[0].data.shift();  // apagar o primeiro de umidade
-                        dados.datasets[0].data.push(novoRegistro[0].pontuacao_matematica); // incluir uma nova medida de umidade
+                        dados.datasets[0].data.push(novoRegistro[0].soma_nivel_cheia); // incluir uma nova medida de umidade
 
                         dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
-                        dados.datasets[1].data.push(novoRegistro[0].pontuacao_serie); // incluir uma nova medida de temperatura
+                        dados.datasets[1].data.push(novoRegistro[0].soma_nivel_medio); // incluir uma nova medida de temperatura
+
+                        dados.datasets[2].data.shift();  // apagar o primeiro de temperatura
+                        dados.datasets[2].data.push(novoRegistro[0].soma_nivel_baixo); // incluir uma nova medida de temperatura
 
                         myChart.update();
                     }
 
                     // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                    proximaAtualizacaoFacil = setTimeout(() => atualizarGrafico(id_quiz, dados, myChart), 2000);
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(id_empresa, dados, myChart), 2000);
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacaoFacil = setTimeout(() => atualizarGrafico(id_quiz, dados, myChart), 2000);
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(id_empresa, dados, myChart), 2000);
             }
         })
             .catch(function (error) {
@@ -1245,117 +1210,5 @@
             });
 
     }
-
-    function atualizarGrafico2(id_quiz, dados, myChart2) {
-
-        fetch(`/medidas/tempo-real/${id_quiz}`, { cache: 'no-store' }).then(function (response) {
-            if (response.ok) {
-                response.json().then(function (novoRegistro) {
-
-                    obterdados(id_quiz);
-                    // alertar(novoRegistro, id_quiz);
-                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
-                    console.log(`Dados atuais do gráfico:`);
-                    console.log(dados);
-
-                    let avisoCaptura = document.getElementById(`avisoCaptura${id_quiz}`)
-                    avisoCaptura.innerHTML = ""
-
-
-                    if (novoRegistro[0].cadastrado_em == dados.labels[dados.labels.length - 1]) {
-                        console.log("---------------------------------------------------------------")
-                        console.log("Como não há dados novos para captura, o gráfico não atualizará.")
-                        avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
-                        console.log("Horário do novo dado capturado:")
-                        console.log(novoRegistro[0].cadastrado_em)
-                        console.log("Horário do último dado capturado:")
-                        console.log(dados.labels[dados.labels.length - 1])
-                        console.log("---------------------------------------------------------------")
-                    } else {
-                        // tirando e colocando valores no gráfico
-                        dados.labels.shift(); // apagar o primeiro
-                        dados.labels.push(novoRegistro[0].cadastrado_em); // incluir um novo momento
-
-                        dados.datasets[0].data.shift();  // apagar o primeiro de umidade
-                        dados.datasets[0].data.push(novoRegistro[0].pontuacao_matematica); // incluir uma nova medida de umidade
-
-                        dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
-                        dados.datasets[1].data.push(novoRegistro[0].pontuacao_serie); // incluir uma nova medida de temperatura
-
-                        myChart2.update();
-                    }
-
-                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                    proximaAtualizacaoMedio = setTimeout(() => atualizarGrafico(id_quiz, dados, myChart2), 2000);
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
-                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacaoMedio = setTimeout(() => atualizarGrafico(id_quiz, dados, myChart2), 2000);
-            }
-        })
-            .catch(function (error) {
-                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-            });
-
-    }
-
-    function atualizarGrafico3(id_quiz, dados, myChart3) {
-
-
-
-        fetch(`/medidas/tempo-real/${id_quiz}`, { cache: 'no-store' }).then(function (response) {
-            if (response.ok) {
-                response.json().then(function (novoRegistro) {
-
-                    obterdados(id_quiz);
-                    // alertar(novoRegistro, id_quiz);
-                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
-                    console.log(`Dados atuais do gráfico:`);
-                    console.log(dados);
-
-                    let avisoCaptura = document.getElementById(`avisoCaptura${id_quiz}`)
-                    avisoCaptura.innerHTML = ""
-
-
-                    if (novoRegistro[0].cadastrado_em == dados.labels[dados.labels.length - 1]) {
-                        console.log("---------------------------------------------------------------")
-                        console.log("Como não há dados novos para captura, o gráfico não atualizará.")
-                        avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
-                        console.log("Horário do novo dado capturado:")
-                        console.log(novoRegistro[0].cadastrado_em)
-                        console.log("Horário do último dado capturado:")
-                        console.log(dados.labels[dados.labels.length - 1])
-                        console.log("---------------------------------------------------------------")
-                    } else {
-                        // tirando e colocando valores no gráfico
-                        dados.labels.shift(); // apagar o primeiro
-                        dados.labels.push(novoRegistro[0].cadastrado_em); // incluir um novo momento
-
-                        dados.datasets[0].data.shift();  // apagar o primeiro de umidade
-                        dados.datasets[0].data.push(novoRegistro[0].pontuacao_matematica); // incluir uma nova medida de umidade
-
-                        dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
-                        dados.datasets[1].data.push(novoRegistro[0].pontuacao_serie); // incluir uma nova medida de temperatura
-
-                        myChart3.update();
-                    }
-
-                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                    proximaAtualizacaoDificil = setTimeout(() => atualizarGrafico(id_quiz, dados, myChart3), 2000);
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
-                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacaoDificil = setTimeout(() => atualizarGrafico(id_quiz, dados, myChart3), 2000);
-            }
-        })
-            .catch(function (error) {
-                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-            });
-
-    }
-
-
 
 </script>

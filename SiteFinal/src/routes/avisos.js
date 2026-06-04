@@ -31,7 +31,7 @@ router.get("/buscarDados", function (req, res) {
     avisoController.buscarDados(req, res);
 });
 
-router.get("/listarFuncionarios", function (req, res) {
+router.get("/listarFuncionarios/:fkEmpresa", function (req, res) {
     avisoController.listarFuncionarios(req, res);
 });
 

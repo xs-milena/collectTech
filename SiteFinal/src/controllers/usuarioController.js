@@ -33,6 +33,7 @@ function autenticar(req, res) {
                                             if (resultadoBairro.length > 0) {
                                                 res.json({
                                                     id: resultadoAutenticar[0].id_funcionario,
+                                                    cargo: resultadoAutenticar[0].cargo,
                                                     email: resultadoAutenticar[0].email,
                                                     nome: resultadoAutenticar[0].nome,
                                                     senha: resultadoAutenticar[0].senha,

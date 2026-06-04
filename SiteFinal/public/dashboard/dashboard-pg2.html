@@ -12,8 +12,65 @@
 </head>
 
 <body>
-    <div class="sidebar">
-        <div>
+    <div id="sidebar">
+        
+    </div>
+    <!-- <div class="graficos1">
+        <div class="container">
+            <canvas id="graf_lixeiras_total" class="graf_linhas"></canvas>
+        </div>
+    </div> -->
+
+    <div class="graficos">
+        <div class="container3 graficos">
+            <div class="container-pesquisa">
+                <input type="text" placeholder="Pesquisar um bairro" class="pesquisa" id="ipt_pesquisa"><button
+                    class="botao-pesquisa"><img src="../assets/img/lupa.png" class="lupa-pesquisa" onclick="pesquisarBairro()"></button>
+            </div>
+        </div>
+        <div class="container3">
+            <div class="kpi" id="div_kpis"> 
+            </div>
+        </div>
+    </div>
+    <span onclick=""></span>
+</body>
+
+</html>
+<script>
+
+    let cargo = sessionStorage.CARGO;
+
+    if (cargo == "gestor ambiental") {
+        sidebar.innerHTML = `<div>
+            <div class="logoSide">
+                <img src="../assets/img/broto.png">
+                <h1>Collect Tech</h1>
+                <p>Smart City Solution</p>
+                <div class="linha"></div>
+            </div>
+            <ul class="menu">
+                <a href="./dashboard.html">
+                    <li>Geral</li>
+                </a>
+                <a href="./dashboard-pg2.html">
+                    <li class="ativo">Lixeiras</li>
+                </a>
+                <a href="./rotas.html">
+                    <li>Mapa</li>
+                </a>
+                <a href="https://collectech.atlassian.net/servicedesk/customer/portal/2">
+                    <li>Central de Suporte</li>
+                </a>
+            </ul>
+        </div>
+        <div id="sair">
+            <span class="material-icons">logout</span>
+            <span class="link" onclick="limparSessao()">Sair</span>
+        </div>`;
+    } else {
+        sidebar.innerHTML = `<div>
+            <div>
             <div class="logoSide">
                 <img src="../assets/img/broto.png">
                 <h1>Collect Tech</h1>
@@ -43,32 +100,12 @@
         </div>
         <div id="sair">
             <span class="material-icons">logout</span>
-            <span class="link"><a href="../index.html">Sair</a></span>
-        </div>
-    </div>
-    <!-- <div class="graficos1">
-        <div class="container">
-            <canvas id="graf_lixeiras_total" class="graf_linhas"></canvas>
-        </div>
-    </div> -->
+            <span class="link" onclick="limparSessao()">Sair</span>
+        </div>`;
+    }
 
-    <div class="graficos">
-        <div class="container3 graficos">
-            <div class="container-pesquisa">
-                <input type="text" placeholder="Pesquisar um bairro" class="pesquisa" id="ipt_pesquisa"><button
-                    class="botao-pesquisa"><img src="../assets/img/lupa.png" class="lupa-pesquisa" onclick="pesquisarBairro()"></button>
-            </div>
-        </div>
-        <div class="container3">
-            <div class="kpi" id="div_kpis"> 
-            </div>
-        </div>
-    </div>
-    
-</body>
 
-</html>
-<script>
+
     let lixeiras = []
     let mostrou = false
 
@@ -121,6 +158,8 @@
     // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
     // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
     // A função *plotarGrafico* também invoca a função *atualizarGrafico*
+    setInterval(() => plotarGrafico(), 5000)
+
     function plotarGrafico(resposta, id_empresa) {
         if(mostrou == true){
             console.log('já mostrou')

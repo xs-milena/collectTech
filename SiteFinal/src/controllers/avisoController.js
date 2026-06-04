@@ -121,7 +121,7 @@ function buscarDados(req, res) {
 }
 
 function listarFuncionarios(req, res) {
-    var fkEmpresa = req.query.fkEmpresa;
+    var fkEmpresa = req.params.fkEmpresa;
 
     if (fkEmpresa == undefined) {
         res.status(400).send("A fkEmpresa está indefinida!");

@@ -9,11 +9,13 @@
     <link rel="stylesheet" href="../style/dashboard.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="icon" href="./img/folha.png">
+    <script src="../js/sessao.js"></script>
+
 </head>
 
 <body>
     <div class="gerenciarUsuario">
-        <div class="sidebar">
+        <div id="sidebar">
             <div>
                 <div class="logoSide">
                     <img src="../assets/img/broto.png">
@@ -44,7 +46,7 @@
             </div>
             <div id="sair">
                 <span class="material-icons">logout</span>
-                <span class="link"><a href="./index.html">Sair</a></span>
+                <span class="link" onclick="limparSessao()">Sair</span>
             </div>
         </div>
         <div class="card-gerenciarUsuario">

@@ -27,7 +27,8 @@ function listarEcoponto(id_empresa) {
 function listarBairro(id_empresa) {
   var instrucaoSql = `
   select * from vw_bairros_empresa
-where id_empresa = 1;
+where id_empresa = ${id_empresa}
+order by soma_nivel_cheia desc, soma_nivel_medio desc;
   `;
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
