@@ -26,7 +26,7 @@ CREATE TABLE funcionario (
     email VARCHAR(100) NOT NULL UNIQUE,
     senha VARCHAR(100) NOT NULL,
     cargo VARCHAR(100) NOT NULL,
-    ativo BOOLEAN NOT NULL DEFAULT FALSE,
+    ativo BOOLEAN NOT NULL DEFAULT TRUE,
     fk_empresa INT NOT NULL,
     cadastrado_em DATETIME DEFAULT CURRENT_TIMESTAMP,
     atualizado_em DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -513,155 +513,220 @@ VALUES
 (31,125),(43,125),(55,125),
 (67,126),(79,126),(91,126);
 
-SELECT
-    u.nome,
-    e.cnpj
-FROM
-    funcionario u
-    INNER JOIN empresa e ON u.fk_empresa = e.id_empresa;
 
--- nome e cnpj
-SELECT
-    ec.nome_ecoponto,
-    l.id_lixeira
-FROM
-    ecoponto ec
-    INNER JOIN lixeira l ON ec.id_ecoponto = l.fk_ecoponto;
 
--- ecoponto e lixeiras
-SELECT
-    *
-FROM
-    funcionario
-ORDER BY
-    cadastrado_em DESC;
 
--- informações sobre o usuário
-UPDATE funcionario
-SET
-    ativo = false
-WHERE
-    id_funcionario = 1;
+-- -- select que mostra o nível de preenchimento da lixeira de acordo com o id do sensor
+-- CREATE VIEW
+--     captura_ultimos_dados_sensor AS
+-- SELECT
+--     id_sensor,
+--     l.nivel_preenchimento,
+--     l.cadastrado_em,
+--     DATE_FORMAT (l.cadastrado_em, '%H:%i:%s')
+-- FROM
+--     leitura_sensor as l
+--     join sensor on l.fk_sensor = id_sensor
+--     join lixeira on fk_lixeira = id_lixeira
+--     join ecoponto on fk_ecoponto = id_ecoponto
+-- WHERE
+--     fk_ecoponto = 1
+-- ORDER BY
+--     id_ecoponto DESC
+-- LIMIT
+--     7;
 
-UPDATE funcionario
-SET
-    cargo = 'gestor ambiental'
-WHERE
-    id_funcionario = 3;
+-- select
+--     *
+-- from
+--     captura_ultimos_dados_sensor;
 
-UPDATE funcionario
-SET
-    telefone = '11900000000'
-WHERE
-    id_funcionario = 5;
+-- CREATE VIEW
+--     captura_nivel_sensor AS
+-- SELECT
+--     l.nivel_preenchimento,
+--     l.cadastrado_em,
+--     DATE_FORMAT (l.cadastrado_em, '%H:%i:%s')
+-- FROM
+--     leitura_sensor as l
+--     join sensor on l.fk_sensor = id_sensor
+--     join lixeira on fk_lixeira = id_lixeira
+--     join ecoponto on fk_ecoponto = id_ecoponto
+-- WHERE
+--     fk_ecoponto = id_ecoponto
+-- ORDER BY
+--     l.cadastrado_em DESC
+-- LIMIT
+--     1;
 
-UPDATE funcionario
-SET
-    atualizado_em = NOW ()
-WHERE
-    fk_empresa = 1;
+-- select
+--     *
+-- from
+--     captura_nivel_sensor;
 
-UPDATE funcionario
-SET
-    nome = 'Alan C. Hyppolito'
-WHERE
-    id_funcionario = 1;
+-- SELECT
+--     ec.bairro,
+--     s.id_sensor
+-- FROM
+--     ecoponto ec
+--     INNER JOIN lixeira l ON ec.id_ecoponto = l.fk_ecoponto
+--     INNER JOIN sensor s ON l.id_lixeira = s.fk_lixeira;
 
-UPDATE lixeira
-SET
-    capacidade = 500
-WHERE
-    id_lixeira > 8;
+-- -- sensor e bairro
+-- CREATE VIEW
+--     captura_ultimos_dados_sensor_tabela AS
+-- SELECT
+--     e.nome_ecoponto ecoponto,
+--     id_sensor codigo,
+--     l.nivel_preenchimento nivel,
+--     DATE_FORMAT (l.cadastrado_em, '%H:%i:%s') captura,
+--     DATE_FORMAT (l.cadastrado_em, '%d/%m/%Y') data
+-- FROM
+--     leitura_sensor as l
+--     join sensor on l.fk_sensor = id_sensor
+--     join lixeira on fk_lixeira = id_lixeira
+--     join ecoponto e on fk_ecoponto = e.id_ecoponto
+-- ORDER BY
+--     e.id_ecoponto DESC
+-- LIMIT
+--     7;
 
-UPDATE leitura_sensor
-SET
-    nivel_preenchimento = 0.0
-WHERE
-    fk_sensor = 4;
+-- select
+--     *
+-- from
+--     captura_ultimos_dados_sensor_tabela;
 
-select
-    *
-from
-    funcionario
-where
-    nome like "%alan%";
+    
+CREATE VIEW captura_ultimos_dados_sensor
+AS
+  SELECT id_sensor,
+        l.nivel_preenchimento,
+        l.cadastrado_em, DATE_FORMAT(l.cadastrado_em,'%H:%i:%s')
+	    FROM leitura_sensor as l
+        join sensor on l.fk_sensor = id_sensor
+        join lixeira on fk_lixeira = id_lixeira
+        join ecoponto on fk_ecoponto = id_ecoponto
+	    ORDER BY id_ecoponto DESC LIMIT 7;
 
--- select que mostra o nível de preenchimento da lixeira de acordo com o id do sensor
-CREATE VIEW
-    captura_ultimos_dados_sensor AS
-SELECT
-    id_sensor,
-    l.nivel_preenchimento,
-    l.cadastrado_em,
-    DATE_FORMAT (l.cadastrado_em, '%H:%i:%s')
-FROM
-    leitura_sensor as l
-    join sensor on l.fk_sensor = id_sensor
-    join lixeira on fk_lixeira = id_lixeira
-    join ecoponto on fk_ecoponto = id_ecoponto
-WHERE
-    fk_ecoponto = 1
-ORDER BY
-    id_ecoponto DESC
-LIMIT
-    7;
+select * from captura_ultimos_dados_sensor;
 
-select
-    *
-from
-    captura_ultimos_dados_sensor;
 
-CREATE VIEW
-    captura_nivel_sensor AS
-SELECT
-    l.nivel_preenchimento,
-    l.cadastrado_em,
-    DATE_FORMAT (l.cadastrado_em, '%H:%i:%s')
-FROM
-    leitura_sensor as l
-    join sensor on l.fk_sensor = id_sensor
-    join lixeira on fk_lixeira = id_lixeira
-    join ecoponto on fk_ecoponto = id_ecoponto
-WHERE
-    fk_ecoponto = id_ecoponto
-ORDER BY
-    l.cadastrado_em DESC
-LIMIT
-    1;
 
-select
-    *
-from
-    captura_nivel_sensor;
+CREATE VIEW captura_nivel_sensor
+AS
+SELECT 
+        l.nivel_preenchimento,
+        l.cadastrado_em, DATE_FORMAT(l.cadastrado_em,'%H:%i:%s')
+	    FROM leitura_sensor as l
+        join sensor on l.fk_sensor = id_sensor
+        join lixeira on fk_lixeira = id_lixeira
+        join ecoponto on fk_ecoponto = id_ecoponto
+	    WHERE fk_ecoponto = id_ecoponto
+	    ORDER BY l.cadastrado_em DESC LIMIT 1;
 
-SELECT
-    ec.bairro,
-    s.id_sensor
-FROM
-    ecoponto ec
-    INNER JOIN lixeira l ON ec.id_ecoponto = l.fk_ecoponto
-    INNER JOIN sensor s ON l.id_lixeira = s.fk_lixeira;
+select * from captura_nivel_sensor;
 
--- sensor e bairro
-CREATE VIEW
-    captura_ultimos_dados_sensor_tabela AS
-SELECT
-    e.nome_ecoponto ecoponto,
-    id_sensor codigo,
-    l.nivel_preenchimento nivel,
-    DATE_FORMAT (l.cadastrado_em, '%H:%i:%s') captura,
-    DATE_FORMAT (l.cadastrado_em, '%d/%m/%Y') data
-FROM
-    leitura_sensor as l
-    join sensor on l.fk_sensor = id_sensor
-    join lixeira on fk_lixeira = id_lixeira
-    join ecoponto e on fk_ecoponto = e.id_ecoponto
-ORDER BY
-    e.id_ecoponto DESC
-LIMIT
-    7;
+drop view vw_nivel_lixeiras_empresa;
 
-select
-    *
-from
-    captura_ultimos_dados_sensor_tabela;
+create view vw_nivel_lixeiras_empresa
+as
+SELECT 
+    li.id_lixeira,
+    emp.id_empresa,
+    SUBSTRING_INDEX( GROUP_CONCAT(l.nivel_preenchimento ORDER BY l.cadastrado_em DESC), ',', 1 ) AS nivel_preenchimento,
+    MAX(l.cadastrado_em) AS cadastrado_em,
+    nome_ecoponto, id_ecoponto
+FROM leitura_sensor AS l 
+JOIN sensor AS s ON l.fk_sensor = s.id_sensor 
+JOIN lixeira AS li ON s.fk_lixeira = li.id_lixeira 
+JOIN ecoponto AS e ON li.fk_ecoponto = e.id_ecoponto 
+JOIN empresa AS emp ON e.fk_empresa = emp.id_empresa 
+GROUP BY li.id_lixeira
+order by nivel_preenchimento desc;
+
+select * from vw_nivel_lixeiras_empresa;
+
+update leitura_sensor
+set nivel_preenchimento = 60
+where nivel_preenchimento = 95;
+
+update leitura_sensor
+set nivel_preenchimento = 49
+where nivel_preenchimento = 77;
+
+create view vw_bairros_empresa
+as
+select e.id_empresa, eco.bairro,
+(sum(case
+when v.nivel_preenchimento > 80 then 1
+else 0
+end))
+as soma_nivel_cheia,
+(sum(case
+when v.nivel_preenchimento > 50 and v.nivel_preenchimento <= 80 then 1
+else 0
+end))
+as soma_nivel_medio,
+(sum(case
+when v.nivel_preenchimento <= 50 then 1
+else 0
+end))
+as soma_nivel_baixo
+from vw_nivel_lixeiras_empresa v
+join empresa e on e.id_empresa = v.id_empresa 
+join ecoponto eco on v.id_ecoponto = eco.id_ecoponto
+join subprefeitura s on eco.fk_subprefeitura = s.id_subprefeitura 
+GROUP BY e.id_empresa, eco.bairro;
+
+select * from vw_bairros_empresa
+where bairro = "Bela Vista" and id_empresa = 1;
+
+
+select * from funcionario;
+update funcionario
+set cargo = "gestor ambiental"
+where cargo = "motorista";
+
+create view vw_nivel_ecoponto
+as
+SELECT 
+    vw.nome_ecoponto ecoponto,
+    e.bairro,
+    vw.id_empresa,
+    MAX(DATE_FORMAT(vw.cadastrado_em, '%H:%i:%s')) AS captura,
+    MAX(DATE_FORMAT(vw.cadastrado_em, '%d/%m/%Y')) AS data,
+    AVG(vw.nivel_preenchimento) AS nivel
+FROM 
+    vw_nivel_lixeiras_empresa vw
+join ecoponto e on e.id_ecoponto = vw.id_ecoponto 
+GROUP BY 
+    vw.id_ecoponto, 
+    vw.nome_ecoponto;
+
+select * from vw_nivel_ecoponto;
+
+
+
+create view vw_total_lixeiras
+as
+select e.id_empresa, count(v.id_lixeira) as total,
+sum(case
+when v.nivel_preenchimento > 80 then 1
+else 0
+end)
+as total_nivel_cheia,
+sum( case
+when v.nivel_preenchimento > 50 and v.nivel_preenchimento <= 80 then 1
+else 0
+end)
+as total_nivel_medio,
+sum(case
+when v.nivel_preenchimento <= 50 then 1
+else 0
+end)
+as total_nivel_baixo
+from vw_nivel_lixeiras_empresa v
+join empresa e on e.id_empresa = v.id_empresa 
+join ecoponto eco on v.id_ecoponto = eco.id_ecoponto
+join subprefeitura s on eco.fk_subprefeitura = s.id_subprefeitura 
+GROUP BY e.id_empresa;
