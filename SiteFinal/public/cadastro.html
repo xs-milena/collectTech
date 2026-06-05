@@ -157,10 +157,6 @@
 
 
       </div>
-      <div class="listarFuncionarios">
-        <button class="button cadastro" onclick="listarFuncionarios()">Listar Funcionarios</button>
-      </div>
-      <div id="div_mensagem"></div>
     </div>
 
 </body>
@@ -329,64 +325,4 @@
   //       console.log(`#ERRO: ${resposta}`);
   //     });
   // }
-
-  // Crie a array global antes da funcao para dar certo
-  let listaFuncionariosCadastrados = [];
-
-  function listarFuncionarios() {
-    let fkEmpresa = sessionStorage.ID_EMPRESA;
-
-    fetch(`/avisos/listarFuncionarios/${fkEmpresa}`, {
-      method: "GET",
-    })
-      .then(function (resposta) {
-        if (resposta.ok) {
-          if (resposta.status == 204) {
-            console.log("Nenhum funcionário encontrado.");
-            return;
-          }
-
-          resposta.json().then((funcionarios) => {
-            console.log("Funcionários recebidos do servidor:", funcionarios);
-
-            listaFuncionariosCadastrados = [];
-
-            funcionarios.forEach((funcionario) => {
-              let dadosSimplificados = {
-                id: funcionario.id_funcionario,
-                nome: funcionario.nome,
-                email: funcionario.email
-              };
-
-              listaFuncionariosCadastrados.push(dadosSimplificados);
-            });
-
-
-            //pega só o is, nome e email dos funcionarios
-            div_mensagem.innerHTML = "";
-
-            if (listaFuncionariosCadastrados.length > 0) {
-              for (let i = 0; i < listaFuncionariosCadastrados.length; i++) {
-                div_mensagem.innerHTML += `
-                    ID: ${listaFuncionariosCadastrados[i].id}<br>
-                    Nome: ${listaFuncionariosCadastrados[i].nome}<br>
-                    E-mail: ${listaFuncionariosCadastrados[i].email}<br><br>
-                `;
-              }
-            } else {
-              div_mensagem.innerHTML = "Nenhum funcionário cadastrado para exibir.";
-            }
-          });
-        } else {
-          console.error("Erro na resposta do servidor. Status:", resposta.status);
-        }
-      })
-      .catch(function (erro) {
-        console.error(`#ERRO na requisição: ${erro}`);
-      });
-  }
-
-  function sumirMensagem() {
-    cardErro.style.display = "none";
-  }
 </script>

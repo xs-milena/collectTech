@@ -105,7 +105,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-left: 350px;
+    margin-left: 450px;
     margin-right: 200px;
     margin-bottom: 10px;
 }
@@ -245,7 +245,10 @@ body {
 /* =========================================GRAFICO DE BARRAS========================================== */
 
 .tabela_ecopontos {
-    margin-bottom: 70px;
+    margin-bottom: 30px;
+    margin-left: 450px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.199), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    margin-top: 30px;
 }
 
 table,
@@ -288,14 +291,13 @@ tr:hover {
     border-radius: 10px;
     border-color: black;
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    margin-left: 350px;
+    margin-left: 450px;
     margin-right: 200px;
     align-self: center;
-    padding: 20px;
+    padding: 23px;
     margin-bottom: 40px;
     background: linear-gradient(#0aae43, #318752);
     color: white;
-
     img {
         width: 25px;
         height: 25px;
@@ -310,8 +312,12 @@ tr:hover {
 .container5 h3 {
     display: flex;
     flex-direction: column;
-    margin-bottom: 15px;
-    margin-right: 50px;
+    margin-bottom: 10px;
+}
+
+.container5 p {
+   font-weight: 500;
+   margin-bottom: 20px;
 }
 
 #topo {
@@ -319,7 +325,7 @@ tr:hover {
     flex-direction: row;
 }
 
-#ipt_ecoponto {
+#ipt_bairro {
     padding: 10px;
     border-radius: 10px;
     width: 400px;
@@ -327,11 +333,9 @@ tr:hover {
     z-index: 1;
     font-size: 15px;
     border-style: none;
-
 }
 
 .barra-pesquisa {
-    margin-left: 60px;
     display: flex;
     flex-direction: row;
     margin-bottom: 30px;
@@ -346,9 +350,7 @@ tr:hover {
     border-radius: 5px;
     background-color: white;
     border-color: transparent;
-}
-
-.barra-pesquisa input {
+    margin-bottom: 20px;
     outline: none;
 }
 
@@ -583,6 +585,7 @@ tr:hover {
     max-width: 655px;
     /* padding: 35px; */
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    height: 920px;
 }
 
 h1 {
@@ -736,6 +739,24 @@ a {
 
 .cadastro:hover {
     background-color: #10914B;
+}
+
+.listar-funcionario {
+    background-color: #12A454;
+    color: #ffffff;
+    border: none;
+    margin-top: 30px;
+}
+
+.listar-funcionario:hover {
+    background-color: #10914B;
+}
+
+#div_mensagem {
+    margin-top: 50px;
+    b {
+        color: #0f7a4f;
+    }
 }
 
 @media (max-width: 480px) {
