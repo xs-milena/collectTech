@@ -28,7 +28,7 @@
                     class="botao-pesquisa"><img src="../assets/img/lupa.png" class="lupa-pesquisa" onclick="pesquisarBairro()"></button>
             </div>
         </div>
-        <div class="container3">
+        <div class="container-kpi">
             <div class="kpi" id="div_kpis"> 
             </div>
         </div>
@@ -182,7 +182,7 @@
                         <h3>Lixeira: ${registro.id_lixeira}</h3>
                         <h5>Capacidade:</h5>
                         <div class="progresso-container">
-                            <progress value="${registro.nivel_preenchimento}" max="100"></progress><span>${registro.nivel_preenchimento}</span>
+                            <progress value="${registro.nivel_preenchimento}" max="100"></progress><span>${registro.nivel_preenchimento}%</span>
                         </div>
                         <p>Última atualização: ${registro.cadastrado_em}</p>
                     </div>
@@ -198,7 +198,7 @@
                         <h3>Lixeira: ${registro.id_lixeira}</h3>
                         <h5>Capacidade:</h5>
                         <div class="progresso-container">
-                            <progress value="${registro.nivel_preenchimento}" max="100"></progress><span>${registro.nivel_preenchimento}</span>
+                            <progress value="${registro.nivel_preenchimento}" max="100"></progress><span>${registro.nivel_preenchimento}%</span>
                         </div>
                         <p>Última atualização: ${registro.cadastrado_em}</p>
                     </div>
@@ -214,7 +214,7 @@
                         <h3>Lixeira: ${registro.id_lixeira}</h3>
                         <h5>Capacidade:</h5>
                         <div class="progresso-container">
-                            <progress value="${registro.nivel_preenchimento}" max="100"></progress><span>${registro.nivel_preenchimento}</span>
+                            <progress value="${registro.nivel_preenchimento}" max="100"></progress><span>${registro.nivel_preenchimento}%</span>
                         </div>
                         <p>Última atualização: ${registro.cadastrado_em}</p>
                     </div>
@@ -246,8 +246,9 @@
                         <h3>Lixeira: ${lixeiras[i].id_lixeira}</h3>
                         <h5>Capacidade:</h5>
                         <div class="progresso-container">
-                            <progress value="${lixeiras[i].nivel_preenchimento}" max="100"></progress><span>${lixeiras[i].nivel_preenchimento}</span>
+                            <progress value="${lixeiras[i].nivel_preenchimento}" max="100"></progress><span>${lixeiras[i].nivel_preenchimento}%</span>
                         </div>
+                        <p>Última atualização: ${lixeiras[i].cadastrado_em}</p>
                     </div>
                     <div class="container_icone icone_cheia">
                         <img src="../assets/img/lixeira.png" class="icone_box">
@@ -261,8 +262,9 @@
                         <h3>Lixeira: ${lixeiras[i].id_lixeira}</h3>
                         <h5>Capacidade:</h5>
                         <div class="progresso-container">
-                            <progress value="${lixeiras[i].nivel_preenchimento}" max="100"></progress><span>${lixeiras[i].nivel_preenchimento}</span>
+                            <progress value="${lixeiras[i].nivel_preenchimento}" max="100"></progress><span>${lixeiras[i].nivel_preenchimento}%</span>
                         </div>
+                        <p>Última atualização: ${lixeiras[i].cadastrado_em}</p>
                     </div>
                     <div class="container_icone icone_medio">
                         <img src="../assets/img/lixeira.png" class="icone_box">
@@ -276,8 +278,9 @@
                         <h3>Lixeira: ${lixeiras[i].id_lixeira}</h3>
                         <h5>Capacidade:</h5>
                         <div class="progresso-container">
-                            <progress value="${lixeiras[i].nivel_preenchimento}" max="100"></progress><span>${lixeiras[i].nivel_preenchimento}</span>
+                            <progress value="${lixeiras[i].nivel_preenchimento}" max="100"></progress><span>${lixeiras[i].nivel_preenchimento}%</span>
                         </div>
+                        <p>Última atualização: ${lixeiras[i].cadastrado_em}</p>
                     </div>
                     <div class="container_icone icone_vazia">
                         <img src="../assets/img/lixeira.png" class="icone_box">
