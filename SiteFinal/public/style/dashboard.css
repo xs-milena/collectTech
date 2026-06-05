@@ -805,3 +805,25 @@ a {
     display: flex;
     align-items: center;
 }
+
+/* MAPA DE CALOR */
+
+.heatmap {
+    width: 1173px;
+    height: 520px;
+    scale: 70%;
+    /* Imagem de fundo do mapa */
+    background-image: url('../assets/img/Mapa.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 1px solid #ccc;
+}
+
+.mapa {
+    width: 1173px;
+    height: 520px;
+    scale: 70%;
+    position: absolute;
+    z-index: 999;
+    margin-top: 190px;
+}
