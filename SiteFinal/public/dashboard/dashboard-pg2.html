@@ -13,7 +13,7 @@
 
 <body>
     <div id="sidebar">
-        
+
     </div>
     <!-- <div class="graficos1">
         <div class="container">
@@ -25,11 +25,12 @@
         <div class="container3 graficos">
             <div class="container-pesquisa">
                 <input type="text" placeholder="Pesquisar um bairro" class="pesquisa" id="ipt_pesquisa"><button
-                    class="botao-pesquisa"><img src="../assets/img/lupa.png" class="lupa-pesquisa" onclick="pesquisarBairro()"></button>
+                    class="botao-pesquisa"><img src="../assets/img/lupa.png" class="lupa-pesquisa"
+                        onclick="pesquisarBairro()"></button>
             </div>
         </div>
         <div class="container-kpi">
-            <div class="kpi" id="div_kpis"> 
+            <div class="kpi" id="div_kpis">
             </div>
         </div>
     </div>
@@ -51,7 +52,7 @@
             </div>
             <ul class="menu">
                 <a href="./dashboard.html">
-                    <li>Geral</li>
+                    <li >Geral</li>
                 </a>
                 <a href="./dashboard-pg2.html">
                     <li class="ativo">Lixeiras</li>
@@ -70,7 +71,6 @@
         </div>`;
     } else {
         sidebar.innerHTML = `<div>
-            <div>
             <div class="logoSide">
                 <img src="../assets/img/broto.png">
                 <h1>Collect Tech</h1>
@@ -88,14 +88,14 @@
                     <li>Mapa</li>
                 </a>
                 <a href="../cadastro.html">
-                    <li>Cadastrar Usuário</li>
-                </a>
-                <a href="./gerenciarUsuario.html">
-                    <li>Gerenciar Usuários</li>
-                </a>
-                <a href="./suporte.html">
-                        <li>Suporte</li>
-                    </a>
+          <li>Cadastrar Usuário</li>
+        </a>
+        <a href="./gerenciarUsuario.html">
+          <li>Gerenciar Usuários</li>
+        </a>
+        <a href="./suporte.html">
+          <li>Suporte</li>
+        </a>
             </ul>
         </div>
         <div id="sair">
@@ -161,7 +161,7 @@
     setInterval(() => plotarGrafico(), 5000)
 
     function plotarGrafico(resposta, id_empresa) {
-        if(mostrou == true){
+        if (mostrou == true) {
             console.log('já mostrou')
             return
         }
@@ -171,10 +171,10 @@
         console.log(resposta)
         lixeiras = resposta
 
-        for (i = resposta.length-1; i >= 0; i--) {
+        for (i = resposta.length - 1; i >= 0; i--) {
             var registro = resposta[i];
 
-            if(registro.nivel_preenchimento > 80){
+            if (registro.nivel_preenchimento > 80) {
                 div_kpis.innerHTML += `<div class="box_lixeiras1 cheia">
                         <div>
                         <span>Ecoponto ${registro.id_ecoponto}</span>
@@ -190,7 +190,7 @@
                         <img src="../assets/img/lixeira.png" class="icone_box">
                     </div>
                     </div>`
-            } else if (registro.nivel_preenchimento <= 80 && registro.nivel_preenchimento >= 50){
+            } else if (registro.nivel_preenchimento <= 80 && registro.nivel_preenchimento >= 50) {
                 div_kpis.innerHTML += `<div class="box_lixeiras1 medio">
                         <div>
                         <span>Ecoponto ${registro.id_ecoponto}</span>
@@ -229,17 +229,17 @@
         mostrou = true
     }
 
-    function pesquisarBairro(){
+    function pesquisarBairro() {
         div_kpis.innerHTML = ''
         let pesquisa = ipt_pesquisa.value
         let inicio = pesquisa[0].toUpperCase()
         let resto = pesquisa.substring(1).toLowerCase()
-        pesquisa = inicio+resto
+        pesquisa = inicio + resto
         console.log(pesquisa)
-        for(let i = lixeiras.length-1; i >= 0; i--){
-            if(lixeiras[i].nome_ecoponto.includes(pesquisa) == true){
-                if(lixeiras[i].nivel_preenchimento >= 80){
-                div_kpis.innerHTML += `<div class="box_lixeiras1 cheia">
+        for (let i = lixeiras.length - 1; i >= 0; i--) {
+            if (lixeiras[i].nome_ecoponto.includes(pesquisa) == true) {
+                if (lixeiras[i].nivel_preenchimento >= 80) {
+                    div_kpis.innerHTML += `<div class="box_lixeiras1 cheia">
                         <div>
                         <span>Ecoponto ${lixeiras[i].id_ecoponto}</span>
                         <p>${lixeiras[i].nome_ecoponto}</p>
@@ -254,8 +254,8 @@
                         <img src="../assets/img/lixeira.png" class="icone_box">
                     </div>
                     </div>`
-            } else if (lixeiras[i].nivel_preenchimento < 80 && lixeiras[i].nivel_preenchimento >= 50){
-                div_kpis.innerHTML += `<div class="box_lixeiras1 medio">
+                } else if (lixeiras[i].nivel_preenchimento < 80 && lixeiras[i].nivel_preenchimento >= 50) {
+                    div_kpis.innerHTML += `<div class="box_lixeiras1 medio">
                         <div>
                         <span>Ecoponto ${lixeiras[i].id_ecoponto}</span>
                         <p>${lixeiras[i].nome_ecoponto}</p>
@@ -270,8 +270,8 @@
                         <img src="../assets/img/lixeira.png" class="icone_box">
                     </div>
                     </div>`
-            } else {
-                div_kpis.innerHTML += `<div class="box_lixeiras1 vazia">
+                } else {
+                    div_kpis.innerHTML += `<div class="box_lixeiras1 vazia">
                         <div>
                         <span>Ecoponto ${lixeiras[i].id_ecoponto}</span>
                         <p>${lixeiras[i].nome_ecoponto}</p>
@@ -286,7 +286,7 @@
                         <img src="../assets/img/lixeira.png" class="icone_box">
                     </div>
                     </div>`
-            }
+                }
             }
         }
     }

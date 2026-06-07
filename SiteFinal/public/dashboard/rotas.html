@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="icon" href="../assets/img/folha.png">
     <script src="https://unpkg.com/heatmap.js"></script>
-
+    <script src="../js/sessao.js"></script>
 </head>
 
 <body>
@@ -36,8 +36,7 @@
 <script>
 
     let cargo = sessionStorage.CARGO;
-
-    if (cargo == "gestor ambiental") {
+if (cargo == "gestor ambiental") {
         sidebar.innerHTML = `<div>
             <div class="logoSide">
                 <img src="../assets/img/broto.png">
@@ -66,7 +65,6 @@
         </div>`;
     } else {
         sidebar.innerHTML = `<div>
-            <div>
             <div class="logoSide">
                 <img src="../assets/img/broto.png">
                 <h1>Collect Tech</h1>
@@ -78,20 +76,20 @@
                     <li>Geral</li>
                 </a>
                 <a href="./dashboard-pg2.html">
-                    <li>Lixeiras</li>
+                    <li >Lixeiras</li>
                 </a>
                 <a href="./rotas.html">
                     <li class="ativo">Mapa</li>
                 </a>
                 <a href="../cadastro.html">
-                    <li>Cadastrar Usuário</li>
-                </a>
-                <a href="./gerenciarUsuario.html">
-                    <li>Gerenciar Usuários</li>
-                </a>
-                <a href="./suporte.html">
-                        <li>Suporte</li>
-                    </a>
+          <li>Cadastrar Usuário</li>
+        </a>
+        <a href="./gerenciarUsuario.html">
+          <li>Gerenciar Usuários</li>
+        </a>
+        <a href="./suporte.html">
+          <li>Suporte</li>
+        </a>
             </ul>
         </div>
         <div id="sair">

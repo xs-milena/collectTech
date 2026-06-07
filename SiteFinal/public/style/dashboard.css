@@ -90,6 +90,19 @@ body {
     color: #0f7a4f;
 }
 
+#sair {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+#sair a {
+    margin-left: 5px;
+}
+
+
 /* ==============================================GRAFICOS================================================ */
 
 /* ===========================================KPIS NO GERAL============================================== */
@@ -564,17 +577,6 @@ tr:hover {
     font-size: 12px;
     font-weight: bold;
     padding-right: 10px;
-}
-
-#sair {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-
-#sair a {
-    margin-left: 5px;
 }
 
 /* CADASTRO */
