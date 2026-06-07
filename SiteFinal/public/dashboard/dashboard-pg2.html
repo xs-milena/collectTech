@@ -94,7 +94,7 @@
                     <li>Gerenciar Usuários</li>
                 </a>
                 <a href="./suporte.html">
-                        <li>Central de Suporte</li>
+                        <li>Suporte</li>
                     </a>
             </ul>
         </div>
@@ -174,7 +174,7 @@
         for (i = resposta.length-1; i >= 0; i--) {
             var registro = resposta[i];
 
-            if(registro.nivel_preenchimento >= 80){
+            if(registro.nivel_preenchimento > 80){
                 div_kpis.innerHTML += `<div class="box_lixeiras1 cheia">
                         <div>
                         <span>Ecoponto ${registro.id_ecoponto}</span>
@@ -190,7 +190,7 @@
                         <img src="../assets/img/lixeira.png" class="icone_box">
                     </div>
                     </div>`
-            } else if (registro.nivel_preenchimento < 80 && registro.nivel_preenchimento >= 50){
+            } else if (registro.nivel_preenchimento <= 80 && registro.nivel_preenchimento >= 50){
                 div_kpis.innerHTML += `<div class="box_lixeiras1 medio">
                         <div>
                         <span>Ecoponto ${registro.id_ecoponto}</span>
