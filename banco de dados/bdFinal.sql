@@ -626,7 +626,7 @@ SELECT
 
 select * from captura_nivel_sensor;
 
-drop view vw_nivel_lixeiras_empresa;
+
 
 create view vw_nivel_lixeiras_empresa
 as
