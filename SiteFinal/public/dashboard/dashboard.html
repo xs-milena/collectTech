@@ -362,10 +362,10 @@
     let proximaAtualizacao;
 
     window.onload = exibirAquariosDoUsuario();
+setInterval(() => exibirAquariosDoUsuario(), 5000)
 
     function exibirAquariosDoUsuario() {
         document.getElementById("roscas").innerHTML = "";
-
 
         let j = 3;
 
@@ -373,10 +373,11 @@
 
         console.log("aqq" + j)
 
-        for (let i = 0; i < 4; i++) {
+        for (let i = 0; i < BAIRROS.length; i++) {
             document.getElementById("listaEcoponto").innerHTML += `
             <option value="${BAIRROS[i].bairro}">${BAIRROS[i].bairro}</option>`;
-
+}
+for(let i = 0; i < 4; i++){
             document.getElementById("roscas").innerHTML += `
             <button class="botao_graf" onclick="belaVista()" id="botao">
                 <span>${BAIRROS[i].bairro}</span>
